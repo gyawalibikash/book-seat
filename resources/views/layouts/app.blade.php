@@ -71,8 +71,19 @@
             </div>
         </div>
     </nav>
-
-    @yield('content')
+    <div class="row">
+        <div class="container">
+            @if(auth::user())
+                <div class="col-lg-1">
+                    @yield('sidebar')
+                    This is side bar
+                </div>
+            @endif
+            <div class="col-lg-11">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
