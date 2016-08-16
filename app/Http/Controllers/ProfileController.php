@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 
+use App\User;
+
+use Auth;
+
 use Validator;
 
 use Illuminate\Http\Request;
@@ -59,8 +63,21 @@ class ProfileController extends Controller
         $this->validate($request, $this->rules);
 
         // The blog post is valid, store in database...
-        $profile = $request->all();
-        Profile::create($profile);
+        $profile = new Profile();
+
+        $profile->address = $request->Input('address');
+        $profile->contact_no = $request->Input('contact_no');
+        $profile->gender = $request->Input('gender');
+        $profile->user_id = $request->user()->id;
+
+        $profile->save();
+
+//        $user = Auth::user();
+//        //die($user);
+//        $user_id = $user->id;
+//
+//        die($user_id);
+//        Profile::create($profile);
 
         return redirect('home');
     }
