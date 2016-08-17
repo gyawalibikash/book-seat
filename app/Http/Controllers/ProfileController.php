@@ -74,4 +74,45 @@ class ProfileController extends Controller
 
         return redirect('bookseat');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $profile = Profile::find($id);
+        return view('profile.show', compact('profile'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $profile = Profile::find($id);
+        return view('profile.edit', compact('profile'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, $this->rules);
+
+        $profileUpdate = $request->all();
+        $profile = Profile::find($id);
+        $profile->update($profileUpdate);
+
+        return redirect('profile/{{ id }}', array( 'id' => $id ));
+    }
 }
