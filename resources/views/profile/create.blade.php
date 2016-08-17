@@ -4,6 +4,13 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>Create Your Profile</h1>
+
+            @if ($errors->has('user_id'))
+                <span>
+                        <li>{{ $errors->first('user_id') }}</li>
+                    </span>
+            @endif
+
             {!! Form::open(['url' => 'profile', 'files' => true]) !!}
                 <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }} ">
                     <label for="address" class="col-lg-2 control-label">Address</label>
@@ -28,7 +35,7 @@
                 @endif
             </div>
 
-            <input type="text" name="user_id" value="{{ Auth::user()->id }}">
+            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
             <div class="form-group {{ $errors->has('gender') ? ' has-error' : '' }} ">
                 <label for="gender" class="col-lg-2 control-label">Gender</label>
