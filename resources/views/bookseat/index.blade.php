@@ -9,8 +9,13 @@
                     <div class="panel-heading">Book Seat</div>
 
                     <div class="panel-body">
-                        Book your seat
-                    </div>
+                        <table>
+                            <tr>
+                                <td><a href="#" class="btn btn-block btn-default" onclick="func()">Seat</a>
+                            </tr>
+                        </table>
+                        </div>
+
                 </div>
             </div>
         </div>
