@@ -34,7 +34,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.profile');
+        $profile =  Profile::where('user_id', Auth::user()->id)->first();
+
+        return view('profile.profile', compact('profile'));
     }
 
     /**
@@ -83,6 +85,7 @@ class ProfileController extends Controller
         if (!$profile) {
             return view('profile.create');
         }
+
         return view('profile.show', compact('profile'));
     }
 
