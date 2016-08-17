@@ -1,36 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-    <h1>Create Profile</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Create Your Profile</h1>
+            {!! Form::open(['url' => 'profile', 'files' => true]) !!}
+                <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }} ">
+                    <label for="address" class="col-lg-2 control-label">Address</label>
+                    <div>
+                        <input id="address" type="text"  name="address" value="{{ old('address') }}">
+                    </div>
+                    @if ($errors->has('address'))
+                        <span>
+                            <li>{{ $errors->first('address') }}</li>
+                        </span>
+                    @endif
+                </div>
+            <div class="form-group" {{ $errors->has('contact_no') ? ' has-error' : '' }}>
+                <label for="contact_no" class="col-lg-2 control-label">Contact</label>
+                <div>
+                    <input id="contact_no" type="text"  name="contact_no" value="{{ old('contact_no') }}">
+                </div>
+                @if ($errors->has('contact_no'))
+                    <span>
+                        <li>{{ $errors->first('contact_no') }}</li>
+                    </span>
+                @endif
+            </div>
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            <div class="form-group {{ $errors->has('gender') ? ' has-error' : '' }} ">
+                <label for="gender" class="col-lg-2 control-label">Gender</label>
+                <div>
+                    {!! Form::radio('gender', 'male') !!} Male
+                    {!! Form::radio('gender', 'female') !!} Female
+                </div>
+                @if ($errors->has('gender'))
+                    <span>
+                            <li>{{ $errors->first('gender') }}</li>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            </div>
+          {!! Form::close() !!}
         </div>
-    @endif
-
-    {!! Form::open(['url' => 'profile', 'files' => true]) !!}
-    <div class="form-group">
-        {!! Form::label('Address', 'Address:') !!}
-        {!! Form::text('address') !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Contact', 'Contact:') !!}
-        {!! Form::text('contact_no') !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Gender', 'Gender:') !!}
-        {!! Form::radio('gender', 'male') !!} Male
-        {!! Form::radio('gender', 'female') !!} Female
-    </div>
-    <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    </div>
-    {!! Form::close() !!}
     </div>
 @endsection

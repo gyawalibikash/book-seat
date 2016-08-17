@@ -9,6 +9,7 @@ use App\User;
 use Auth;
 
 use Validator;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -40,7 +41,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('profile.profile');
     }
 
     /**
@@ -72,7 +73,11 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect('bookseat');
+
+        Session::flash('success', 'Your Profile is successfully save !');
+
+        return redirect('profile');
+
     }
 
     /**
@@ -114,5 +119,6 @@ class ProfileController extends Controller
         $profile->update($profileUpdate);
 
         return redirect('profile/{{ id }}', array( 'id' => $id ));
+
     }
 }
