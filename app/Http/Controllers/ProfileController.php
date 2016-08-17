@@ -79,6 +79,6 @@ class ProfileController extends Controller
 //        die($user_id);
 //        Profile::create($profile);
 
-        return redirect('home');
+        return redirect('bookseat');
     }
 }
