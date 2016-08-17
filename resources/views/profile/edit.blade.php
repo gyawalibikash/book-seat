@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        {!! Form::open(['url' => 'profile', 'files' => true]) !!}
+        {!! Form::model($profile,['method' => 'PATCH', 'route' => ['profile.update', $profile->user_id], 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('Address', 'Address:') !!}
             {!! Form::text('address') !!}
@@ -30,6 +30,7 @@
         </div>
         <div class="form-group">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            <a href="{{ url('bookseat') }}" class="btn btn-info">Cancel</a>
         </div>
         {!! Form::close() !!}
     </div>

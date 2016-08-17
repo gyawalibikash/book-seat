@@ -7,7 +7,7 @@
     <p>Contact No : {{ $profile->contact_no }}</p>
     <p>Gender : {{ $profile->gender }}</p>
 
-    <a href="{{ redirect()->route('profile.edit', array('id'=>$profile->user_id)) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('profile.edit',['id'=>Auth::user()->id]) }}" class="btn btn-primary">Edit</a>
     <a href="{{ url('bookseat') }}" class="btn btn-info">Back</a>
 @endsection
 

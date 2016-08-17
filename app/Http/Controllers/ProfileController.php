@@ -81,9 +81,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        $profile = Profile::find($id);
+        $profile =  Profile::where('user_id',$user_id)->first();
         return view('profile.show', compact('profile'));
     }
 
@@ -93,9 +93,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
-        $profile = Profile::find($id);
+        $profile = Profile::where('user_id',$user_id)->first();
         return view('profile.edit', compact('profile'));
     }
 
