@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 
-use App\User;
-
 use Auth;
 
 use Validator;
@@ -89,6 +87,10 @@ class ProfileController extends Controller
     public function show($user_id)
     {
         $profile =  Profile::where('user_id',$user_id)->first();
+
+        if (!$profile) {
+            return view('profile.create');
+        }
         return view('profile.show', compact('profile'));
     }
 
