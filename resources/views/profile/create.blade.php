@@ -28,6 +28,8 @@
                 @endif
             </div>
 
+            <input type="text" name="user_id" value="{{ Auth::user()->id }}">
+
             <div class="form-group {{ $errors->has('gender') ? ' has-error' : '' }} ">
                 <label for="gender" class="col-lg-2 control-label">Gender</label>
                 <div>

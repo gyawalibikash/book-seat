@@ -13,15 +13,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\UserRequest;
+
 class ProfileController extends Controller
 {
-    //validation
-    protected $rules = [
-        'address' => 'required',
-        'contact_no' => 'required',
-        'gender' => 'required',
-    ];
-
     /**
      * Create a new controller instance.
      *
@@ -57,17 +52,18 @@ class ProfileController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $this->validate($request, $this->rules);
+        die("aaa");
+        $profile = new Profile();
 
         // The blog post is valid, store in database...
-        $profile = new Profile();
+
 
         $profile->address = $request->Input('address');
         $profile->contact_no = $request->Input('contact_no');
         $profile->gender = $request->Input('gender');
-        $profile->user_id = $request->user()->id;
+
 
         $profile->save();
 
