@@ -72,7 +72,7 @@ class ProfileController extends Controller
         $profile->save();
 
 
-        Session::flash('success', 'Your Profile is successfully save !');
+        Session::flash('success', 'Your Profile is successfully created !');
 
         return redirect('profile');
 
@@ -119,6 +119,8 @@ class ProfileController extends Controller
         $profileUpdate = $request->all();
         $profile = Profile::where('user_id',$user_id)->first();
         $profile->update($profileUpdate);
+
+        Session::flash('success', 'Your Profile is successfully updated !');
 
         return redirect('profile');
 
