@@ -110,15 +110,15 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
         $this->validate($request, $this->rules);
 
         $profileUpdate = $request->all();
-        $profile = Profile::find($id);
+        $profile = Profile::where('user_id',$user_id)->first();
         $profile->update($profileUpdate);
 
-        return redirect('profile/{{ id }}', array( 'id' => $id ));
+        return redirect('profile');
 
     }
 }
