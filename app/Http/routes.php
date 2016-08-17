@@ -19,6 +19,6 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/profile','ProfileController@create');
+Route::resource('profile','ProfileController');
 
 Route::resource('bookseat','BookSeatController');

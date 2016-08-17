@@ -72,13 +72,6 @@ class ProfileController extends Controller
 
         $profile->save();
 
-//        $user = Auth::user();
-//        //die($user);
-//        $user_id = $user->id;
-//
-//        die($user_id);
-//        Profile::create($profile);
-
-        return redirect('bookseat');
+        return redirect('profile');
     }
 }
