@@ -34,7 +34,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.profile');
+        $profile =  Profile::where('user_id', Auth::user()->id)->first();
+
+        return view('profile.profile', compact('profile'));
     }
 
     /**
@@ -54,15 +56,16 @@ class ProfileController extends Controller
      */
     public function store(UserRequest $request)
     {
+
         $profile = new Profile();
 
+
         // The blog post is valid, store in database...
-
-
+        $profile = new Profile();
         $profile->address = $request->Input('address');
         $profile->contact_no = $request->Input('contact_no');
         $profile->gender = $request->Input('gender');
-
+        $profile->user_id = $request->Input('user_id');
 
         $profile->save();
 
@@ -86,6 +89,7 @@ class ProfileController extends Controller
         if (!$profile) {
             return view('profile.create');
         }
+
         return view('profile.show', compact('profile'));
     }
 

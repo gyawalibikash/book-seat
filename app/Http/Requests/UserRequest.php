@@ -27,7 +27,7 @@ class UserRequest extends Request
             'address' => 'required',
             'contact_no' => 'required',
             'gender' => 'required',
-            'user_id' => 'unique',
+            'user_id' => 'unique:profiles',
         ];
     }
 }
