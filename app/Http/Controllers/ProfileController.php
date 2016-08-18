@@ -54,7 +54,6 @@ class ProfileController extends Controller
      */
     public function store(UserRequest $request)
     {
-        die("aaa");
         $profile = new Profile();
 
         // The blog post is valid, store in database...
@@ -108,9 +107,8 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $user_id)
+    public function update(UserRequest $request, $user_id)
     {
-        $this->validate($request, $this->rules);
 
         $profileUpdate = $request->all();
         $profile = Profile::where('user_id',$user_id)->first();
