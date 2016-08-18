@@ -11,11 +11,10 @@
                     <div class="panel-body">
                         <table>
                             <tr>
-                                <td><a href="#" class="btn btn-block btn-default" onclick="func()">Seat</a>
+                                <td ><a class=" remove btn btn-block btn-default ">Seat</a></td>
                             </tr>
                         </table>
                         </div>
-
                 </div>
             </div>
         </div>

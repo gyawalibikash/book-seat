@@ -1,5 +1,13 @@
+//
+//function func() {
+//
+//        alert("Do you want to book");
+//}
 
-function func() {
+$(document).ready(function(){
+        $("a").click(function(){
+                $(".remove").removeClass(" btn-default ").css("background-color", "yellow");
+        });
+});
 
-        alert("Do you want to book");
-}
+
