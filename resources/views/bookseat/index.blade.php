@@ -14,9 +14,13 @@
                                 <td ><a class=" remove btn btn-block btn-default ">Seat</a></td>
                             </tr>
                         </table>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+            <div class="row">
+                <div id="div1">Do you want to view your profile?</div>
+                <button>View Profile</button>
+            </div>
     </div>
 @endsection

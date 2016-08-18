@@ -10,4 +10,8 @@ $(document).ready(function(){
         });
 });
 
-
+$(document).ready(function(){
+        $("button").click(function(){
+                $("#div1").load("profile #p,#h1");
+        });
+});

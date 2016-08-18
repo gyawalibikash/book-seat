@@ -6,8 +6,8 @@
             <strong> Success:</strong> {!! Session::get('success') !!}
         </div>
     @endif
-    <h1> {{ Auth::user()->name }} </h1>
-    <p><b>Address :</b> {{ $profile->address }}</p>
-    <p><b>Contact No :</b> {{ $profile->contact_no }}</p>
-    <p><b>Gender :</b> {{ $profile->gender }}</p>
+    <h1 id="h1"> {{ Auth::user()->name }} </h1>
+    <p id="p"><b>Address :</b> {{ $profile->address }}</p>
+    <p id="p"><b>Contact No :</b> {{ $profile->contact_no }}</p>
+    <p id="p"><b>Gender :</b> {{ $profile->gender }}</p>
 @endsection
