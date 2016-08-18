@@ -5,13 +5,13 @@
 //}
 
 $(document).ready(function(){
-        $("a.remove").click(function(){
-                $("#remove").removeClass(" btn-default ").css("background-color", "yellow");
-        });
+    $(".remove").click(function(){
+        $(this).addClass("disabled").css("background-color","red");
+    });
 });
 
-$(document).ready(function(){
-        $("button").click(function(){
-                $("#div1").load("profile #p,#h1");
-        });
-});
+// $(document).ready(function(){
+//         $("button").click(function(){
+//                 $("#div1").load("profile #p,#h1");
+//         });
+// });
