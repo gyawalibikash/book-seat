@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         <table>
                             <tr>
-                                <td ><a class=" remove btn btn-block btn-default ">Seat</a></td>
+                                <td ><a id="remove" class=" remove btn btn-block btn-default ">Seat</a></td>
                             </tr>
                         </table>
                     </div>

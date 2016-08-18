@@ -5,8 +5,8 @@
 //}
 
 $(document).ready(function(){
-        $("a").click(function(){
-                $(".remove").removeClass(" btn-default ").css("background-color", "yellow");
+        $("a.remove").click(function(){
+                $("#remove").removeClass(" btn-default ").css("background-color", "yellow");
         });
 });
 
