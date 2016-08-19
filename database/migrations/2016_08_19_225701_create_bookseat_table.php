@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilesTable extends Migration
+class CreateBookseatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::table('create', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('address');
-            $table->string('contact_no');
-            $table->string('gender');
+            $table->string('name');
+            $table->enum('status', [0,1]);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
@@ -33,7 +32,7 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('profiles', function(Blueprint $table){
+        Schema::drop('bookseat', function(Blueprint $table){
             $table->dropForeign(['user_id']);
         });
     }

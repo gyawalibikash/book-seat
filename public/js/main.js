@@ -5,7 +5,7 @@
 //}
 
 $(document).ready(function(){
-    $(".remove").click(function(){
+    $(".seat").click(function(){
         $(this).addClass("disabled").css("background-color","red");
     });
 });
