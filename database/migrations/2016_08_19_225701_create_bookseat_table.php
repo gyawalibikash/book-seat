@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookseatTable extends Migration
+class CreateBookSeatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateBookseatTable extends Migration
      */
     public function up()
     {
-        Schema::table('create', function (Blueprint $table) {
+        Schema::create('bookseat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->enum('status', [0,1]);

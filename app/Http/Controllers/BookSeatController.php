@@ -27,4 +27,20 @@ class BookSeatController extends Controller
     {
         return view('bookseat.index');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $bookseat = new BookSeat();
+        $bookseat->name = $request->name;
+        $bookseat->status = 1;
+        $bookseat->user_id = Auth::user()->id;
+        $bookseat->save();
+
+        return redirect('bookseat');
+    }
 }

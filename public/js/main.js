@@ -11,6 +11,20 @@ $(document).ready(function(){
             if (result) {
                 $("#"+seat).addClass("disabled").css("background-color", "red");
             }
+
+            $.ajax({
+                type: "POST",
+                url: "bookseat",
+                data: {
+                    name: seat
+                },
+                success: function(){
+
+                },
+                error: function(){
+
+                }
+            });
         });
     });
 });
