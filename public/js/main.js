@@ -6,7 +6,12 @@
 
 $(document).ready(function(){
     $(".seat").click(function(){
-        $(this).addClass("disabled").css("background-color","red");
+        var seat = $(this).attr('id');
+        bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
+            if (result) {
+                $("#"+seat).addClass("disabled").css("background-color", "red");
+            }
+        });
     });
 });
 
