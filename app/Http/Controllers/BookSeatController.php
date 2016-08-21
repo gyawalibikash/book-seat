@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+
+use App\BookSeat;
+
 class BookSeatController extends Controller
 {
     /**
@@ -36,9 +40,10 @@ class BookSeatController extends Controller
     public function store(Request $request)
     {
         $bookseat = new BookSeat();
-        $bookseat->name = $request->name;
+        $bookseat->name = $request['name'];
         $bookseat->status = 1;
         $bookseat->user_id = Auth::user()->id;
+
         $bookseat->save();
 
         return redirect('bookseat');
