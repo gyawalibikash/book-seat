@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\BookSeat;
+
+use Auth;
+
 class BookSeatController extends Controller
 {
     /**
@@ -25,7 +29,8 @@ class BookSeatController extends Controller
      */
     public function index()
     {
-        return view('bookseat.index');
+        $bookSeat = BookSeat::all();
+        return view('bookseat.index', compact('bookSeat'));
     }
 
     /**
@@ -36,7 +41,7 @@ class BookSeatController extends Controller
     public function store(Request $request)
     {
         $bookseat = new BookSeat();
-        $bookseat->name = $request->name;
+        $bookseat->name = $request['name'];
         $bookseat->status = 1;
         $bookseat->user_id = Auth::user()->id;
         $bookseat->save();

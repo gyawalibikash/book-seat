@@ -8,6 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
 
+                    @yield('scripts')
                     <div class="panel-body">
                         <div style="margin:auto; height:200px; width:50%; background-color:darkgray"></div>
                         <table class="table table-striped">
@@ -61,4 +62,12 @@
                 {{--<button>View Profile</button>--}}
             {{--</div>--}}
     </div>
+
+    <script type="text/javascript">
+        @foreach ($bookSeat as $bookseat)
+            document.getElementById("{{ $bookseat->name }}").style.background = "red";
+            document.getElementById("{{ $bookseat->name }}").className += " disabled";
+        @endforeach
+    </script>
+
 @endsection
