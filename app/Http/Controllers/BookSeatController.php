@@ -44,6 +44,7 @@ class BookSeatController extends Controller
         $bookseat->name = $request['name'];
         $bookseat->status = 1;
         $bookseat->user_id = Auth::user()->id;
+
         $bookseat->save();
 
         return redirect('bookseat');

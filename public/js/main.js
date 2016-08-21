@@ -5,6 +5,7 @@
 //}
 
 $(document).ready(function(){
+
     $(".seat").click(function(){
         var seat = $(this).attr('id');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
@@ -34,6 +35,7 @@ $(document).ready(function(){
         });
     });
 });
+
 
 // $(document).ready(function(){
 //         $("button").click(function(){
