@@ -9,7 +9,6 @@ class BookSeat extends Model
     protected $table = "bookseat";
 
     protected $fillable =  ['name', 'status', 'user_id'];
-    public $table = "bookseat";
 
     public function user()
     {
