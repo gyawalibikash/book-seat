@@ -57,6 +57,7 @@
                 </div>
             </div>
         </div>
+        {{ Carbon::now() }}
             {{--<div class="row">--}}
                 {{--<div id="div1">Do you want to view your profile?</div>--}}
                 {{--<button>View Profile</button>--}}

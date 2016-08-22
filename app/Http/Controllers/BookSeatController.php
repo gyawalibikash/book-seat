@@ -10,6 +10,10 @@ use App\BookSeat;
 
 use Auth;
 
+use Event;
+
+use App\Events\TruncateBookSeatEvent;
+
 class BookSeatController extends Controller
 {
     /**
@@ -29,6 +33,8 @@ class BookSeatController extends Controller
      */
     public function index()
     {
+        //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
+
         $bookSeat = BookSeat::all();
         return view('bookseat.index', compact('bookSeat'));
     }
@@ -49,4 +55,5 @@ class BookSeatController extends Controller
 
         return redirect('bookseat');
     }
+
 }
