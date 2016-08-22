@@ -8,7 +8,10 @@ $(document).ready(function(){
 
     $(".seat").click(function(){
         var seat = $(this).attr('id');
+
+        $(this).html('<i class="fa fa-refresh fa-spin"></i>');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
+            $("#"+seat).html(seat);
             if (result) {
                 $.ajax({
                     type: "POST",
