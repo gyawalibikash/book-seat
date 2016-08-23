@@ -17,7 +17,7 @@
                             <div class="modal-body">
                                 <div id="printThis">
                                     <p><b>Name:</b> {{ Auth::user()->name }}</p>
-                                    <p><b>Seat:</b> {{ INPUT_POST['name'] }}</p>
+                                    <p> <b>Seat:</b> <span id="name"></span></p>
                                 </div>
                             </div>
                             <div class="modal-footer">
