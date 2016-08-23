@@ -4,6 +4,29 @@
         <div class="row">
             @section('sidebar')
             @endsection
+            <!-- Modal -->
+                <div id="successModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">E-ticket for BookSeat</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div id="printThis">
+                                    <p><b>Name:</b> {{ Auth::user()->name }}</p>
+                                    <p><b>Seat:</b> {{ INPUT_POST['name'] }}</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="print"><i class="fa fa-print"></i> Print</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
@@ -69,6 +92,10 @@
             document.getElementById("{{ $bookseat->name }}").style.background = "red";
             document.getElementById("{{ $bookseat->name }}").className += " disabled";
         @endforeach
+        document.getElementById("print").onclick = function() {
+            printElement(document.getElementById("printThis"));
+            window.print();
+        }
     </script>
 
 @endsection

@@ -27,8 +27,8 @@ $(document).ready(function(){
                         name: seat
                     },
                     success: function () {
-                        bootbox.alert("Success");
                         $("#" + seat).addClass("disabled").css("background-color", "red");
+                        $("#successModal").modal('show');
                     },
                     error: function () {
                         bootbox.alert("Error");
