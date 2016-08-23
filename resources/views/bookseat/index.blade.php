@@ -3,6 +3,8 @@
     <div class="container">
         <div class="row">
             @section('sidebar')
+                <a href="#" id="suicide" onclick="image()" /> <p>Sucide</p></a>
+                <a href="#" id="suicide2" onclick="image2()" />Suicide2</a>
             @endsection
             <!-- Modal -->
                 <div id="successModal" class="modal fade" role="dialog">
@@ -31,9 +33,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
 
-                    @yield('scripts')
+                        <div class="col-lg-8">
+                            <div class="text-center" id="blah"><img src="/images/default.jpg" height="200" width="50%" ></div>
+                            <div id="blah1">: Showing</div>
+                            <div id="blah2">Show Time</div>
+                        </div>
                     <div class="panel-body">
-                        <div style="margin:auto; height:200px; width:50%; background-color:darkgray"></div>
                         <table class="table table-striped">
                             <tr>
                                 <td><a id="A1" class="seat btn btn-default btn-lg">A1</a></td>
