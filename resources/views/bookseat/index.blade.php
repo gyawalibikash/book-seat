@@ -111,6 +111,7 @@
             $printSection.innerHTML = "";
             $printSection.appendChild(domClone);
             $printSection.appendChild(domClone);
+            $("#printSection").hide();
         }
 
     </script>
