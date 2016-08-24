@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/bookseat') }}">Book Seat</a></li>
+                    <li><a href="{{ url('/bookseat') }}"><i class="glyphicon glyphicon-facetime-video" title="Book seat"></i></a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -80,14 +80,13 @@
         </div>
     </nav>
     <div class="row">
-        <div class="container">
             @if(auth::user())
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                     @yield('sidebar')
-                    This is side bar
                 </div>
             @endif
-            <div class="col-lg-11">
+        <div class="container">
+            <div class="col-lg-10">
                 @yield('content')
             </div>
         </div>
