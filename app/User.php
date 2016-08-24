@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasOne('App\BookSeat');
     }
 
+    public function Role()
+    {
+        return $this->hasOne('App\Role');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
