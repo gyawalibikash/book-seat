@@ -43,7 +43,7 @@ $(document).ready(function(){
 function image($image) {
     //if (input.files && input.files[0]) {
     //    var reader = new FileReader();
-        $("#blah").html('<img id="movie" src="/images/$image" height="200" width="50%"/>');
+        $("#blah").html('<img id="movie" src="/images/suicide.jpg" height="200" width="50%"/>');
         //reader.onload = function (e) {
         //    $('#blah')
         //        .attr('src','/images/suicide.jpg')

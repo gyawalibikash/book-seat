@@ -10,7 +10,7 @@
             @section('sidebar')
             @foreach($images as $image)
                 <div>
-                    <a href="#" onclick="image({{$image}}}) " id="movie"> {{ $image->moviename }}</a>
+                    <a href="#" onclick="image() " id="movie"> {{ $image->moviename }}</a>
                 </div>
                 @endforeach
             @endsection
