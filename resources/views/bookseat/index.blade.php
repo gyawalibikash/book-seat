@@ -7,11 +7,14 @@
     @endif
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
-        <div class="row">
             @section('sidebar')
-                <a href="#" id="suicide" onclick="image()" /> <p>Sucide</p></a>
-                <a href="#" id="suicide2" onclick="image2()" />Suicide2</a>
+            @foreach($images as $image)
+                <div>
+                    <a href="#" onclick="image() " id="movie"> {{ $image->moviename }}</a>
+                </div>
+                @endforeach
             @endsection
+        <div class="row">
             <!-- Modal -->
                 <div id="successModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">

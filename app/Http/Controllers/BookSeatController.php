@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Images;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use App\BookSeat;
+
 
 use Auth;
 
@@ -36,7 +39,8 @@ class BookSeatController extends Controller
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
         $bookSeat = BookSeat::all();
-        return view('bookseat.index', compact('bookSeat'));
+        $images = Images::all();
+        return view('bookseat.index', compact('bookSeat','images'));
     }
 
     /**
