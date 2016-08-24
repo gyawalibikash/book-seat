@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Profile;
 use App\User;
+use App\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,19 +24,25 @@ class DatabaseSeeder extends Seeder
 
 class UserAppSeed extends Seeder{
 
-    public function run(){
+    public function run() {
+        DB::table('roles')->delete();
         DB::table('users')->delete();
         DB::table('profiles')->delete();
 
-        $ram=User::create(array('name'=>'ram','email'=>'ram@gmail.com','password'=>bcrypt('password')));
-        $shyam=User::create(array('name'=>'shyam','email'=>'shyam@gmail.com','password'=>bcrypt('password')));
-        $geeta=User::create(array('name'=>'geeta','email'=>'geeta@gmail.com','password'=>bcrypt('password')));
+        $admin = Role::create(array('name'=>'ROLE_ADMIN'));
+        $user = Role::create(array('name'=>'ROLE_USER'));
+        $this->command->info('Role Seeded Successfully');
+
+        $ram = User::create(array('name'=>'ram','email'=>'ram@gmail.com','password'=>bcrypt('password'),'role_id'=>$admin->id));
+        $shyam = User::create(array('name'=>'shyam','email'=>'shyam@gmail.com','password'=>bcrypt('password'),'role_id'=>$user->id));
+        $geeta = User::create(array('name'=>'geeta','email'=>'geeta@gmail.com','password'=>bcrypt('password'),'role_id'=>$user->id));
         $this->command->info('User Created Successfully');
 
         Profile::create(array('address'=>'thimi, bhaktapur','contact_no'=>'016578853','gender'=>'male','user_id'=>$ram->id));
         Profile::create(array('address'=>'jawlakhel, Lalitpur','contact_no'=>'01456345','gender'=>'male','user_id'=>$shyam->id));
         Profile::create(array('address'=>'Kalanki, Kathmandu','contact_no'=>'015675632','gender'=>'female','user_id'=>$geeta->id));
         $this->command->info('Profile Seeded Successfully');
+
 
 
     }

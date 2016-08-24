@@ -24,8 +24,11 @@
                             </div>
                             <div class="modal-body">
                                 <div id="printThis">
-                                    <p><b>Name:</b> {{ Auth::user()->name }}</p>
-                                    <p> <b>Seat:</b> <span id="name"></span></p>
+                                    <i>Congratulation you have booked this seat.</i> <hr />
+                                    <table class="table table-striped">
+                                        <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
+                                        <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="modal-footer">
