@@ -46,7 +46,9 @@
                    <i class="glyphicon glyphicon-home" title="Home"></i>
                 </a>
 
-                <a href="{{ url('/upload') }}" class="navbar-brand"> <i class="glyphicon glyphicon-picture" title="Upload New Movie"></i></a>
+                @if( Auth::check() && Auth::user()->role_id == 1 )
+                    <a href="{{ url('/upload') }}" class="navbar-brand"> <i class="glyphicon glyphicon-picture" title="Upload New Movie"></i></a>
+                @endif
             </div>
 
 
@@ -85,7 +87,7 @@
         <div class="container">
             <div class="col-lg-12">
                 <div class="col-md-12">
-                    <h1>QFX Cinemas</h1>
+                    <h1>View Cinemas</h1>
                 </div>
                 </div>
             <div>
