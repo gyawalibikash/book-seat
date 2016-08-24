@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            <strong> Success:</strong> {!! Session::get('success') !!}
+        </div>
+    @endif
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
         <div class="row">

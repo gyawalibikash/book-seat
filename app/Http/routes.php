@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index');
 Route::resource('profile','ProfileController');
 
 Route::resource('bookseat','BookSeatController');
+
+Route::controller('upload', 'ImageController');

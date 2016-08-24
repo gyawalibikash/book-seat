@@ -41,9 +41,15 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Home
+
+                   <i class="glyphicon glyphicon-home" title="Home"></i>
                 </a>
+
+                <a href="{{ url('/upload') }}" class="navbar-brand"> <i class="glyphicon glyphicon-picture" title="Upload New Movie"></i></a>
             </div>
+
+
+
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
