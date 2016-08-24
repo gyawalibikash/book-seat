@@ -23,4 +23,6 @@ Route::resource('profile','ProfileController');
 
 Route::resource('bookseat','BookSeatController');
 
-Route::controller('upload', 'ImageController');
+Route::group(['middleware' => 'admin'], function () {
+    Route::controller('upload', 'ImageController');
+});
