@@ -17,16 +17,16 @@
         {!! Form::model($profile,['method' => 'PATCH', 'route' => ['profile.update', $profile->user_id], 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('Address', 'Address:') !!}
-            {!! Form::text('address') !!}
+            {!! Form::text('address', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('Contact', 'Contact:') !!}
-            {!! Form::text('contact_no') !!}
+            {!! Form::text('contact_no', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('Gender', 'Gender:') !!}
-            {!! Form::radio('gender', 'male') !!} Male
-            {!! Form::radio('gender', 'female') !!} Female
+            {!! Form::radio('gender', 'male', ['class'=>'form-control']) !!} Male
+            {!! Form::radio('gender', 'female', ['class'=>'form-control']) !!} Female
         </div>
         <div class="form-group">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
