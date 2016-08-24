@@ -26,3 +26,5 @@ Route::resource('bookseat','BookSeatController');
 Route::group(['middleware' => 'admin'], function () {
     Route::controller('upload', 'ImageController');
 });
+
+Route::controller('/', 'ShowTimeController');
