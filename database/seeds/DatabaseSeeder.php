@@ -30,9 +30,7 @@ class UserAppSeed extends Seeder{
         DB::table('users')->delete();
         DB::table('roles')->delete();
         DB::table('profiles')->delete();
-
         DB::table('showtime')->delete();
-        DB::table('movies')->delete();
 
         $admin = Role::create(array('name'=>'ROLE_ADMIN'));
         $user = Role::create(array('name'=>'ROLE_USER'));
@@ -49,14 +47,9 @@ class UserAppSeed extends Seeder{
         $this->command->info('Profile Seeded Successfully');
 
         ShowTime::create(array('time'=>'8:30'));
-        ShowTime::create(array('time'=>'1:30'));
+        ShowTime::create(array('time'=>'13:30'));
+        ShowTime::create(array('time'=>'18:30'));
         $this->command->info('Showtime Created Successfully');
-
-        Movies::create(array('moviename'=>'Sucide Squad','poster'=>''));
-        Movies::create(array('moviename'=>'Rustom','poster'=>''));
-        $this->command->info('Movies Created Successfully');
-
-
 
     }
 

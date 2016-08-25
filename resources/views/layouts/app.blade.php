@@ -18,12 +18,9 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
-        .navbar{
-        background-color:#bce8f1;
-        }
         body {
             font-family: 'Lato';
-            background-color: #31b0d5;
+            background-color: lightgrey;
         }
 
         .fa-btn {

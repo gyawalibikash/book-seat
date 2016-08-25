@@ -17,22 +17,18 @@
 
         <div id="owl-demo-now" class="owl-carousel">
             @foreach($movies as $movie)
-                <div class="item"><a href="{{ url('/showtime',$movie->id) }}"><img src="{!! '/images/'.$movie->poster !!}" /></a></div>
+                <div class="item" ><a href="{{ url('/showtime',$movie->id) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
             @endforeach
         </div>
     </div>
     <br><br>
     <div class="row">
         <div style="font-size: 30px;">COMING SOON</div>
+
         <div id="owl-demo-coming" class="owl-carousel">
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6825" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6826" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6827" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6828" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6829" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6830" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6824" /></a></div>
-            <div class="item"><a href="{{ url('/') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6831" /></a></div>
+           @foreach($nextMovies as $nextMovie)
+                <div class="item" ><a href="{{ route('coming_soon') }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
+            @endforeach
         </div>
     </div>
 </div>
