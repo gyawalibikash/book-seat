@@ -12,10 +12,17 @@ class CreateBookSeatTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookseat', function (Blueprint $table) {
+        Schema::create('bookseat1', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->enum('status', [0,1]);
+            $table->string('seat');
+//            $table->integer('showtime_id')->unsigned();
+//            $table->foreign('showtime_id')
+//                ->references('id')
+//                ->on('showtime');
+//            $table->integer('movies_id')->unsigned();
+//            $table->foreign('movies_id')
+//                ->references('id')
+//                ->on('movies');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
