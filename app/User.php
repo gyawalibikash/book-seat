@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Auth;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -39,5 +41,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin() 
+    {
+        $role_id = Auth::user()->role_id;
+        $id = Role::whereName('ROLE_ADMIN')->pluck('id')->first();
+
+        if ( $role_id == $id )
+        {
+            return true;
+        }
+    }
 
 }
