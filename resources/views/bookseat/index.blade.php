@@ -91,8 +91,8 @@
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         @foreach ($bookseats as $bookseat)
-            document.getElementById("{{ $bookseat->name }}").style.background = "red";
-            document.getElementById("{{ $bookseat->name }}").className += " disabled";
+            document.getElementById("{{ $bookseat->seat }}").style.background = "red";
+            document.getElementById("{{ $bookseat->seat }}").className += " disabled";
         @endforeach
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));
