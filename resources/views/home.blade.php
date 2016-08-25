@@ -17,15 +17,7 @@
 
         <div id="owl-demo-now" class="owl-carousel">
             @foreach($movies as $movie)
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="{!! url('/images/'.$movie->poster) !!}" /></a></div>
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6812" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6813" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6814" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6818" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6810" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6816" /></a></div>--}}
-            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6817" /></a></div>--}}
-
+                <div class="item"><a href="{{ url('/showtime',$movie->id) }}"><img src="{!! '/images/'.$movie->poster !!}" /></a></div>
             @endforeach
         </div>
     </div>

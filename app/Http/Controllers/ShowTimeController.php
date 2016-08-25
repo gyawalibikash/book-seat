@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Movies;
+
 class ShowTimeController extends Controller
 {
     /**
@@ -13,8 +15,9 @@ class ShowTimeController extends Controller
      *
      * @return Response
      */
-    public function getShowtime()
+    public function getShowtime($id)
     {
-        return view('showtime.index');
+        $movie = Movies::findOrFail($id);
+        return view('showtime.index',compact('movie'));
     }
 }
