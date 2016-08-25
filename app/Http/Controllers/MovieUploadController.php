@@ -38,6 +38,7 @@ class MovieUploadController extends Controller
         $movies = new Movies();
         $movies->moviename = $request->Input('moviename');
         $movies->poster = $name;
+
         Session::flash('success','Data entry successfull');
 
         $movies->save();

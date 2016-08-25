@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            <strong> Success:</strong> {!! Session::get('success') !!}
+        </div>
+    @endif
 
         <!-- Owl Carousel Assets -->
 <link href="/css/owl.carousel.css" rel="stylesheet">
@@ -9,15 +14,19 @@
 <div class="container">
     <div class="row">
         <div style="font-size: 30px;">NOW SHOWING</div>
+
         <div id="owl-demo-now" class="owl-carousel">
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6811" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6812" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6813" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6814" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6818" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6810" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6816" /></a></div>
-            <div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6817" /></a></div>
+            @foreach($movies as $movie)
+            <div class="item"><a href="{{ url('/showtime') }}"><img src="{!! url('/images/'.$movie->poster) !!}" /></a></div>
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6812" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6813" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6814" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6818" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6810" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6816" /></a></div>--}}
+            {{--<div class="item"><a href="{{ url('/showtime') }}"><img src="http://qfxcinemas.com/Home/GetThumbnailImage?EventID=6817" /></a></div>--}}
+
+            @endforeach
         </div>
     </div>
     <br><br>
