@@ -11,20 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::resource('profile','ProfileController');
 
 Route::resource('bookseat','BookSeatController');
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::controller('upload', 'ImageController');
+    Route::controller('upload', 'MovieUploadController');
 });
 
 Route::controller('/', 'ShowTimeController');

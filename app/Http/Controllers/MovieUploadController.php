@@ -8,11 +8,11 @@ use App\Http\Requests;
 
 use App\Http\Requests\ImageRequest;
 
-use App\Images;
+use App\Movies;
 
 use Illuminate\Support\Facades\Session;
 
-class ImageController extends Controller
+class MovieUploadController extends Controller
 {
 
     public function __construct()
@@ -28,21 +28,20 @@ class ImageController extends Controller
 
     public function postUpload(ImageRequest $request)
     {
-        $logo= $request->file('image');
+        $logo= $request->file('poster');
 
         $name=$logo->getClientOriginalName();
 
         $success = $logo->move(base_path('/public/images'),$name);
 
         if($success)
-        $images = new Images();
-        $images->moviename = $request->Input('moviename');
-        $images->image = $name;
-
+        $movies = new Movies();
+        $movies->moviename = $request->Input('moviename');
+        $movies->poster = $name;
         Session::flash('success','Data entry successfull');
 
-        $images->save();
+        $movies->save();
 //        save to database
-        return redirect()->route('bookseat.index');
+        return redirect('/');
     }
 }
