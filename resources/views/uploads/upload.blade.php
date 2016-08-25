@@ -8,7 +8,7 @@
                     <div class="panel-heading">Welcome</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['url' => '/upload/upload', 'files' => true, 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
+                        {!! Form::open(['url' => '/upload/upload', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
 
                         <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">
                             <label for="address" class="col-md-4 control-label">Movie Name</label>
@@ -24,13 +24,13 @@
                         </div>
 
                         <div class="form-group" {{ $errors->has('image') ? ' has-error' : '' }}>
-                            <label for="contact_no" class="col-md-4 control-label">Movie Image</label>
+                            <label for="contact_no" class="col-md-4 control-label">Movie Poster</label>
                             <div class="col-md-6">
-                                <input id="contact_no" type="file" class="form-control" name="image" value="{{ old('image') }}">
+                                <input id="contact_no" type="file" name="poster" value="{{ old('poster') }}">
 
                                 @if ($errors->has('image'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('image') }}</strong>
+                                        <strong>{{ $errors->first('poster') }}</strong>
                                     </span>
                                 @endif
                             </div>
