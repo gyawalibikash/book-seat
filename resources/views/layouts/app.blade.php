@@ -45,7 +45,7 @@
                    <i class="glyphicon glyphicon-home" title="Home"></i>
                 </a>
 
-                @if( Auth::check() && Auth::user()->role_id == 1 )
+                @if( Auth::check() && Auth::user()->isAdmin() )
                     <a href="{{ url('/upload') }}" class="navbar-brand"> <i class="glyphicon glyphicon-picture" title="Upload New Movie"></i></a>
                 @endif
             </div>

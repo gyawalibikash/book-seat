@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
 class UserAppSeed extends Seeder{
 
     public function run() {
-//        DB::table('roles')->delete();
         DB::table('users')->delete();
+        DB::table('roles')->delete();
         DB::table('profiles')->delete();
 
         DB::table('showtime')->delete();
