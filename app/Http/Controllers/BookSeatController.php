@@ -37,9 +37,9 @@ class BookSeatController extends Controller
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
-        $bookSeat = BookSeat::all();
+        $bookseats = BookSeat::all();
 //        $images = Images::all();
-        return view('bookseat.index', compact('bookSeat'));
+        return view('bookseat.index', compact('bookseats'));
     }
 
     /**
@@ -50,9 +50,10 @@ class BookSeatController extends Controller
     public function store(Request $request)
     {
         $bookseat = new BookSeat();
-        $bookseat->name = $request['name'];
-        $bookseat->status = 1;
+        $bookseat->seat = $request['name'];
         $bookseat->user_id = Auth::user()->id;
+        $bookseat->showtime_id = 1;
+        $bookseat->movie_id = 1;
 
         $bookseat->save();
 

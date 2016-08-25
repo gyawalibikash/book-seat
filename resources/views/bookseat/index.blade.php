@@ -88,9 +88,9 @@
                 {{--<button>View Profile</button>--}}
             {{--</div>--}}
     </div>
-
+    <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-        @foreach ($bookSeat as $bookseat)
+        @foreach ($bookseats as $bookseat)
             document.getElementById("{{ $bookseat->name }}").style.background = "red";
             document.getElementById("{{ $bookseat->name }}").className += " disabled";
         @endforeach
