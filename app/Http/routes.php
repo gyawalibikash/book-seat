@@ -26,6 +26,6 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::controller('/', 'ShowTimeController');
 
-Route::post('/coming_soon',function(){
+Route::get('/coming_soon/{id}',function(){
 	return view('coming_soon.index');
 })->name('coming_soon');

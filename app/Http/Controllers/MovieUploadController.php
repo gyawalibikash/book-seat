@@ -69,4 +69,10 @@ class MovieUploadController extends Controller
 
     }
 
+    public function getNew($id)
+    {
+        $nextMovies =NextMovies::findOrFail($id);
+        return view('coming_soon.index',compact('nextMovies'));
+    }
+
 }
