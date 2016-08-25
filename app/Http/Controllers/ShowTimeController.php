@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\ShowTime;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use App\Movies;
+
 
 class ShowTimeController extends Controller
 {
@@ -18,6 +20,8 @@ class ShowTimeController extends Controller
     public function getShowtime($id)
     {
         $movie = Movies::findOrFail($id);
-        return view('showtime.index',compact('movie'));
+
+        $showtimes= ShowTime::all();
+        return view('showtime.index',compact('movie','showtimes'));
     }
 }

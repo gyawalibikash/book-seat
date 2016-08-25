@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Movies;
+use App\ShowTime;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,13 +35,14 @@ class BookSeatController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function getMovieshow($id)
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
-
+        //$movie= Movies::findOrfail($id);
+        $showtime =ShowTime::findOrFail($id);
         $bookseats = BookSeat::all();
 //        $images = Images::all();
-        return view('bookseat.index', compact('bookseats'));
+        return view('bookseat.index', compact('bookseats','showtime','movie'));
     }
 
     /**

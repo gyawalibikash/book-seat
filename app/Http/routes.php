@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index');
 
 Route::resource('profile','ProfileController');
 
-Route::resource('bookseat','BookSeatController');
+Route::controller('bookseat','BookSeatController');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::controller('upload', 'MovieUploadController');
