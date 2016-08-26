@@ -24,6 +24,8 @@
                                     <table class="table table-striped">
                                         <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
                                         <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
+                                        <tr><td><strong>Movie Name</strong></td><td>{{ $movie->moviename }}</td></tr>
+                                        <tr><td><strong>Name</strong></td><td>{{ $showtime->time }}</td></tr>
                                     </table>
                                 </div>
                             </div>
@@ -37,7 +39,9 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
-                    <div>{{ $showtime->time }}</div>
+                    <div class="col-md-8">
+                        <strong>Show Time</strong> {{ $showtime->time }}
+                    </div>
 
                         <div class="col-lg-12">
                             <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>

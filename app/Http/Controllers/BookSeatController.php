@@ -56,13 +56,17 @@ class BookSeatController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function postMoviestore(Request $request)
     {
+        die;
+        $showTime=$request->segment(4);
+        $movie_id=$request->segment(3);
+
         $bookseat = new BookSeat();
         $bookseat->seat = $request['name'];
         $bookseat->user_id = Auth::user()->id;
-        $bookseat->showtime_id = $request['time'];;
-        $bookseat->movie_id = $request['moviename'];;
+        $bookseat->showtime_id = $showTime;
+        $bookseat->movie_id = $movie_id;
 
         $bookseat->save();
 
