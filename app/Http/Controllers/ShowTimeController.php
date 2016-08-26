@@ -11,6 +11,8 @@ use App\Movies;
 
 use App\NextMovies;
 
+use App\Day;
+
 
 class ShowTimeController extends Controller
 {
@@ -24,8 +26,15 @@ class ShowTimeController extends Controller
         $showtimes = ShowTime::all();
         $movie = Movies::findOrFail($id);
 
+        $days = Day::all();
+        $day_select = array();
+
+        foreach ($days as $day) {
+            $day_select[$day->id] = $day->day;
+        }
+
         $showtimes= ShowTime::all();
-        return view('showtime.index',compact('movie','showtimes'));
+        return view('showtime.index',compact('movie','showtimes', 'day_select'));
     }
 
     public function getNew($id)
