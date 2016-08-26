@@ -42,7 +42,7 @@ class BookSeatController extends Controller
         $showtime =ShowTime::findOrFail($id);
         $bookseats = BookSeat::all();
 //        $images = Images::all();
-        return view('bookseat.index', compact('bookseats','showtime','movie'));
+        return view('bookseat.index', compact('bookseats','showtime'));
     }
 
     /**
@@ -55,8 +55,8 @@ class BookSeatController extends Controller
         $bookseat = new BookSeat();
         $bookseat->seat = $request['name'];
         $bookseat->user_id = Auth::user()->id;
-        $bookseat->showtime_id = 1;
-        $bookseat->movie_id = 1;
+        $bookseat->showtime_id = $request['time'];;
+        $bookseat->movie_id = $request['moviename'];;
 
         $bookseat->save();
 

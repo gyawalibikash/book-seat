@@ -27,6 +27,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/bookseat');
+        return redirect('/');
     }
 }

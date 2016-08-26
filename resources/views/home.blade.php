@@ -27,7 +27,7 @@
 
         <div id="owl-demo-coming" class="owl-carousel">
            @foreach($nextMovies as $nextMovie)
-                <div class="item" ><a href="{{ url('/upload/new',$nextMovie->id) }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
+                <div class="item" ><a href="{{ url('/new',$nextMovie->id) }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
             @endforeach
         </div>
     </div>

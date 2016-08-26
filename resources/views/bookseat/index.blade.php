@@ -7,13 +7,6 @@
     @endif
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
-            {{--@section('sidebar')--}}
-            {{--@foreach($images as $image)--}}
-                {{--<div>--}}
-                    {{--<a href="#" onclick="image() " id="movie"> {{ $image->moviename }}</a>--}}
-                {{--</div>--}}
-                {{--@endforeach--}}
-            {{--@endsection--}}
         <div class="row">
             <!-- Modal -->
                 <div id="successModal" class="modal fade" role="dialog">
@@ -45,10 +38,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
 
-                        <div class="col-lg-8">
-                            <div class="text-center" id="blah"><img src="/images/default.jpg" height="200" width="50%" ></div>
-                            <div id="blah1">: Showing</div>
-                            <div id="blah2">Show Time</div>
+                        <div class="col-lg-12">
+                            <div class="text-center"><img src="/images/default.jpg" height="200" width="50%" ></div>
                         </div>
                     <div class="panel-body">
                         <table class="table table-striped">

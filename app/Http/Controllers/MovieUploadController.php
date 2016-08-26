@@ -17,14 +17,8 @@ use Illuminate\Support\Facades\Session;
 class MovieUploadController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function getIndex()
     {
-//        return "Uplaod your image";
         return view('uploads.upload');
     }
 
@@ -44,7 +38,7 @@ class MovieUploadController extends Controller
         Session::flash('success','Data entry successfull');
 
         $movies->save();
-//        save to database
+
         return redirect('/');
     }
 
@@ -67,12 +61,6 @@ class MovieUploadController extends Controller
 //        save to database
         return redirect('/');
 
-    }
-
-    public function getNew($id)
-    {
-        $nextMovies =NextMovies::findOrFail($id);
-        return view('coming_soon.index',compact('nextMovies'));
     }
 
 }

@@ -9,6 +9,8 @@ use App\Http\Requests;
 
 use App\Movies;
 
+use App\NextMovies;
+
 
 class ShowTimeController extends Controller
 {
@@ -19,9 +21,16 @@ class ShowTimeController extends Controller
      */
     public function getShowtime($id)
     {
+        $showtimes = ShowTime::all();
         $movie = Movies::findOrFail($id);
 
         $showtimes= ShowTime::all();
         return view('showtime.index',compact('movie','showtimes'));
+    }
+
+    public function getNew($id)
+    {
+        $nextMovies =NextMovies::findOrFail($id);
+        return view('coming_soon.index',compact('nextMovies'));
     }
 }
