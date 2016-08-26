@@ -49,7 +49,7 @@
 
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Now Showing</div>
+                    <div class="panel-heading">Coming Soon</div>
 
                     <div class="panel-body">
                         {!! Form::open(['url' => '/upload/newupload', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
@@ -93,4 +93,6 @@
         
         </div>
     </div>
+
+    <script src="/js/jquery-1.9.1.min.js"></script>
 @endsection
