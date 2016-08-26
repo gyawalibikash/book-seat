@@ -14,8 +14,8 @@ $(document).ready(function(){
             $("#"+seat).html(seat);
             if (result) {
                 $.ajax({
-                    // type: "POST",
-                    // url: 'bookseat/moviestore',
+                     type: "POST",
+                     url: '/bookseat/moviestore',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 

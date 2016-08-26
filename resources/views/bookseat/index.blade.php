@@ -25,7 +25,7 @@
                                         <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
                                         <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
                                         <tr><td><strong>Movie Name</strong></td><td>{{ $movie->moviename }}</td></tr>
-                                        <tr><td><strong>Name</strong></td><td>{{ $showtime->time }}</td></tr>
+                                        <tr><td><strong>ShowTime</strong></td><td>{{ $showtime->time }}</td></tr>
                                     </table>
                                 </div>
                             </div>

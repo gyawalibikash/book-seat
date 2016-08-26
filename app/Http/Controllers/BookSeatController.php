@@ -37,7 +37,7 @@ class BookSeatController extends Controller
      */
     public function getMovieshow(Request $request,$id)
     {
-        $showTime=$request->segment(4).'<br/>';
+        $showTime=$request->segment(4);
 
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
         //$movie= Movies::findOrfail($id);
@@ -58,8 +58,9 @@ class BookSeatController extends Controller
      */
     public function postMoviestore(Request $request)
     {
+        $showTime=$request->path();
+        print_r($showTime);
         die;
-        $showTime=$request->segment(4);
         $movie_id=$request->segment(3);
 
         $bookseat = new BookSeat();
