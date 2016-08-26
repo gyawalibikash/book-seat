@@ -8,6 +8,7 @@ $(document).ready(function(){
 
     $(".seat").click(function(){
         var seat = $(this).attr('id');
+        var path = $(location).attr('pathname');
 
         $(this).html('<i class="fa fa-refresh fa-spin"></i>');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
@@ -24,7 +25,8 @@ $(document).ready(function(){
                         }
                     },
                     data: {
-                        name: seat
+                        name: seat,
+                        path: path
                     },
                     success: function () {
                         $("#" + seat).addClass("disabled").css("background-color", "red");

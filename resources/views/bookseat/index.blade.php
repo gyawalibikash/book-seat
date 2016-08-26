@@ -49,27 +49,28 @@
                     <div class="panel-body">
                         <table class="table table-striped">
                             <tr>
-                                @for($i=1;$i<=6;$i++)
+                                @for($i=1;$i<=10;$i++)
                                     <td><a id="A{{ $i }}" class="seat btn btn-default btn-lg">A{{ $i }}</a></td>
                                 @endfor
                             </tr>
                             <tr>
-                                @for($i=1;$i<=6;$i++)
+                                @for($i=1;$i<=10;$i++)
                                     <td><a id="B{{ $i }}" class="seat btn btn-default btn-lg">B{{ $i }}</a></td>
                                 @endfor
                             </tr>
                             <tr>
-                                @for($i=1;$i<=6;$i++)
+                                @for($i=1;$i<=10;$i++)
                                     <td><a id="C{{ $i }}" class="seat btn btn-default btn-lg">C{{ $i }}</a></td>
                                 @endfor
                             </tr>
+                            <tr><td> balcony</td></tr>
                             <tr>
-                                @for($i=1;$i<=6;$i++)
+                                @for($i=1;$i<=10;$i++)
                                     <td><a id="D{{ $i }}" class="seat btn btn-default btn-lg">D{{ $i }}</a></td>
                                 @endfor
                             </tr>
                             <tr>
-                                @for($i=1;$i<=6;$i++)
+                                @for($i=1;$i<=10;$i++)
                                     <td><a id="E{{ $i }}" class="seat btn btn-default btn-lg">E{{ $i }}</a></td>
                                 @endfor
                             </tr>
@@ -86,9 +87,12 @@
     </div>
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
+
         @foreach ($bookseats as $bookseat)
-            document.getElementById("{{ $bookseat->seat }}").style.background = "red";
-            document.getElementById("{{ $bookseat->seat }}").className += " disabled";
+            @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
+                document.getElementById("{{ $bookseat->seat }}").style.background = "red";
+                document.getElementById("{{ $bookseat->seat }}").className += " disabled";
+            @endif
         @endforeach
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));

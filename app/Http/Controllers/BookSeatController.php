@@ -58,10 +58,11 @@ class BookSeatController extends Controller
      */
     public function postMoviestore(Request $request)
     {
-        $showTime=$request->path();
-        print_r($showTime);
-        die;
-        $movie_id=$request->segment(3);
+        $path = $request['path'];
+        $segment = explode("/", $path);
+
+        $showTime = $segment[4];
+        $movie_id = $segment[3];
 
         $bookseat = new BookSeat();
         $bookseat->seat = $request['name'];
@@ -71,7 +72,7 @@ class BookSeatController extends Controller
 
         $bookseat->save();
 
-        return redirect('bookseat');
+        return redirect('/');
     }
 
 }
