@@ -9,7 +9,7 @@ use App\Http\Requests;
 
 use App\Movies;
 
-use App\NextMovies;
+use app\NextMovies;
 
 
 class ShowTimeController extends Controller

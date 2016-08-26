@@ -37,9 +37,10 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
+                    <div>{{ $showtime->time }}</div>
 
                         <div class="col-lg-12">
-                            <div class="text-center"><img src="/images/default.jpg" height="200" width="50%" ></div>
+                            <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
                         </div>
                     <div class="panel-body">
                         <table class="table table-striped">
