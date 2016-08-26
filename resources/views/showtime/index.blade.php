@@ -6,9 +6,9 @@
             <div class="col-md-6 col-md-offset-1">
                 <h1>{{ $movie->moviename }}</h1>
                 <table class="table" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
-                    <tr><th>Show Time</th><td></td><tr>
+                    <tr><th style="font-size:20px;">Show Time</th><td></td><tr>
                     @foreach($showtimes as $showtime)
-                        <tr><td>{{ $showtime->time }}</td><td><a href="{{ url('/bookseat') }}" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-facetime-video"></i>
+                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ url('/bookseat') }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video"></i>
                 @endforeach
                 </table>
             </div>
