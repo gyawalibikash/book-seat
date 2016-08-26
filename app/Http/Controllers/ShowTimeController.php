@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Movies;
 
+use App\ShowTime;
+
 class ShowTimeController extends Controller
 {
     /**
@@ -17,7 +19,8 @@ class ShowTimeController extends Controller
      */
     public function getShowtime($id)
     {
+        $showtimes = ShowTime::all();
         $movie = Movies::findOrFail($id);
-        return view('showtime.index',compact('movie'));
+        return view('showtime.index',compact('movie', 'showtimes'));
     }
 }
