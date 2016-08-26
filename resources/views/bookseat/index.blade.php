@@ -39,11 +39,15 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
-                    <div class="col-md-8">
-                        <strong>Show Time</strong> {{ $showtime->time }}
+                    <div class="col-md-4">
+                        <strong>Show Time :</strong> {{ $showtime->time }}<hr>
+                        <strong>Cast :</strong> :{{ $movie->cast }}<hr>
+                        <strong> Director :</strong>{{ $movie->director }}<hr>
+                        <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
+                        <strong> Run Time :</strong>{{ $movie->run_time }}
                     </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-4">
                             <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
                         </div>
                     <div class="panel-body">

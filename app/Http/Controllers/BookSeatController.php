@@ -69,6 +69,7 @@ class BookSeatController extends Controller
         $bookseat->user_id = Auth::user()->id;
         $bookseat->showtime_id = $showTime;
         $bookseat->movie_id = $movie_id;
+        $bookseat->day_id = 6;
 
         $bookseat->save();
 
