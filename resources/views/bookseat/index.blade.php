@@ -48,6 +48,7 @@
                         </div>
                     <div class="panel-body">
                         <table class="table table-striped">
+                            <tr><td> Platinum</td></tr>
                             <tr>
                                 @for($i=1;$i<=10;$i++)
                                     <td><a id="A{{ $i }}" class="seat btn btn-default btn-lg">A{{ $i }}</a></td>
@@ -63,7 +64,7 @@
                                     <td><a id="C{{ $i }}" class="seat btn btn-default btn-lg">C{{ $i }}</a></td>
                                 @endfor
                             </tr>
-                            <tr><td> balcony</td></tr>
+                            <tr><td>Premium</td></tr>
                             <tr>
                                 @for($i=1;$i<=10;$i++)
                                     <td><a id="D{{ $i }}" class="seat btn btn-default btn-lg">D{{ $i }}</a></td>
@@ -97,6 +98,7 @@
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));
             window.print();
+                $("#successModal").modal('hide');
         }
 
         function printElement(elem, append, delimiter) {
