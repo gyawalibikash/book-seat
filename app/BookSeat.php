@@ -24,4 +24,9 @@ class BookSeat extends Model
     {
         return $this->hasOne('App\ShowTime');
     }
+
+    public function Day()
+    {
+        return $this->hasOne('App\Day');
+    }
 }
