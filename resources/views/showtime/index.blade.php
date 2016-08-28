@@ -20,16 +20,16 @@
 
             <div class="col-md-4 col-md-offset-1">
                 <img src="{!! '/images/now_showing/'.$movie->poster !!}">
-                <p> Cast :{{ $movie->cast }}</p>
-                <p> Director :{{ $movie->director }}</p>
-                <p> Release Date :{{ $movie->release_date }}</p>
-                <p> Run Time :{{ $movie->run_time }}</p>
+                <p> Cast : {{ $movie->cast }}</p>
+                <p> Director : {{ $movie->director }}</p>
+                <p> Release Date : {{ $movie->release_date }}</p>
+                <p> Run Time : {{ $movie->run_time }}</p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-8">
-           <p> Description :{{ $movie->description }} </p>
+           <p> Description : {{ $movie->description }} </p>
         </div>
     </div>
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Movies;
 use App\ShowTime;
 use Illuminate\Http\Request;
@@ -10,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\BookSeat;
-
 
 use Auth;
 
@@ -37,22 +35,15 @@ class BookSeatController extends Controller
      */
     public function getMovieshow(Request $request,$id)
     {
-        $showTime=$request->segment(4);
-
-        $dayTime = $request->get('day');
-        echo $dayTime;
-        echo $showTime;
-        die;
-
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
-        //$movie= Movies::findOrfail($id);
+
+        $showTime = $request->segment(4);
+
         $showtime =ShowTime::findOrFail($showTime);
         $movie=Movies::find($id);
-//        echo "<pre>";
-//        print_r($movieInfo);
-//        die;
+
         $bookseats = BookSeat::all();
-//        $images = Images::all();
+
         return view('bookseat.index', compact('bookseats','showtime', 'movie'));
     }
 

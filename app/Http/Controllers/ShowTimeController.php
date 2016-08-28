@@ -13,7 +13,6 @@ use App\NextMovies;
 
 use App\Day;
 
-
 class ShowTimeController extends Controller
 {
     /**
@@ -21,24 +20,19 @@ class ShowTimeController extends Controller
      *
      * @return Response
      */
-    public function getShowtime(Request $request, $id)
+    public function getShowtime($id)
     {
         $movie = Movies::findOrFail($id);
 
         $days = Day::lists('day', 'id');
-        // $day_select = array();
-
-        // foreach ($days as $day) {
-        //     $day_select[$day->id] = $day->day;
-        // }
 
         $showtimes= ShowTime::all();
-        return view('showtime.index',compact('movie','showtimes', 'days', 'dayTime'));
+        return view('showtime.index', compact('movie', 'showtimes', 'days', 'dayTime'));
     }
 
     public function getNew($id)
     {
         $nextMovies =NextMovies::findOrFail($id);
-        return view('coming_soon.index',compact('nextMovies'));
+        return view('coming_soon.index', compact('nextMovies'));
     }
 }
