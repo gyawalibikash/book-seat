@@ -7,7 +7,7 @@
     @endif
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
-        <div class="row">
+        <div class="row table-bordered glyphicon-modal-window">
             <!-- Modal -->
                 <div id="successModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -36,51 +36,145 @@
 
                     </div>
                 </div>
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
                     <div class="panel-heading">Book Seat</div>
-                    <div class="col-md-4">
-                        <strong>Show Time :</strong> {{ $showtime->time }}<hr>
-                        <strong>Cast :</strong> :{{ $movie->cast }}<hr>
-                        <strong> Director :</strong>{{ $movie->director }}<hr>
-                        <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
-                        <strong> Run Time :</strong>{{ $movie->run_time }}
+                        <div class="col-md-4">
+                            <strong>Show Time :</strong> {{ $showtime->time }}<hr>
+                            <strong>Cast :</strong> :{{ $movie->cast }}<hr>
+                            <strong> Director :</strong>{{ $movie->director }}<hr>
+                            <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
+                            <strong> Run Time :</strong>{{ $movie->run_time }}
                     </div>
-
-                        <div class="col-lg-4">
-                            <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
-                        </div>
-                    <div class="panel-body">
-                        <table class="table table-striped">
-                            <tr><td> Platinum</td></tr>
-                            <tr>
-                                @for($i=1;$i<=10;$i++)
-                                    <td><a id="A{{ $i }}" class="seat btn btn-default btn-lg">A{{ $i }}</a></td>
-                                @endfor
-                            </tr>
-                            <tr>
-                                @for($i=1;$i<=10;$i++)
-                                    <td><a id="B{{ $i }}" class="seat btn btn-default btn-lg">B{{ $i }}</a></td>
-                                @endfor
-                            </tr>
-                            <tr>
-                                @for($i=1;$i<=10;$i++)
-                                    <td><a id="C{{ $i }}" class="seat btn btn-default btn-lg">C{{ $i }}</a></td>
-                                @endfor
-                            </tr>
-                            <tr><td>Premium</td></tr>
-                            <tr>
-                                @for($i=1;$i<=10;$i++)
-                                    <td><a id="D{{ $i }}" class="seat btn btn-default btn-lg">D{{ $i }}</a></td>
-                                @endfor
-                            </tr>
-                            <tr>
-                                @for($i=1;$i<=10;$i++)
-                                    <td><a id="E{{ $i }}" class="seat btn btn-default btn-lg">E{{ $i }}</a></td>
-                                @endfor
-                            </tr>
-                        </table>
+                    <div class="col-lg-4">
+                        <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
                     </div>
+                    <div class="col-lg-4">
+                        <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
+                    </div>
+        </div>
+        <hr><hr>
+                <div class="row table-bordered" >
+                    <div class="col-lg-4">
+                    <table border="5" align="centre">
+                        <tr><td> Platinum</td></tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="A{{ $i }}" class="seat btn btn-default">A{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="B{{ $i }}" class="seat btn btn-default">B{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="C{{ $i }}" class="seat btn btn-default">C{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr><td>Premium</td></tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="D{{ $i }}" class="seat btn btn-default">D{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="E{{ $i }}" class="seat btn btn-default">E{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="F{{ $i }}" class="seat btn btn-default">F{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1;$i<=6;$i++)
+                                <td><a id="G{{ $i }}" class="seat btn btn-default">G{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <table border="5" align="centre">
+                        <tr><td>Platinum</td></tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="A{{ $i }}" class="seat btn btn-default">A{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="B{{ $i }}" class="seat btn btn-default">B{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="C{{ $i }}" class="seat btn btn-default">C{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr><td>Premium</td></tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="D{{ $i }}" class="seat btn btn-default">D{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="E{{ $i }}" class="seat btn btn-default">E{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id=F{{ $i }}" class="seat btn btn-default">F{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=7;$i<=12;$i++)
+                                <td><a id="G{{ $i }}" class="seat btn btn-default">G{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <table border="5">
+                        <tr><td> Platinum</td></tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="A{{ $i }}" class="seat btn btn-default">A{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="B{{ $i }}" class="seat btn btn-default">B{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="C{{ $i }}" class="seat btn btn-default">C{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr><td>Premium</td></tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="D{{ $i }}" class="seat btn btn-default">D{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="E{{ $i }}" class="seat btn btn-default">E{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="F{{ $i }}" class="seat btn btn-default">F{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=13;$i<=18;$i++)
+                                <td><a id="G{{ $i }}" class="seat btn btn-default">G{{ $i }}</a></td>
+                            @endfor
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

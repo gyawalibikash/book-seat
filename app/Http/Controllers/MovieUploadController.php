@@ -28,11 +28,17 @@ class MovieUploadController extends Controller
 
         $name=$logo->getClientOriginalName();
 
-        $success = $logo->move(base_path('/public/images/now_showing'),$name);
+        $success = $logo->move(base_path('public/images/now_showing'),$name);
 
         if($success)
         $movies = new Movies();
         $movies->moviename = $request->Input('moviename');
+        $movies->description = $request->Input('description');
+        $movies->release_date = $request->Input('release_date');
+        $movies->run_time = $request->Input('run_time');
+        $movies->cast = $request->Input('cast');
+        $movies->director = $request->Input('director');
+
         $movies->poster = $name;
 
         Session::flash('success','Data entry successfull');

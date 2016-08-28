@@ -25,7 +25,12 @@ class ImageRequest extends Request
     {
         return [
             'moviename'=>'required',
-            'poster'=>'required|mimes:jpg,jpeg,png'
+            'poster'=>'required|mimes:jpg,jpeg,png',
+            'description' => 'required',
+            'release_date' => 'required',
+            'run_time' => 'required',
+            'cast'=> 'required',
+            'director'=> 'required'
         ];
     }
 }

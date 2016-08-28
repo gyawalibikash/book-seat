@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Day;
 use App\ShowTime;
 use Illuminate\Http\Request;
 
@@ -21,11 +22,12 @@ class ShowTimeController extends Controller
      */
     public function getShowtime($id)
     {
-        $showtimes = ShowTime::all();
+
+        $days = Day::all();
         $movie = Movies::findOrFail($id);
 
         $showtimes= ShowTime::all();
-        return view('showtime.index',compact('movie','showtimes'));
+        return view('showtime.index',compact('movie','showtimes','days'));
     }
 
     public function getNew($id)

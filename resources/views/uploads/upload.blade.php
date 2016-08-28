@@ -11,9 +11,9 @@
                         {!! Form::open(['url' => '/upload/upload', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
 
                         <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">
-                            <label for="address" class="col-md-4 control-label">Movie Name</label>
+                            <label for="moviename" class="col-md-4 control-label">Movie Name :</label>
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="moviename" value="{{ old('moviename') }}">
+                                <input id="moviename" type="text" class="form-control" name="moviename" value="{{ old('moviename') }}">
 
                                 @if ($errors->has('moviename'))
                                     <span class="help-block">
@@ -22,9 +22,69 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }} ">
+                            <label for="description" class="col-md-4 control-label">Description :</label>
+                            <div class="col-md-6">
+                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">
+
+                                @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('release_date') ? ' has-error' : '' }} ">
+                            <label for="release_date" class="col-md-4 control-label">Release date :</label>
+                            <div class="col-md-6">
+                                <input id="address" type="date" class="form-control" name="release_date" value="{{ old('release_date') }}">
+
+                                @if ($errors->has('release_date'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('release_date') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('run_time') ? ' has-error' : '' }} ">
+                            <label for="run_time" class="col-md-4 control-label">Run time :</label>
+                            <div class="col-md-6">
+                                <input id="run_time" type="text" class="form-control" name="run_time" value="{{ old('run_time') }}">
+
+                                @if ($errors->has('run_time'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('run_time') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('cast') ? ' has-error' : '' }} ">
+                            <label for="cast" class="col-md-4 control-label">Cast :</label>
+                            <div class="col-md-6">
+                                <input id="cast" type="text" class="form-control" name="cast" value="{{ old('cast') }}">
+
+                                @if ($errors->has('cast'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cast') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('director') ? ' has-error' : '' }} ">
+                            <label for="director" class="col-md-4 control-label">Director :</label>
+                            <div class="col-md-6">
+                                <input id="director" type="text" class="form-control" name="director" value="{{ old('director') }}">
+
+                                @if ($errors->has('director'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('director') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group" {{ $errors->has('image') ? ' has-error' : '' }}>
-                            <label for="contact_no" class="col-md-4 control-label">Movie Poster</label>
+                            <label for="contact_no" class="col-md-4 control-label">Movie Poster :</label>
                             <div class="col-md-6">
                                 <input id="contact_no" type="file" name="poster" value="{{ old('poster') }}">
 
