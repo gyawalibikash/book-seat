@@ -9,7 +9,7 @@
         <table class="table" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
                     <tr><th style="font-size:20px;">Show Time</th>
                         <td>
-                             {{ Form::select('day', array($day_select), null, ['placeholder' => 'Select Day'])}}
+                             {{ Form::select('day', $days, null, ['placeholder' => 'Select Day'])}}
                         </td>
                     <tr>
                     @foreach($showtimes as $showtime)

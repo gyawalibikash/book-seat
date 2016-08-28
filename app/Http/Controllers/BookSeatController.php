@@ -39,6 +39,11 @@ class BookSeatController extends Controller
     {
         $showTime=$request->segment(4);
 
+        $dayTime = $request->get('day');
+        echo $dayTime;
+        echo $showTime;
+        die;
+
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
         //$movie= Movies::findOrfail($id);
         $showtime =ShowTime::findOrFail($showTime);

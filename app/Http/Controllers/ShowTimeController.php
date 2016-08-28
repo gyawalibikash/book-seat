@@ -21,20 +21,19 @@ class ShowTimeController extends Controller
      *
      * @return Response
      */
-    public function getShowtime($id)
+    public function getShowtime(Request $request, $id)
     {
-        $showtimes = ShowTime::all();
         $movie = Movies::findOrFail($id);
 
-        $days = Day::all();
-        $day_select = array();
+        $days = Day::lists('day', 'id');
+        // $day_select = array();
 
-        foreach ($days as $day) {
-            $day_select[$day->id] = $day->day;
-        }
+        // foreach ($days as $day) {
+        //     $day_select[$day->id] = $day->day;
+        // }
 
         $showtimes= ShowTime::all();
-        return view('showtime.index',compact('movie','showtimes', 'day_select'));
+        return view('showtime.index',compact('movie','showtimes', 'days', 'dayTime'));
     }
 
     public function getNew($id)
