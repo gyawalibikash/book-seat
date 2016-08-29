@@ -37,6 +37,9 @@ class BookSeatController extends Controller
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
+        $str = ltrim('?movie=8&showtime=15','?');
+        parse_str($str, $result);
+        echo $result['showtime'];
         $showtime_id = $_GET['showtime'];
         $movie_id = $_GET['movie'];
 
@@ -55,12 +58,12 @@ class BookSeatController extends Controller
      */
     public function postMoviestore(Request $request)
     {
-        $path = $request['path'];
-        $segment = explode("/", $path);
+        $query_string = $request['path'];
+        $string = ltrim($query_string, '?');
+        parse_str($string, $result);
 
-        $showTime = $segment[4];
-//        $dayTime = $segment[4];
-        $movie_id = $segment[3];
+        $showTime = $result['showtime'];
+        $movie_id = $result['movie'];
 
         $bookseat = new BookSeat();
         $bookseat->seat = $request['name'];
