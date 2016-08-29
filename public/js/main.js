@@ -34,4 +34,11 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(".cinehall").click(function(){
+
+        $("#successfullModal").modal('show');
+
+
+    });
 });
