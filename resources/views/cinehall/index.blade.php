@@ -10,7 +10,6 @@
                <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id]))  }}"> {{ $cinehall->name }}</a>
                 @endforeach
             </div>
-
         </div>
     </div>
 @endsection

@@ -13,12 +13,12 @@
                         </td>
                     <tr>
                     @foreach($showtimes as $showtime)
-                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'showtime'=>$showtime->id])) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video"></i></a></td>
+                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'showtime'=>$showtime->id])) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a></td>
                     @endforeach
                 </table>
             </div>
             <div class="col-md-4 col-md-offset-1">
-                <img src="{!! '/images/now_showing/'.$movie->poster !!}">
+                <img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
                 <p> Cast :{{ $movie->cast }}</p>
                 <p> Director :{{ $movie->director }}</p>
                 <p> Release Date :{{ $movie->release_date }}</p>
