@@ -37,7 +37,7 @@ class BookSeatController extends Controller
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
-        $showTime = $request->segment(5);
+        $showTime = $request->segment(4);
 
         $showtime =ShowTime::findOrFail($showTime);
         $movie=Movies::find($id);
@@ -57,8 +57,8 @@ class BookSeatController extends Controller
         $path = $request['path'];
         $segment = explode("/", $path);
 
-        $showTime = $segment[5];
-        $dayTime = $segment[4];
+        $showTime = $segment[4];
+//        $dayTime = $segment[4];
         $movie_id = $segment[3];
 
         $bookseat = new BookSeat();
@@ -66,7 +66,9 @@ class BookSeatController extends Controller
         $bookseat->user_id = Auth::user()->id;
         $bookseat->showtime_id = $showTime;
         $bookseat->movie_id = $movie_id;
-        $bookseat->day_id = $dayTime;
+        $bookseat->day_id =38;
+        $bookseat->hall_id =1;
+        $bookseat->cinehall_id =1;
 
         $bookseat->save();
 

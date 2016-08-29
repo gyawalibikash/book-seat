@@ -29,4 +29,13 @@ class BookSeat extends Model
     {
         return $this->hasOne('App\Day');
     }
+
+    public function Hall()
+    {
+        return $this->hasOne('App\Hall');
+    }
+    public function Cinehall()
+    {
+        return $this->hasOne('App\Cinehall');
+    }
 }
