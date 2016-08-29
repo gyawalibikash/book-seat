@@ -52,9 +52,9 @@
                     </div>
         </div>
         <hr><hr>
-                <div class="row table-bordered" >
+                <div >
                     <div class="col-lg-4">
-                    <table border="5" align="centre">
+                    <table align="centre">
                         <tr><td> Platinum</td></tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
@@ -95,8 +95,8 @@
                     </table>
                 </div>
                 <div class="col-lg-4">
-                    <table border="5" align="centre">
-                        <tr><td>Platinum</td></tr>
+                    <table align="centre">
+                        <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
                                 <td><a id="A{{ $i }}" class="seat btn btn-default">A{{ $i }}</a></td>
@@ -112,7 +112,7 @@
                                 <td><a id="C{{ $i }}" class="seat btn btn-default">C{{ $i }}</a></td>
                             @endfor
                         </tr>
-                        <tr><td>Premium</td></tr>
+                        <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
                                 <td><a id="D{{ $i }}" class="seat btn btn-default">D{{ $i }}</a></td>
@@ -136,8 +136,8 @@
                     </table>
                 </div>
                 <div class="col-lg-4">
-                    <table border="5">
-                        <tr><td> Platinum</td></tr>
+                    <table>
+                        <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
                                 <td><a id="A{{ $i }}" class="seat btn btn-default">A{{ $i }}</a></td>
@@ -153,7 +153,7 @@
                                 <td><a id="C{{ $i }}" class="seat btn btn-default">C{{ $i }}</a></td>
                             @endfor
                         </tr>
-                        <tr><td>Premium</td></tr>
+                        <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
                                 <td><a id="D{{ $i }}" class="seat btn btn-default">D{{ $i }}</a></td>
