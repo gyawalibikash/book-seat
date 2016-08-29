@@ -3,7 +3,9 @@
     <div class="container">
         <div class="col-lg-4 ">
             <div ><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></div>
-        <button class="cinehall">Released Cinehall</button>
+                @if( Auth::check() && Auth::user()->isAdmin() )
+                    <button class="cinehall">Released Cinehall</button>
+                @endif
         </div>
     @foreach($cinehalls as $cinehall)
         <div class="row">
@@ -32,9 +34,6 @@
             </div>
         </div>
     </div>
-    @if( Auth::check() && Auth::user()->isAdmin() )
-        <a class="cinehall btn btn-default"> click</a>
-    @endif
 @endsection
 
 <script src="/js/jquery-1.9.1.min.js"></script>
