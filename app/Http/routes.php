@@ -14,14 +14,15 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::delete('/','HomeController@delete')->name('delete');
 
 Route::resource('profile','ProfileController');
 
 Route::controller('bookseat','BookSeatController');
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::controller('upload', 'MovieUploadController');
+    Route::resource('upload', 'MovieUploadController');
 });
 
 Route::controller('/', 'ShowTimeController');

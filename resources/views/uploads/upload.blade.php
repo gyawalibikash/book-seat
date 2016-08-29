@@ -8,7 +8,7 @@
                     <div class="panel-heading">Now Showing</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['url' => '/upload/upload', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
+                        {!! Form::open(['route' => 'upload.store', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
 
                         <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">
                             <label for="moviename" class="col-md-4 control-label">Movie Name :</label>

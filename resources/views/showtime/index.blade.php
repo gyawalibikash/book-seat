@@ -16,14 +16,20 @@
                     @endforeach
                 </table>
             </div>
-
             <div class="col-md-4 col-md-offset-1">
                 <img src="{!! '/images/now_showing/'.$movie->poster !!}">
                 <p> Cast :{{ $movie->cast }}</p>
                 <p> Director :{{ $movie->director }}</p>
                 <p> Release Date :{{ $movie->release_date }}</p>
                 <p> Run Time :{{ $movie->run_time }}</p>
+                @if( Auth::check() && Auth::user()->isAdmin() )
+                    <a href="{{ route('upload.edit',$movie->id)}}" class="btn btn-default btn-sm">Edit</a>
+                    {{ Form::model($movie, ['method' => 'DELETE','route' => ['upload.destroy', $movie->id]]) }}
+                    {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm pull-right'))}}
+                    {!! Form::close() !!}
+                @endif
             </div>
+        </div>
         </div>
     </div>
     <div class="row">

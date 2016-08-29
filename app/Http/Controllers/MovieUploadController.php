@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Session;
 class MovieUploadController extends Controller
 {
 
-    public function getIndex()
+    public function index()
     {
         return view('uploads.upload');
     }
 
-    public function postUpload(ImageRequest $request)
+    public function store(ImageRequest $request)
     {
         $logo= $request->file('poster');
 
@@ -47,26 +47,41 @@ class MovieUploadController extends Controller
 
         return redirect('/');
     }
-
-    public function postNewupload(ImageRequest $request)
+    public function destroy($id)
     {
-        $logo= $request->file('poster');
+        $movie = Movies::findOrFail($id);
+        $movie->delete();
 
-        $name=$logo->getClientOriginalName();
-
-        $success = $logo->move(base_path('/public/images/coming_soon'),$name);
-
-        if($success)
-        $movies = new NextMovies();
-        $movies->moviename = $request->Input('moviename');
-        $movies->poster = $name;
-
-        Session::flash('success','Data entry successfull');
-
-        $movies->save();
-//        save to database
-        return redirect('/');
-
+        return redirect()->route('upload.index');
     }
+
+    public function edit($id)
+    {
+//            return 'edit';
+        $movie = Movies::find($id);
+        return view('uploads.edit',['movie'=>$movie]);
+    }
+
+
+//    public function postNewupload(ImageRequest $request)
+//    {
+//        $logo= $request->file('poster');
+//
+//        $name=$logo->getClientOriginalName();
+//
+//        $success = $logo->move(base_path('/public/images/coming_soon'),$name);
+//
+//        if($success)
+//        $movies = new NextMovies();
+//        $movies->moviename = $request->Input('moviename');
+//        $movies->poster = $name;
+//
+//        Session::flash('success','Data entry successfull');
+//
+//        $movies->save();
+////        save to database
+//        return redirect('/');
+//
+//    }
 
 }

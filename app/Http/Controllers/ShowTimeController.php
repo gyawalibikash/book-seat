@@ -12,6 +12,8 @@ use App\Movies;
 
 use App\NextMovies;
 
+use Session;
+
 
 class ShowTimeController extends Controller
 {
