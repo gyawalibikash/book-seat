@@ -33,14 +33,15 @@ class BookSeatController extends Controller
      *
      * @return Response
      */
-    public function getMovieshow(Request $request,$id)
+    public function getMovieshow()
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
-        $showTime = $request->segment(5);
+        $showTime = $_GET['showtime'];
+        $movie_id = $_GET['movie'];
 
         $showtime =ShowTime::findOrFail($showTime);
-        $movie=Movies::find($id);
+        $movie=Movies::find($movie_id);
 
         $bookseats = BookSeat::all();
 

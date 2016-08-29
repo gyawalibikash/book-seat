@@ -23,9 +23,10 @@ class ShowTimeController extends Controller
      *
      * @return Response
      */
-    public function getShowtime($id)
+    public function getShowtime()
     {
-        $movie = Movies::findOrFail($id);
+        $movie_id = $_GET['movie'];
+        $movie = Movies::findOrFail($movie_id);
 
         $days = Day::lists('day','id');
 
