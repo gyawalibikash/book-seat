@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $(".seat").click(function(){
         var seat = $(this).attr('id');
-        var path = $(location).attr('pathname');
+        var path = $(location).attr('search');
 
         $(this).html('<i class="fa fa-refresh fa-spin"></i>');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
