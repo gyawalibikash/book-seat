@@ -15,9 +15,10 @@
 Route::auth();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::delete('/','HomeController@delete')->name('delete');
 
 Route::resource('profile','ProfileController');
+
+Route::controller('showing','CinehallController');
 
 Route::controller('bookseat','BookSeatController');
 
@@ -30,3 +31,4 @@ Route::controller('/', 'ShowTimeController');
 Route::get('/coming_soon/{id}',function(){
 	return view('coming_soon.index');
 })->name('coming_soon');
+

@@ -75,4 +75,9 @@ class BookSeatController extends Controller
         return redirect('/');
     }
 
+    public function getIndex()
+    {
+        return 'hello';
+    }
+
 }
