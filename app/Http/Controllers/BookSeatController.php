@@ -37,9 +37,6 @@ class BookSeatController extends Controller
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
-        $str = ltrim('?movie=8&showtime=15','?');
-        parse_str($str, $result);
-        echo $result['showtime'];
         $showtime_id = $_GET['showtime'];
         $movie_id = $_GET['movie'];
 
