@@ -1,9 +1,3 @@
-//
-//function func() {
-//
-//        alert("Do you want to book");
-//}
-
 $(document).ready(function(){
 
     $(".seat").click(function(){
@@ -41,30 +35,3 @@ $(document).ready(function(){
         });
     });
 });
-
-function image($image) {
-    //if (input.files && input.files[0]) {
-    //    var reader = new FileReader();
-        $("#blah").html('<img id="movie" src="/images/suicide.jpg" height="200" width="50%"/>');
-        //reader.onload = function (e) {
-        //    $('#blah')
-        //        .attr('src','/images/suicide.jpg')
-        //        .width(400)
-                //.height(200);
-        //};
-
-        //reader.readAsDataURL(input.files[0]);
-    //}
-}
-//
-//function image2() {
-//    $("#blah").html('<img id="suicide2" src="/images/suicide2.jpg" height="200" width="50%" />');
-//    $("#blah1").prepend('Suicide Squid')
-//}
-
-
-// $(document).ready(function(){
-//         $("button").click(function(){
-//                 $("#div1").load("profile #p,#h1");
-//         });
-// });
