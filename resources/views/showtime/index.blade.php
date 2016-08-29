@@ -13,7 +13,7 @@
                         </td>
                     <tr>
                     @foreach($showtimes as $showtime)
-                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ url('/bookseat/movieshow/'.$movie->id, [ $showtime->id]) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video"></i></a></td>
+                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'showtime'=>$showtime->id])) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video"></i></a></td>
                     @endforeach
                 </table>
             </div>

@@ -11,7 +11,7 @@ class Cinehall extends Model
 
     public function Hall()
     {
-        return $this->hasmany('App\Hall');
+        return $this->hasMany('App\Hall');
     }
 
     public function Bookseat()

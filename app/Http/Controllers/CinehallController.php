@@ -14,9 +14,10 @@ class CinehallController extends Controller
     {
 
     }
-    public function getShow($id)
+    public function getShow()
     {
-        $movie = Movies::findOrFail($id);
+        $movie_id = $_GET['movie'];
+        $movie = Movies::findOrFail($movie_id);
 
         $cinehalls = Cinehall::all();
 
