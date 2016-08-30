@@ -7,12 +7,13 @@
                     <button class="cinehall">Released Cinehall</button>
                 @endif
         </div>
-    @foreach($cinehalls as $cinehall)
+
         <div class="row">
-            <div class="col-lg-4">
-               <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id]))  }}"> {{ $cinehall->name }}</a>
-                @endforeach
-            </div>
+            @foreach($cinehalls as $cinehall)
+                <div class="col-lg-4">
+                    <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id]))  }}"> {{ $cinehall->name }}</a>
+                </div>
+            @endforeach
         </div>
     </div>
     <!-- Modal -->

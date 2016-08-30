@@ -14,6 +14,8 @@ use Auth;
 
 use Event;
 
+use App\Hall;
+
 use App\Events\TruncateBookSeatEvent;
 
 class BookSeatController extends Controller
@@ -39,6 +41,9 @@ class BookSeatController extends Controller
 
         $showtime_id = $_GET['showtime'];
         $movie_id = $_GET['movie'];
+//        $cinehall_id = $_GET['cinehall'];
+
+//        $halls = Hall::select('name')->where('cinehall_id', $cinehall_id)->get();
 
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);

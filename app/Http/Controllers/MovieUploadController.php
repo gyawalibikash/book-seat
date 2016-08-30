@@ -61,6 +61,10 @@ class MovieUploadController extends Controller
         $movie = Movies::find($id);
         return view('uploads.edit',['movie'=>$movie]);
     }
+    public function update($id)
+    {
+        return 'update';
+    }
 
 
 //    public function postNewupload(ImageRequest $request)
