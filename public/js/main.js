@@ -1,12 +1,16 @@
 $(document).ready(function(){
 
     $(".seat").click(function(){
-        var seat = $(this).attr('id');
+        var seat = [];
+        $('#check input:checked').each(function() {
+            seat.push($("#checkbox").attr('id'));
+        });
+
         var path = $(location).attr('search');
 
-        $(this).html('<i class="fa fa-refresh fa-spin"></i>');
+        // $(this).html('<i class="fa fa-refresh fa-spin"></i>');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
-            $("#"+seat).html(seat);
+            // $("#"+seat).html(seat);
             if (result) {
                 $.ajax({
                      type: "POST",
