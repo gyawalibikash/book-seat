@@ -26,6 +26,8 @@
                                         <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
                                         <tr><td><strong>Movie Name</strong></td><td>{{ $movie->moviename }}</td></tr>
                                         <tr><td><strong>ShowTime</strong></td><td>{{ $showtime->time }}</td></tr>
+                                        <tr><td><strong>Cinehall Name</strong></td><td>{{ $cinehall->name }}</td></tr>
+
                                     </table>
                                 </div>
                             </div>
