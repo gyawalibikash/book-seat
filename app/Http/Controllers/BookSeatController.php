@@ -70,7 +70,7 @@ class BookSeatController extends Controller
         $movie_id = $result['movie'];
 
         $bookseat = new BookSeat();
-        $bookseat->seat = $request['name'];
+        $bookseat->seat = serialize($request['name']);
         $bookseat->user_id = Auth::user()->id;
         $bookseat->showtime_id = $showTime;
         $bookseat->movie_id = $movie_id;
