@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cinehall;
 use App\Movies;
 use App\ShowTime;
 use Illuminate\Http\Request;
@@ -41,16 +42,17 @@ class BookSeatController extends Controller
 
         $showtime_id = $_GET['showtime'];
         $movie_id = $_GET['movie'];
-//        $cinehall_id = $_GET['cinehall'];
+        $cinehall_id = $_GET['cinehall'];
+        $cinehall = Cinehall::findOrfail($cinehall_id);
 
-//        $halls = Hall::select('name')->where('cinehall_id', $cinehall_id)->get();
+//        $hall = Hall::select('name')->where('cinehall_id', $cinehall_id)->first();
 
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);
 
         $bookseats = BookSeat::all();
 
-        return view('bookseat.index', compact('bookseats','showtime', 'movie'));
+        return view('bookseat.index', compact('bookseats','showtime', 'movie', 'cinehall'));
     }
 
     /**
