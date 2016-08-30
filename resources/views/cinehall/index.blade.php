@@ -27,7 +27,18 @@
                     <h4 class="modal-title">Select Cinehall To Release Movies</h4>
                 </div>
                 <div class="modal-body">
-                    Modal
+                    @foreach($cinehalls as $cinehall)
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <table class="table">
+                                <tr>
+                                    <td>{{ $cinehall->name }}</td>
+                                </tr>
+                                </table>
+                            </div>
+                      </div>
+                    @endforeach
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default">Ok</button>

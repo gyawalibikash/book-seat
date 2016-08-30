@@ -17,4 +17,10 @@ class Hall extends Model
     {
         return $this->hasOne('App\Bookseat');
     }
+
+    public function Group()
+    {
+        return $this->belongsTo('App\Group');
+    }
+
 }

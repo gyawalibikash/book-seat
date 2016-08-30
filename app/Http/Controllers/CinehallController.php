@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cinehall;
+use App\Hall;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +21,8 @@ class CinehallController extends Controller
         $movie = Movies::findOrFail($movie_id);
 
         $cinehalls = Cinehall::all();
+        $halls= Hall::all();
 
-        return view('cinehall.index',compact('cinehalls', 'movie'));
+        return view('cinehall.index',compact('cinehalls', 'movie', 'halls'));
     }
 }
