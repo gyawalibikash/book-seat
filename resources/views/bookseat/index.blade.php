@@ -60,38 +60,38 @@
                         <tr><td> Platinum</td></tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>Premium</td></tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>
@@ -101,38 +101,38 @@
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>
@@ -142,38 +142,38 @@
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" id="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>

@@ -3,7 +3,7 @@ $(document).ready(function(){
     $(".seat").click(function(){
         var seat = [];
         $('#check input:checked').each(function() {
-            seat.push($("#checkbox").attr('id'));
+            seat.push($(this).attr('name'));
         });
 
         var path = $(location).attr('search');
