@@ -10,7 +10,7 @@ class Hall extends Model
 
     public function Cinehall()
     {
-        return $this->belongsToMany('App\Cinehall');
+        return $this->belongsTo('App\Cinehall');
     }
 
     public function Bookseat()
