@@ -21,8 +21,11 @@ class CinehallController extends Controller
         $movie = Movies::findOrFail($movie_id);
 
         $cinehalls = Cinehall::all();
-        $halls= Hall::all();
 
+        foreach ($cinehalls as $cinehall) {
+            $halls[] = Hall::select('name','cinehall_id')->where('cinehall_id', $cinehall->id)->get();
+        }
+        
         return view('cinehall.index',compact('cinehalls', 'movie', 'halls'));
     }
 }

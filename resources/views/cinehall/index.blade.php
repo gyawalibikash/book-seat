@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <div class="container">
         <div class="col-lg-4 ">
             <div ><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></div>
@@ -10,8 +11,14 @@
 
         <div class="row">
             @foreach($cinehalls as $cinehall)
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id]))  }}"> {{ $cinehall->name }}</a>
+                    @foreach ($halls as $hall)
+                        @if ($cinehall->id == $hall[0]->cinehall_id)
+                            {{ $hall[0]->name }}
+                            {{ $hall[1]->name }}
+                        @endif
+                    @endforeach
                 </div>
             @endforeach
         </div>
@@ -29,10 +36,18 @@
                 <div class="modal-body">
                     @foreach($cinehalls as $cinehall)
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <table class="table">
                                 <tr>
                                     <td>{{ $cinehall->name }}</td>
+                            
+                                        @foreach ($halls as $hall)
+                                            @if ($cinehall->id == $hall[0]->cinehall_id)
+                                                <td>{{ $hall[0]->name }}</td>
+                                                <td>{{ $hall[1]->name }}</td>
+                                            @endif
+                                        @endforeach
+                                
                                 </tr>
                                 </table>
                             </div>
