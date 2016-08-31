@@ -39,6 +39,11 @@ $(document).ready(function(){
         });
     });
 
+    $('#check input:checkbox').click(function () {
+        $('#book').prop('disabled', !$('.checkbox:checked').length);
+    });
+
+
     $(".cinehall").click(function(){
 
         $("#successfullModal").modal('show');

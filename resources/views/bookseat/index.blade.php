@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-4">
                             <strong>Show Time :</strong> {{ $showtime->time }}<hr>
-                            <strong>Cast :</strong> :{{ $movie->cast }}<hr>
+                            <strong>Cast :</strong> {{ $movie->cast }}<hr>
                             <strong> Director :</strong>{{ $movie->director }}<hr>
                             <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
                             <strong> Run Time :</strong>{{ $movie->run_time }}
@@ -60,38 +60,38 @@
                         <tr><td> Platinum</td></tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" id="A{{ $i }}" />A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" id="B{{ $i }}" />B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" id="C{{ $i }}" />C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>Premium</td></tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" id="D{{ $i }}"/>D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" id="E{{ $i }}" />E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" id="F{{ $i }}" />F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=1;$i<=6;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" id="G{{ $i }}"/>G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>
@@ -101,38 +101,38 @@
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" id="A{{ $i }}"/>A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" id="B{{ $i }}"/>B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" id="C{{ $i }}"/>C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" id="D{{ $i }}"/>D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" id="E{{ $i }}"/>E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" id="F{{ $i }}"/>F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" id="G{{ $i }}"/>G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>
@@ -142,45 +142,45 @@
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" />A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" id="A{{ $i }}"/>A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" />B{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="B{{ $i }}" id="B{{ $i }}"/>B{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" />C{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="C{{ $i }}" id="C{{ $i }}"/>C{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" />D{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="D{{ $i }}" id="D{{ $i }}"/>D{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" />E{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="E{{ $i }}" id="E{{ $i }}"/>E{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" />F{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="F{{ $i }}" id="F{{ $i }}"/>F{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
                             @for($i=13;$i<=18;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" />G{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input type="checkbox" name="G{{ $i }}" id="G{{ $i }}"/>G{{ $i }}</label></td>
                             @endfor
                         </tr>
                     </table>
                 </div>
 
                 <div class="col-lg-6">
-                    <a class="seat btn btn-success">Book</a>
+                    <a class="seat btn btn-success disabled" id="book">Book</a>
                 </div>
 
             </div>
@@ -193,11 +193,13 @@
     </div>
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
+        document.getElementById("A1").style.background = "red";
+        document.getElementById("A1").setAttribute("disabled","disabled");
 
         @foreach ($bookseats as $bookseat)
             @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
-                document.getElementById("{{ $bookseat->seat }}").style.background = "red";
-                document.getElementById("{{ $bookseat->seat }}").className += " disabled";
+                document.getElementById("A1").style.background = "red";
+                document.getElementById("A1").setAttribute("disabled","disabled");
             @endif
         @endforeach
         document.getElementById("print").onclick = function() {
