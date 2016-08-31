@@ -54,6 +54,22 @@
                     </div>
         </div>
         <hr><hr>
+
+        <pre>
+            @foreach($bookseats as $seat)
+                <?php $bookedSeat[]=unserialize($seat->seat) ?>
+            @endforeach
+
+            <?php foreach($bookedSeat as $key =>$value){
+
+                    foreach($value as $y){
+                        $bookedSeatId[]=$y;
+                    }
+                    }
+
+                    ?>
+
+        </pre>
                 <div >
                     <div class="col-lg-4">
                     <table align="centre" class="table" id="check">
@@ -193,8 +209,18 @@
     </div>
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-        document.getElementById("A1").style.background = "red";
-        document.getElementById("A1").setAttribute("disabled","disabled");
+        var a=[];
+        @foreach($bookedSeatId as $x)
+
+            a.push({{$x}});
+        @endforeach
+
+        for(var i=0;i< a.length;i++){
+            document.getElementById($(a[i]).attr('id')).style.background = "red";
+            document.getElementById($(a[i]).attr('id')).setAttribute("disabled","disabled");
+        }
+
+
 
         @foreach ($bookseats as $bookseat)
             @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)

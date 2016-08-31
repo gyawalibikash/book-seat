@@ -45,12 +45,15 @@ class BookSeatController extends Controller
         $cinehall_id = $_GET['cinehall'];
         $cinehall = Cinehall::findOrfail($cinehall_id);
 
+
+
 //        $hall = Hall::select('name')->where('cinehall_id', $cinehall_id)->first();
 
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);
 
         $bookseats = BookSeat::all();
+
 
         return view('bookseat.index', compact('bookseats','showtime', 'movie', 'cinehall'));
     }
