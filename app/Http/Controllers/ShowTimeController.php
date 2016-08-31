@@ -31,17 +31,17 @@ class ShowTimeController extends Controller
     {
         $movie_id = $_GET['movie'];
         $cinehall_id = $_GET['cinehall'];
+        $hall_id = $_GET['hall'];
 
         $movie = Movies::findOrFail($movie_id);
         $cinehall = Cinehall::findOrfail($cinehall_id);
+        $hall = Hall::findOrfail($hall_id);
 
         $days = Day::lists('day','id');
 
         $showtimes= ShowTime::all();
 
-        $halls = Hall::select('name')->where('cinehall_id', $cinehall_id)->get();
-
-        return view('showtime.index',compact('movie','cinehall','showtimes','days','halls'));
+        return view('showtime.index',compact('movie','cinehall','showtimes','days','hall'));
 
     }
 
