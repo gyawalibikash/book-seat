@@ -5,6 +5,8 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <h1>{{ $movie->moviename }}</h1>
+                <h2>{{ $cinehall->name }}</h2>
+                <h2>{{ $hall->name }}</h2>
 
                 <table class="table" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
                     <tr><th style="font-size:20px;">Show Time</th>

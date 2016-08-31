@@ -47,4 +47,27 @@ $(document).ready(function(){
     $(".cinehall").click(function(){
         $("#successfullModal").modal('show');
     });
+
+    $(".save").click(function(){
+        $.ajax({
+            type: "POST",
+            url: '/showing/store',
+            beforeSend: function (xhr) {
+                var token = $('meta[name="csrf_token"]').attr('content');
+
+                if (token) {
+                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+            },
+            data: {
+                
+            },
+            success: function () {
+                bootbox.alert("Success");
+            },
+            error: function () {
+                bootbox.alert("Error");
+            }
+        });
+    });
 });

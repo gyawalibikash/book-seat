@@ -11,10 +11,6 @@ use App\Movies;
 
 class CinehallController extends Controller
 {
-    public function getIndex()
-    {
-
-    }
     public function getShow()
     {
         $movie_id = $_GET['movie'];
@@ -23,5 +19,10 @@ class CinehallController extends Controller
         $cinehalls = Cinehall::with('hall')->get();
         
         return view('cinehall.index',compact('cinehalls', 'movie'));
+    }
+
+    public function postStore()
+    {
+        echo "hello";
     }
 }
