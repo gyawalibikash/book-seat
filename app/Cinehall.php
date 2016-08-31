@@ -9,7 +9,7 @@ class Cinehall extends Model
     protected $table = 'cinehall';
     protected $fillable = ['name', 'address', 'contact'];
 
-    public function Hall()
+    public function hall()
     {
         return $this->hasMany('App\Hall');
     }

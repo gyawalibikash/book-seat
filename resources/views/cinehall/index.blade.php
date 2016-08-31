@@ -13,11 +13,10 @@
             @foreach($cinehalls as $cinehall)
                 <div class="col-lg-6">
                     <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id]))  }}"> {{ $cinehall->name }}</a>
-                    @foreach ($halls as $hall)
-                        @if ($cinehall->id == $hall[0]->cinehall_id)
-                            {{ $hall[0]->name }}
-                            {{ $hall[1]->name }}
-                        @endif
+                    @foreach($cinehall->hall as $hall)
+                        <ul class="list">
+                            <li>{{ $hall->name }}</li>
+                        </ul>
                     @endforeach
                 </div>
             @endforeach
@@ -41,11 +40,8 @@
                                 <tr>
                                     <td>{{ $cinehall->name }}</td>
                             
-                                        @foreach ($halls as $hall)
-                                            @if ($cinehall->id == $hall[0]->cinehall_id)
-                                                <td>{{ $hall[0]->name }}</td>
-                                                <td>{{ $hall[1]->name }}</td>
-                                            @endif
+                                       @foreach($cinehall->hall as $hall)
+                                                <td>{{ $hall->name }}</td>
                                         @endforeach
                                 
                                 </tr>
