@@ -11,7 +11,6 @@
             <!-- Modal -->
                 <div id="successModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">
-
                         <!-- Modal content-->
                         <div class="modal-content" >
                             <div class="modal-header">
@@ -35,68 +34,61 @@
                                 <button type="button" class="btn btn-default" id="print"><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                    <div class="panel-heading"><h1><marquee>{{ $cinehall->name }}</marquee></h1></div>
-                        <div class="col-lg-4">
-                            <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
-                        </div>
-                        <div class="col-md-4">
-                            <strong>Show Time :</strong> {{ $showtime->time }}<hr>
-                            <strong>Cast :</strong> {{ $movie->cast }}<hr>
-                            <strong> Director :</strong>{{ $movie->director }}<hr>
-                            <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
-                            <strong> Run Time :</strong>{{ $movie->run_time }}
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
-                    </div>
+            <div class="panel-heading"><h1><marquee>{{ $cinehall->name }}</marquee></h1></div>
+                <div class="col-lg-4">
+                    <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
+                </div>
+                <div class="col-md-4">
+                    <strong>Show Time :</strong> {{ $showtime->time }}<hr>
+                    <strong>Cast :</strong> {{ $movie->cast }}<hr>
+                    <strong> Director :</strong>{{ $movie->director }}<hr>
+                    <strong> Release Date :</strong>{{ $movie->release_date }}<hr>
+                    <strong> Run Time :</strong>{{ $movie->run_time }}
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
+                </div>
+            </div>
+        <hr>
+        <div class="col-lg-12">
+            <input type="button" class="seat btn btn-success pull-right" id="book" disabled value="Book" />
         </div>
-        <hr><hr>
-
+        <hr>
             @foreach($bookseats as $seat)
                 <?php $bookedSeat[]=unserialize($seat->seat) ?>
             @endforeach
 
             <?php foreach($bookedSeat as $key =>$value){
 
-                    foreach($value as $y){
-                        $bookedSeatId[]=$y;
+                        foreach($value as $y){
+                            $bookedSeatId[]=$y;
+                        }
                     }
-                    }
+            ?>
 
-                    ?>
-            <div class="col-lg-2">
-
-            </div>
+        <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <table align="centre" class="table" id="check">
                 <tr>
                     @for($i='A';$i<='G';$i++)
                         @for($j=1;$j<=10;$j++)
-                            <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}""><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            <td class="checkbox-inline" style="width:60px"><label><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
                         @endfor
                     @endfor
                 </tr>
 
             </table>
         </div>
-            <div class="col-lg-2">
-
-            </div>
-                <div class="col-lg-6">
-                    <input type="button" class="seat btn btn-success" id="book" disabled value="Book" />
-                </div>
-
-            </div>
+        <div class="col-lg-2">
         </div>
+    </div>
         {{--{{ Carbon::now() }}--}}
             {{--<div class="row">--}}
                 {{--<div id="div1">Do you want to view your profile?</div>--}}
                 {{--<button>View Profile</button>--}}
             {{--</div>--}}
-    </div>
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         var a=[];
@@ -104,10 +96,6 @@
 
             a.push({{$x}});
         @endforeach
-
-
-
-
 
         @foreach ($bookseats as $bookseat)
             @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
@@ -117,6 +105,7 @@
                 }
             @endif
         @endforeach
+
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));
             window.print();
