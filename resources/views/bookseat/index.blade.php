@@ -101,7 +101,7 @@
                         <tr><td>.</td></tr>
                         <tr>
                             @for($i=7;$i<=12;$i++)
-                                <td class="checkbox-inline"><label><input type="checkbox" name="A{{ $i }}" id="A{{ $i }}"/>A{{ $i }}</label></td>
+                                <td class="checkbox-inline"><label><input class="chk" type="checkbox" name="A{{ $i }}" id="A{{ $i }}"/>A{{ $i }}</label></td>
                             @endfor
                         </tr>
                         <tr>
@@ -180,7 +180,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <a class="seat btn btn-success disabled" id="book">Book</a>
+                    <input type="button" class="seat btn btn-success" id="book" disabled value="Book" />
                 </div>
 
             </div>

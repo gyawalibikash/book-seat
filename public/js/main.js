@@ -39,15 +39,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#check input:checkbox').click(function () {
-        $('#book').prop('disabled', !$('.checkbox:checked').length);
+    $('input:checkbox').click(function () {
+        $('#book').prop('disabled', !$('input:checked').length);
     });
 
 
     $(".cinehall").click(function(){
-
         $("#successfullModal").modal('show');
-
-
     });
 });
