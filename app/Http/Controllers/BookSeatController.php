@@ -71,6 +71,8 @@ class BookSeatController extends Controller
 
         $showTime = $result['showtime'];
         $movie_id = $result['movie'];
+        $cinehall_id = $result['cinehall'];
+        $hall_id = $result['hall'];
 
         $bookseat = new BookSeat();
         $bookseat->seat = serialize($request['name']);
@@ -78,8 +80,8 @@ class BookSeatController extends Controller
         $bookseat->showtime_id = $showTime;
         $bookseat->movie_id = $movie_id;
         $bookseat->day_id =38;
-        $bookseat->hall_id =1;
-        $bookseat->cinehall_id =1;
+        $bookseat->hall_id = $hall_id;
+        $bookseat->cinehall_id = $cinehall_id;
 
         $bookseat->save();
 

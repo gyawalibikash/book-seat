@@ -44,19 +44,34 @@ $(document).ready(function(){
         $("#successfullModal").modal('show');
     });
 
-    $(".save").click(function(){
+    $( "#form" ).submit(function(event) {
+        event.preventDefault();
+
         var data = $(this).serialize();
+
         $.ajax({
             type: "POST",
             url: '/showing/store',
-            dataType : 'JSON',
-            data :data,
-            success: function (result) {
-                console.log(result);
+            data: data,
+            success: function () {
+                bootbox.alert("success");
             },
             error: function () {
                 bootbox.alert("Error");
             }
         });
+        /*
+        if ($("input[type='checkbox']").is(":checked"))
+        {
+            var formData = {
+                'name' : $('input[name=name]').val(),
+                'email' : $('input[name=email]').val(),
+
+                'check' : $('input[name=checkbox]').val(),
+            };
+        }
+        */
+
+        console.log(data);
     });
 });
