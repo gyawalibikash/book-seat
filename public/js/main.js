@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+        }
+    });
+
     $(".seat").click(function(){
         var seat = [];
         $('#check input:checked').each(function() {
@@ -8,20 +14,11 @@ $(document).ready(function(){
 
         var path = $(location).attr('search');
 
-        // $(this).html('<i class="fa fa-refresh fa-spin"></i>');
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
-            // $("#"+seat).html(seat);
             if (result) {
                 $.ajax({
-                     type: "POST",
-                     url: '/bookseat/moviestore',
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
+                    type: "POST",
+                    url: '/bookseat/moviestore',
                     data: {
                         name: seat,
                         path: path
@@ -52,13 +49,6 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: '/showing/store',
-            beforeSend: function (xhr) {
-                var token = $('meta[name="csrf_token"]').attr('content');
-
-                if (token) {
-                    return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                }
-            },
             data: {
                 
             },
