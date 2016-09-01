@@ -40,20 +40,19 @@ $(document).ready(function(){
         $('#book').prop('disabled', !$('input:checked').length);
     });
 
-
     $(".cinehall").click(function(){
         $("#successfullModal").modal('show');
     });
 
     $(".save").click(function(){
+        var data = $(this).serialize();
         $.ajax({
             type: "POST",
             url: '/showing/store',
-            data: {
-                
-            },
-            success: function () {
-                bootbox.alert("Success");
+            dataType : 'JSON',
+            data :data,
+            success: function (result) {
+                console.log(result);
             },
             error: function () {
                 bootbox.alert("Error");

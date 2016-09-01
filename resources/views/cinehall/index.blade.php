@@ -12,7 +12,7 @@
         <div class="row">
             @foreach($cinehalls as $cinehall)
                 <div class="col-lg-6">
-                     {{ $cinehall->name }}</a>
+                     {{ $cinehall->name }}
                     @foreach($cinehall->hall as $hall)
                         <ul class="list">
                             <li><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">{{ $hall->name }}</a></li>
@@ -39,10 +39,11 @@
                                 <table class="table">
                                 <tr>
                                     <td>{{ $cinehall->name }}</td>
-                            
-                                       @foreach($cinehall->hall as $hall)
+                                        <form id="form" action="" method="post">
+                                        @foreach($cinehall->hall as $hall)
                                             <td><input type="checkbox" value="{{$hall->id}}">{{ $hall->name }}</td>
                                         @endforeach
+
                                 
                                 </tr>
                                 </table>
@@ -52,8 +53,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="save btn btn-default">Save</button>
+                    <input type="submit" class="save btn btn-default" value="Save" />
                 </div>
+                </form>
             </div>
         </div>
     </div>
