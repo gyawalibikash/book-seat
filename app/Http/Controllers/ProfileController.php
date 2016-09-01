@@ -56,11 +56,8 @@ class ProfileController extends Controller
      */
     public function store(UserRequest $request)
     {
-
         $profile = new Profile();
 
-
-        // The blog post is valid, store in database...
         $profile = new Profile();
         $profile->address = $request->Input('address');
         $profile->contact_no = $request->Input('contact_no');

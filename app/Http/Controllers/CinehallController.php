@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cinehall;
+use App\Group;
 use App\Hall;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,7 @@ class CinehallController extends Controller
 
     public function postStore()
     {
+        $group = new Group();
         echo "hello";
     }
 }

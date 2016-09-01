@@ -49,6 +49,7 @@ $(document).ready(function(){
     });
 
     $(".save").click(function(){
+        var data = $(this).serialize();
         $.ajax({
             type: "POST",
             url: '/showing/store',
@@ -59,11 +60,10 @@ $(document).ready(function(){
                     return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                 }
             },
-            data: {
-                
-            },
-            success: function () {
-                bootbox.alert("Success");
+            dataType : 'JSON',
+            data :data,
+            success: function (result) {
+                console.log(result);
             },
             error: function () {
                 bootbox.alert("Error");
