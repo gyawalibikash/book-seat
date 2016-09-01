@@ -20,12 +20,13 @@
                             <div class="modal-body">
                                 <div id="printThis">
                                     <i>Congratulation you have booked this seat.</i> <hr />
+                                    <h1>{{ $cinehall->name }}</h1>
                                     <table class="table table-striped">
                                         <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
                                         <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
                                         <tr><td><strong>Movie Name</strong></td><td>{{ $movie->moviename }}</td></tr>
                                         <tr><td><strong>ShowTime</strong></td><td>{{ $showtime->time }}</td></tr>
-                                        <tr><td><strong>Cinehall Name</strong></td><td>{{ $cinehall->name }}</td></tr>
+                                        <tr><td><strong>Hall Name</strong></td><td>{{ $hall->name }}</td></tr>
 
                                     </table>
                                 </div>
@@ -36,7 +37,10 @@
                         </div>
                     </div>
                 </div>
-            <div class="panel-heading"><h1><marquee>{{ $cinehall->name }}</marquee></h1></div>
+            <div class="panel-heading">
+                <h1><marquee>{{ $cinehall->name }}</marquee></h1>
+                <h2>{{$hall->name}}</h2>
+            </div>
                 <div class="col-lg-4">
                     <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
                 </div>
