@@ -24,11 +24,11 @@ class MovieUploadController extends Controller
 
     public function store(ImageRequest $request)
     {
-        $logo= $request->file('poster');
+        $logo = $request->file('poster');
 
-        $name=$logo->getClientOriginalName();
+        $name = $logo->getClientOriginalName();
 
-        $success = $logo->move(base_path('public/images/now_showing'),$name);
+        $success = $logo->move(base_path('public/images/now_showing'), $name);
 
         if($success)
         $movies = new Movies();
@@ -47,6 +47,7 @@ class MovieUploadController extends Controller
 
         return redirect('/');
     }
+    
     public function destroy($id)
     {
         $movie = Movies::findOrFail($id);
@@ -57,35 +58,12 @@ class MovieUploadController extends Controller
 
     public function edit($id)
     {
-//            return 'edit';
         $movie = Movies::find($id);
-        return view('uploads.edit',['movie'=>$movie]);
+        return view('uploads.edit', ['movie' => $movie]);
     }
+
     public function update($id)
     {
         return 'update';
     }
-
-
-//    public function postNewupload(ImageRequest $request)
-//    {
-//        $logo= $request->file('poster');
-//
-//        $name=$logo->getClientOriginalName();
-//
-//        $success = $logo->move(base_path('/public/images/coming_soon'),$name);
-//
-//        if($success)
-//        $movies = new NextMovies();
-//        $movies->moviename = $request->Input('moviename');
-//        $movies->poster = $name;
-//
-//        Session::flash('success','Data entry successfull');
-//
-//        $movies->save();
-////        save to database
-//        return redirect('/');
-//
-//    }
-
 }
