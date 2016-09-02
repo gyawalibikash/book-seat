@@ -12,7 +12,7 @@ $(document).ready(function(){
             seat.push($(this).attr('name'));
         });
 
-        var path = $(location).attr('search');
+        var path = location.search;
 
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
             if (result) {
@@ -49,7 +49,7 @@ $(document).ready(function(){
 
         var data = $(this).serialize();
 
-        var path = $(location).attr('search');
+        var path = location.search;
 
         $.ajax({
             type: "POST",
@@ -59,7 +59,7 @@ $(document).ready(function(){
                 path: path
             },
             success: function () {
-                bootbox.alert("success");
+                bootbox.alert("Success");
             },
             error: function () {
                 bootbox.alert("Error");

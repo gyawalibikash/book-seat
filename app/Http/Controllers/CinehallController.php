@@ -22,7 +22,7 @@ class CinehallController extends Controller
         return view('cinehall.index',compact('cinehalls', 'movie'));
     }
 
-    public function postStore()
+    public function postStore(Request $request)
     {
         $query_string = $request['path'];
         $string = ltrim($query_string, '?');
