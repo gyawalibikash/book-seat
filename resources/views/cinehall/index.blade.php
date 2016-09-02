@@ -48,6 +48,8 @@
                                 </div>
                           </div>
                         @endforeach
+                        {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day'])}}
+                        {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime'])}}
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-default" value="Save" />

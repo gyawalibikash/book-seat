@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Movies;
+use App\Day;
+use App\ShowTime;
 
 class CinehallController extends Controller
 {
@@ -18,8 +20,11 @@ class CinehallController extends Controller
         $movie = Movies::findOrFail($movie_id);
 
         $cinehalls = Cinehall::with('hall')->get();
+
+        $days = Day::lists('day','id');
+        $showtimes = ShowTime::lists('time','id');
         
-        return view('cinehall.index',compact('cinehalls', 'movie'));
+        return view('cinehall.index',compact('cinehalls', 'movie', 'days', 'showtimes'));
     }
 
     public function postStore(Request $request)
@@ -32,29 +37,33 @@ class CinehallController extends Controller
 
         parse_str($_POST['name'], $params);
 
-        foreach ($params as $cinehall => $hall) {
+        $day_id = $params['day'];
+        $showtime_id = $params['showtime'];
 
-            foreach ($hall as $h) {
+        unset($params['day']);
+        unset($params['showtime']);
+
+        foreach ($params as $cinehall => $hall_group) {
+            foreach ($hall_group as $hall) {
                 $group = new Group();
                 $group->cinehall_id = $cinehall;
-                $group->hall_id = $h;
+                $group->hall_id = $hall;
                 $group->movie_id = $movie_id;
-                $group->showtime_id = 15;
-                $group->day_id = 8;
+                $group->showtime_id = $showtime_id;
+                $group->day_id = $day_id;
 
                 $group->save();
 
-                /*Group::create([
-                    'cinehall_id' => $key,
-                    'hall_id' => $v,
-                    'movie_id' => 7,
-                    'showtime_id' => 15,
-                    'day_id' =>8,
-                ]);*/
-
+                /* Group::create([
+                    'cinehall_id' => ,
+                    'hall_id' => ,
+                    'movie_id' => ,
+                    'showtime_id' => ,
+                    'day_id' => ,
+                ]); */
             }
         }
 
-        return redirect('/');
+        return;
     }
 }
