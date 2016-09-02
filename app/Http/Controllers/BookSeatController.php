@@ -44,20 +44,15 @@ class BookSeatController extends Controller
         $movie_id = $_GET['movie'];
         $cinehall_id = $_GET['cinehall'];
         $hall_id = $_GET['hall'];
+
         $cinehall = Cinehall::findOrfail($cinehall_id);
         $hall = Hall::findOrfail($hall_id);
-
-
-
-//        $hall = Hall::select('name')->where('cinehall_id', $cinehall_id)->first();
-
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);
 
         $bookseats = BookSeat::all();
 
-
-        return view('bookseat.index', compact('bookseats','showtime', 'movie', 'cinehall','hall'));
+        return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall'));
     }
 
     /**
@@ -75,24 +70,19 @@ class BookSeatController extends Controller
         $movie_id = $result['movie'];
         $cinehall_id = $result['cinehall'];
         $hall_id = $result['hall'];
+        $day_id = $result['day'];
 
         $bookseat = new BookSeat();
         $bookseat->seat = serialize($request['name']);
         $bookseat->user_id = Auth::user()->id;
         $bookseat->showtime_id = $showTime;
         $bookseat->movie_id = $movie_id;
-        $bookseat->day_id =38;
+        $bookseat->day_id = $day_id;
         $bookseat->hall_id = $hall_id;
         $bookseat->cinehall_id = $cinehall_id;
 
         $bookseat->save();
 
-        return redirect('/');
+        return;
     }
-
-    public function getIndex()
-    {
-        return 'hello';
-    }
-
 }

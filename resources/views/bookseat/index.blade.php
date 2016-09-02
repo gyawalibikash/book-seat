@@ -60,17 +60,7 @@
             <input type="button" class="seat btn btn-success pull-right" id="book" disabled value="Book" />
         </div>
         <hr>
-            @foreach($bookseats as $seat)
-                <?php $bookedSeat[]=unserialize($seat->seat) ?>
-            @endforeach
-
-            <?php foreach($bookedSeat as $key =>$value){
-
-                        foreach($value as $y){
-                            $bookedSeatId[]=$y;
-                        }
-                    }
-            ?>
+            
 
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
@@ -95,11 +85,7 @@
             {{--</div>--}}
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-        var a=[];
-        @foreach($bookedSeatId as $x)
-
-            a.push({{$x}});
-        @endforeach
+     
 
         @foreach ($bookseats as $bookseat)
             @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
