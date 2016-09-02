@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Cinehall;
 use App\Hall;
 use App\Movies;
 use App\Day;
 use App\ShowTime;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-use App\BookSeat;
 
 use Auth;
-
 use Event;
 
-
-
-
+use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Events\TruncateBookSeatEvent;
+use App\BookSeat;
+
+
+
+
 
 class BookSeatController extends Controller
 {

@@ -11,12 +11,16 @@
 
         <div class="row">
             @foreach($cinehalls as $cinehall)
-                <div class="col-lg-6">
-                     {{ $cinehall->name }}
+                <div class="col-lg-6"> 
                     @foreach($cinehall->hall as $hall)
-                        <ul class="list">
-                            <li><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">{{ $hall->name }}</a></li>
-                        </ul>
+                        @foreach ($groups as $group)
+                            @if ($group->hall_id == $hall->id)
+                                {{ $cinehall->name }}
+                                <ul class="list">
+                                    <li><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">{{ $hall->name }}</a></li>
+                                </ul>
+                            @endif
+                        @endforeach
                     @endforeach
                 </div>
             @endforeach
@@ -41,7 +45,7 @@
                                     <tr>
                                         <td>{{ $cinehall->name }}</td>
                                             @foreach($cinehall->hall as $key=>$hall)
-                                                    <td> <input type="checkbox" name="{{ strtolower(str_replace(" ", "_", $cinehall->id)) }}[]" value="{{$hall->id}}" />{{ $hall->name }}</td>
+                                                <td> <input type="checkbox" name="{{ strtolower(str_replace(" ", "_", $cinehall->id)) }}[]" value="{{$hall->id}}" />{{ $hall->name }}</td>
                                             @endforeach
                                     </tr>
                                     </table>

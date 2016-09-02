@@ -19,7 +19,6 @@ class HomeController extends Controller
     {
         $movies = Movies::all();
         $nextMovies = NextMovies::all();
-//        print_r($movies);
-        return view('home',compact('movies', 'nextMovies'));
+        return view('home', compact('movies', 'nextMovies'));
     }
 }

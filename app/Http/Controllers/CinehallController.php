@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Cinehall;
+use App\Day;
 use App\Group;
 use App\Hall;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Movies;
-use App\Day;
 use App\ShowTime;
 
 class CinehallController extends Controller
@@ -23,8 +22,10 @@ class CinehallController extends Controller
 
         $days = Day::lists('day','id');
         $showtimes = ShowTime::lists('time','id');
-        
-        return view('cinehall.index',compact('cinehalls', 'movie', 'days', 'showtimes'));
+
+        $groups = Group::select('hall_id')->where('movie_id', $movie_id)->get(); 
+
+        return view('cinehall.index',compact('cinehalls', 'movie', 'days', 'showtimes', 'groups'));
     }
 
     public function postStore(Request $request)

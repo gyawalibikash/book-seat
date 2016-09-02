@@ -21,7 +21,7 @@
                                 <div id="printThis">
                                     <i>Congratulation you have booked this seat.</i> <hr />
                                     <h1>{{ $cinehall->name }}</h1>
-                                    <h2><strong>Hall Name</strong> {{ $hall->name }}</h2>
+                                    <h2><strong>Hall Name :</strong> {{ $hall->name }}</h2>
                                     <h3><b>{{ $day->day }}</b></h3>
                                     <table class="table table-striped">
                                         <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
@@ -82,24 +82,24 @@
     </div>
         {{--{{ Carbon::now() }}--}}
 
-    {{--@foreach($bookseats as $seat)--}}
-        {{--<?php $bookedSeat[]=unserialize($seat->seat) ?>--}}
-    {{--@endforeach--}}
+    @foreach($bookseats as $seat)
+        <?php $bookedSeat[]=unserialize($seat->seat) ?>
+    @endforeach
 
-    {{--<?php foreach($bookedSeat as $key =>$value){--}}
+    <?php foreach($bookedSeat as $key =>$value){
 
-        {{--foreach($value as $y){--}}
-            {{--$bookedSeatId[]=$y;--}}
-        {{--}--}}
-    {{--}--}}
+        foreach($value as $y){
+            $bookedSeatId[]=$y;
+        }
+    }
     ?>
 
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-        {{--var a=[];--}}
-        {{--@foreach($bookedSeatId as $x)--}}
-            {{--a.push({{$x}});--}}
-        {{--@endforeach--}}
+        var a=[];
+        @foreach($bookedSeatId as $x)
+            a.push({{$x}});
+        @endforeach
 
         @foreach ($bookseats as $bookseat)
             @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
