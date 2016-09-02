@@ -29,7 +29,6 @@
             <!-- Modal content-->
             <div class="modal-content" >
                 <form id="form" action="" method="post">
-                    {{--<input name="_token" type="hidden" value="{{ csrf_token() }}">--}}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Select Cinehall To Release Movies</h4>
@@ -38,15 +37,11 @@
                         @foreach($cinehalls as $cinehall)
                             <div class="row">
                                 <div class="col-lg-6">
-
                                     <table class="table">
-
                                     <tr>
-
                                         <td>{{ $cinehall->name }}</td>
-
                                             @foreach($cinehall->hall as $key=>$hall)
-                                                    <td> <input type="checkbox" name="{{ strtolower(str_replace(" ", "_", $cinehall->name)) }}[]" value="{{$hall->id}}" />{{ $hall->name }}</td>
+                                                    <td> <input type="checkbox" name="{{ strtolower(str_replace(" ", "_", $cinehall->id)) }}[]" value="{{$hall->id}}" />{{ $hall->name }}</td>
                                             @endforeach
                                     </tr>
                                     </table>
@@ -55,7 +50,7 @@
                         @endforeach
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="save btn btn-default" value="Save" />
+                        <input type="submit" class="btn btn-default" value="Save" />
                     </div>
                 </form>
             </div>

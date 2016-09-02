@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $table = "group";
-
     protected $fillable =  ['movie_id', 'showtime_id', 'cinehall_id','hall_id','day_id'];
 
     public function Movies()

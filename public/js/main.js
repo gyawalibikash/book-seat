@@ -49,10 +49,15 @@ $(document).ready(function(){
 
         var data = $(this).serialize();
 
+        var path = $(location).attr('search');
+
         $.ajax({
             type: "POST",
             url: '/showing/store',
-            data: data,
+            data: {
+                name: data,
+                path: path
+            },
             success: function () {
                 bootbox.alert("success");
             },
@@ -60,18 +65,5 @@ $(document).ready(function(){
                 bootbox.alert("Error");
             }
         });
-        /*
-        if ($("input[type='checkbox']").is(":checked"))
-        {
-            var formData = {
-                'name' : $('input[name=name]').val(),
-                'email' : $('input[name=email]').val(),
-
-                'check' : $('input[name=checkbox]').val(),
-            };
-        }
-        */
-
-        console.log(data);
     });
 });

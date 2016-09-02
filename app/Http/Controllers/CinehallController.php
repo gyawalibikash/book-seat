@@ -24,7 +24,37 @@ class CinehallController extends Controller
 
     public function postStore()
     {
-        $group = new Group();
-        echo "hello";
+        $query_string = $request['path'];
+        $string = ltrim($query_string, '?');
+        parse_str($string, $result);
+
+        $movie_id = $result['movie'];
+
+        parse_str($_POST['name'], $params);
+
+        foreach ($params as $cinehall => $hall) {
+
+            foreach ($hall as $h) {
+                $group = new Group();
+                $group->cinehall_id = $cinehall;
+                $group->hall_id = $h;
+                $group->movie_id = $movie_id;
+                $group->showtime_id = 15;
+                $group->day_id = 8;
+
+                $group->save();
+
+                /*Group::create([
+                    'cinehall_id' => $key,
+                    'hall_id' => $v,
+                    'movie_id' => 7,
+                    'showtime_id' => 15,
+                    'day_id' =>8,
+                ]);*/
+
+            }
+        }
+
+        return redirect('/');
     }
 }
