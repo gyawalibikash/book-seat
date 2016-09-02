@@ -24,7 +24,8 @@ $(document).ready(function(){
                         path: path
                     },
                     success: function () {
-                        $("#" + seat).addClass("disabled").css("background-color", "red");
+                        $("#" + seat).addClass("disabled");
+                        $("#" + seat + "-label").css("background-color", "red");
                         $("#name").html(seat);
                         $("#successModal").modal('show');
                     },

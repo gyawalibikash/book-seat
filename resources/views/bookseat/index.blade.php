@@ -70,7 +70,7 @@
                 <tr>
                     @for($i='A';$i<='G';$i++)
                         @for($j=1;$j<=10;$j++)
-                            <td class="checkbox-inline" style="width:60px"><label id="checkbox"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
                         @endfor
                     @endfor
                 </tr>
@@ -102,9 +102,9 @@
         @endforeach
 
         @foreach ($bookseats as $bookseat)
-            @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id)
+            @if (($bookseat->showtime_id == $showtime->id) && ($bookseat->movie_id == $movie->id) && ($bookseat->day_id == $day->id) && ($bookseat->hall_id == $hall->id) && ($bookseat->cinehall_id == $cinehall->id))
                 for(var i=0;i< a.length;i++) {
-                    document.getElementById($(a[i]).attr('id')).style.textcolour = "red";
+                    document.getElementById($(a[i]).attr('id')+"-label").style.background = "red";
                     document.getElementById($(a[i]).attr('id')).setAttribute("disabled","disabled");
                 }
             @endif
