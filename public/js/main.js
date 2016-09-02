@@ -60,11 +60,15 @@ $(document).ready(function(){
                 path: path
             },
             success: function () {
-                bootbox.alert("Success");
+               location.reload();
             },
             error: function () {
                 bootbox.alert("Error");
             }
         });
+    });
+
+    $(".refresh").click(function () {
+        $("#successfullModal").modal('hide');
     });
 });

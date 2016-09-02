@@ -56,7 +56,7 @@
                         {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime'])}}
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-default" value="Save" />
+                        <input type="submit" class=" refresh btn btn-default" value="Save" />
                     </div>
                 </form>
             </div>
