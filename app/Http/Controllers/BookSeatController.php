@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cinehall;
+use App\Hall;
 use App\Movies;
+use App\Day;
 use App\ShowTime;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,8 @@ use Auth;
 
 use Event;
 
-use App\Hall;
+
+
 
 use App\Events\TruncateBookSeatEvent;
 
@@ -44,15 +47,18 @@ class BookSeatController extends Controller
         $movie_id = $_GET['movie'];
         $cinehall_id = $_GET['cinehall'];
         $hall_id = $_GET['hall'];
+        $day_id = $_GET['day'];
 
         $cinehall = Cinehall::findOrfail($cinehall_id);
         $hall = Hall::findOrfail($hall_id);
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);
+        $day = Day::findOrFail($day_id);
+
 
         $bookseats = BookSeat::all();
 
-        return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall'));
+        return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall','day'));
     }
 
     /**
