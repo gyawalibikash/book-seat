@@ -12,10 +12,10 @@
         <div class="row">
             @foreach($cinehalls as $cinehall)
                 <div class="col-lg-6"> 
+                {{ $cinehall->name }}
                     @foreach($cinehall->hall as $hall)
                         @foreach ($groups as $group)
                             @if ($group->hall_id == $hall->id)
-                                {{ $cinehall->name }}
                                 <ul class="list">
                                     <li><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">{{ $hall->name }}</a></li>
                                 </ul>
