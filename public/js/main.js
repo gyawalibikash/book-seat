@@ -12,6 +12,7 @@ $(document).ready(function(){
             seat.push($(this).attr('name'));
         });
 
+        var seatName = seat.join(', ');
         var path = location.search;
 
         bootbox.confirm("Do you want to book seat "+seat+"?", function(result) {
@@ -25,8 +26,8 @@ $(document).ready(function(){
                     },
                     success: function () {
                         $("#" + seat).addClass("disabled");
-                        $("#" + seat + "-label").css("background-color", "red");
-                        $("#name").html(seat);
+                        $("#" + seat + "-label").css("background-color", "red");                       
+                        $("#name").html(seatName);
                         $("#successModal").modal('show');
                     },
                     error: function () {
@@ -66,9 +67,5 @@ $(document).ready(function(){
                 bootbox.alert("Error");
             }
         });
-    });
-
-    $(".refresh").click(function () {
-        $("#successfullModal").modal('hide');
     });
 });

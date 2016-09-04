@@ -82,38 +82,40 @@
     </div>
         {{--{{ Carbon::now() }}--}}
 
-    @foreach($bookseats as $seat)
-        <?php $bookedSeat[]=unserialize($seat->seat) ?>
+    @foreach($bookseats as $bookseat)
+        @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->day_id == $day->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+            <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
+        @endif
     @endforeach
 
-    <?php foreach($bookedSeat as $key =>$value){
-
-        foreach($value as $y){
-            $bookedSeatId[]=$y;
+    @if (!empty($bookedSeat))
+        <?php foreach($bookedSeat as $key => $value) {
+            foreach($value as $y) {
+                $bookedSeatId[] = $y;
+            }
         }
-    }
-    ?>
+        ?>
+    @endif
 
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-        var a=[];
-        @foreach($bookedSeatId as $x)
-            a.push({{$x}});
-        @endforeach
 
-        @foreach ($bookseats as $bookseat)
-            @if (($bookseat->showtime_id == $showtime->id) && ($bookseat->movie_id == $movie->id) && ($bookseat->day_id == $day->id) && ($bookseat->hall_id == $hall->id) && ($bookseat->cinehall_id == $cinehall->id))
-                for(var i=0;i< a.length;i++) {
-                    document.getElementById($(a[i]).attr('id')+"-label").style.background = "red";
-                    document.getElementById($(a[i]).attr('id')).setAttribute("disabled","disabled");
-                }
-            @endif
-        @endforeach
+        @if (!empty($bookedSeatId))
+            var a = [];
+            @foreach($bookedSeatId as $x)
+                a.push({{ $x }});
+            @endforeach
+
+            for(var i=0;i< a.length;i++) {
+                document.getElementById($(a[i]).attr('id')+"-label").style.background = "red";
+                document.getElementById($(a[i]).attr('id')).setAttribute("disabled","disabled");
+            }
+        @endif
 
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));
             window.print();
-                $("#successModal").modal('hide');
+            location.reload();
         }
 
         function printElement(elem, append, delimiter) {

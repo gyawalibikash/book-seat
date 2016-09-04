@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
+use Auth;
+use Event;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Events\TruncateBookSeatEvent;
+use App\BookSeat;
 use App\Cinehall;
 use App\Hall;
 use App\Movies;
 use App\Day;
 use App\ShowTime;
-
-use Auth;
-use Event;
-
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Events\TruncateBookSeatEvent;
-use App\BookSeat;
-
-
-
-
 
 class BookSeatController extends Controller
 {
@@ -53,7 +46,6 @@ class BookSeatController extends Controller
         $showtime = ShowTime::findOrFail($showtime_id);
         $movie = Movies::find($movie_id);
         $day = Day::findOrFail($day_id);
-
 
         $bookseats = BookSeat::all();
 

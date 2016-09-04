@@ -28,7 +28,7 @@
     </div>
     <!-- Modal -->
     <div id="successfullModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content" >
@@ -38,9 +38,10 @@
                         <h4 class="modal-title">Select Cinehall To Release Movies</h4>
                     </div>
                     <div class="modal-body">
-                        @foreach($cinehalls as $cinehall)
+                        
                             <div class="row">
                                 <div class="col-lg-6">
+                                @foreach($cinehalls as $cinehall)
                                     <table class="table">
                                     <tr>
                                         <td>{{ $cinehall->name }}</td>
@@ -49,14 +50,21 @@
                                             @endforeach
                                     </tr>
                                     </table>
+                                    @endforeach
+                                </div>
+                                <div class="col-lg-2">
+                                    <p id="dayName"></p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p id="showTime"></p>
                                 </div>
                           </div>
-                        @endforeach
+                        
                         {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day'])}}
                         {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime'])}}
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class=" refresh btn btn-default" value="Save" />
+                        <input type="submit" class="btn btn-success" value="Save" />
                     </div>
                 </form>
             </div>
@@ -65,3 +73,24 @@
 @endsection
 
 <script src="/js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+    // $(document).ready(function() {
+    //     var dayName = [];
+    //     var showTime = [];
+
+    //     $('#day').change(function(e) {
+    //         e.preventDefault();           
+    //         dayName.push($('#day option:selected').text());
+    //         var day = dayName.join(', ');
+    //         $("#dayName").html(day);
+    //     });
+
+    //     $('#showtime').change(function(e) {
+    //         e.preventDefault();            
+    //         showTime.push($('#showtime option:selected').text());
+    //         var show = showTime.join(', ');
+    //         $("#showTime").html(show);
+    //     });
+    // });
+</script>
