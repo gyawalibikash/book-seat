@@ -23,7 +23,7 @@ class CinehallController extends Controller
         $days = Day::lists('day','id');
         $showtimes = ShowTime::lists('time','id');
 
-        $groups = Group::distinct('hall_id')->where('movie_id', $movie_id)->get();
+        $groups = Group::groupBy('hall_id')->where('movie_id', $movie_id)->get();
 
         return view('cinehall.index',compact('cinehalls', 'movie', 'days', 'showtimes', 'groups'));
     }

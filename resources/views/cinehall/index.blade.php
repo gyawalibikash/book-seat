@@ -11,7 +11,7 @@
 
         <div class="row">
             @foreach($cinehalls as $cinehall)
-                <div class="col-lg-6"> 
+                <div class="col-lg-6">
                 {{ $cinehall->name }}
                     @foreach($cinehall->hall as $hall)
                         @foreach ($groups as $group)
