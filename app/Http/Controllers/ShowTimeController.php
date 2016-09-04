@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\ShowTime;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-use App\Movies;
-
-use App\NextMovies;
-
-use Session;
-
-use App\Day;
-
-use App\Hall;
-
 use App\Cinehall;
-
+use App\Day;
+use App\Group;
+use App\Hall;
+use App\Movies;
+use App\NextMovies;
+use App\ShowTime;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Session;
 
 class ShowTimeController extends Controller
 {
@@ -37,17 +30,19 @@ class ShowTimeController extends Controller
         $cinehall = Cinehall::findOrfail($cinehall_id);
         $hall = Hall::findOrfail($hall_id);
 
-        $days = Day::lists('day','id');
+        $days = Day::lists('day', 'id');
 
-        $showtimes= ShowTime::all();
+        $showtimes = ShowTime::all();
 
-        return view('showtime.index',compact('movie','cinehall','showtimes','days','hall'));
+        $groups = Group::distinct('showtime_id', 'hall_id')->where('movie_id', $movie_id)->get();
+
+        return view('showtime.index', compact('movie', 'cinehall', 'showtimes', 'days', 'hall', 'groups'));
 
     }
 
     public function getNew($id)
     {
-        $nextMovies =NextMovies::findOrFail($id);
+        $nextMovies = NextMovies::findOrFail($id);
         return view('coming_soon.index', compact('nextMovies'));
     }
 }

@@ -15,7 +15,11 @@
                         </td>
                     <tr>
                     @foreach($showtimes as $showtime)
-                        <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'day'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a></td>
+                        @foreach ($groups as $group)
+                            @if ($group->showtime_id == $showtime->id && $group->hall_id == $hall->id)
+                                <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'day'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a></td>
+                            @endif
+                        @endforeach
                     @endforeach
                 </table>
             </div>
