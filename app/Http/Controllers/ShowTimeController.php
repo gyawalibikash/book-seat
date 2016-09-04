@@ -34,7 +34,7 @@ class ShowTimeController extends Controller
 
         $showtimes = ShowTime::all();
 
-        $groups = Group::distinct('showtime_id', 'hall_id')->where('movie_id', $movie_id)->get();
+        $groups = Group::groupBy('showtime_id')->where('movie_id', $movie_id)->get();
 
         return view('showtime.index', compact('movie', 'cinehall', 'showtimes', 'days', 'hall', 'groups'));
 
