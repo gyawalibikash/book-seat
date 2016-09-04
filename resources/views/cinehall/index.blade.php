@@ -2,17 +2,16 @@
 @section('content')
 
     <div class="container">
-        <div class="col-lg-4 ">
-            <div ><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div ><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></div>
                 @if( Auth::check() && Auth::user()->isAdmin() )
                     <button class="cinehall">Released Cinehall</button>
                 @endif
-        </div>
-
-        <div class="row">
-            @foreach($cinehalls as $cinehall)
-                <div class="col-lg-6">
-                {{ $cinehall->name }}
+            </div>
+            <div class="col-lg-4">
+                @foreach($cinehalls as $cinehall)
+                    {{ $cinehall->name }}
                     @foreach($cinehall->hall as $hall)
                         @foreach ($groups as $group)
                             @if ($group->hall_id == $hall->id)
@@ -22,9 +21,16 @@
                             @endif
                         @endforeach
                     @endforeach
+                @endforeach
+            </div>
+            <div class="col-lg-4">
+                <div class="alert alert-success">
+                    <p> Cast :{{ $movie->cast }}</p>
+                    <p> Director :{{ $movie->director }}</p>
+                    <p> Release Date :{{ $movie->release_date }}</p>
+                    <p> Run Time :{{ $movie->run_time }}</p>
                 </div>
-            @endforeach
-        </div>
+            </div>
     </div>
     <!-- Modal -->
     <div id="successfullModal" class="modal fade" role="dialog">
