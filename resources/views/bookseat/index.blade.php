@@ -108,13 +108,14 @@
             for(var i=0;i< a.length;i++) {
                 document.getElementById($(a[i]).attr('id')+"-label").style.background = "red";
                 document.getElementById($(a[i]).attr('id')).setAttribute("disabled", "disabled");
+                document.getElementById($(a[i]).attr('id')).setAttribute("checked", "checked");
             }
         @endif
 
         document.getElementById("print").onclick = function() {
             printElement(document.getElementById("printThis"));
             window.print();
-            location.reload();
+            $("#successModal").modal('hide');
         }
 
         function printElement(elem, append, delimiter) {

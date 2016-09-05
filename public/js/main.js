@@ -9,10 +9,9 @@ $(document).ready(function(){
     $(".seat").click(function(){
         var seat = [];
         $('#check input:checked').each(function() {
-            if ($(this).prop('disabled')) {
-                return false;
-            }
-            seat.push($(this).attr('name'));
+            if (!$(this).prop("disabled")) {
+                seat.push($(this).attr('name'));
+            }           
         });
 
         var seatName = seat.join(', ');
@@ -28,7 +27,7 @@ $(document).ready(function(){
                         path: path
                     },
                     success: function () {
-                        $("#" + seat).addClass("disabled");
+                        $("#" + seat).attr("disabled", "disabled");
                         $("#" + seat + "-label").css("background-color", "red");                       
                         $("#name").html(seatName);
                         $("#successModal").modal('show');
@@ -41,8 +40,11 @@ $(document).ready(function(){
         });
     });
 
-    $('input:checkbox').click(function () {
-        $('#book').prop('disabled', !$('input:checked').length);
+    $('#check input:checkbox').click(function () {
+        var dis = $('input[type="checkbox"]:disabled').length;
+        var total = $('input:checked').length;
+
+        $('#book').prop('disabled', (total-dis)==0);
     });
 
     $(".cinehall").click(function(){
