@@ -53,7 +53,10 @@ class MovieUploadController extends Controller
         $movie = Movies::findOrFail($id);
         $movie->delete();
 
-        return redirect()->route('upload.index');
+        Session::flash('success', 'The Movie is successfully Deleted !');
+
+        return redirect()->route('home');
+
     }
 
     public function edit($id)
@@ -76,7 +79,7 @@ class MovieUploadController extends Controller
 
             $movie->save();
 
-            Session::flash('success', 'The blog is successfully updated !');
+            Session::flash('success', 'The Movie successfully updated !');
 
             return redirect()->route('home',[$request->id]);
 

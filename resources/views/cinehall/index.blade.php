@@ -15,6 +15,7 @@
                
                     @if( Auth::check() && Auth::user()->isAdmin() )
                         <button class="cinehall">Released Cinehall</button>
+                        {{ Form::model($movie, ['method' => 'DELETE','route' => ['upload.destroy', $movie->id]]) }}
                         <a href="{{ route('upload.edit',$movie->id)}}" class="btn btn-default btn-sm pull-right">Edit</a>
                         {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm pull-right'))}}
                         {!! Form::close() !!}
