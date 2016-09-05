@@ -84,9 +84,9 @@
                         </div>
 
                         <div class="form-group" {{ $errors->has('image') ? ' has-error' : '' }}>
-                            <label for="contact_no" class="col-md-4 control-label">Movie Poster :</label>
+                            <label for="poster" class="col-md-4 control-label">Movie Poster :</label>
                             <div class="col-md-6">
-                                <input id="contact_no" type="file" name="poster" value="{{ old('poster') }}">
+                                <input id="poster" type="file" name="poster" value="{{ old('poster') }}">
 
                                 @if ($errors->has('image'))
                                     <span class="help-block">
