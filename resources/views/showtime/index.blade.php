@@ -46,12 +46,6 @@
                         <p> Release Date : {{ $movie->release_date }}</p>
                         <p> Run Time : {{ $movie->run_time }}</p>
                     </div>
-                        @if( Auth::check() && Auth::user()->isAdmin() )
-                            {{ Form::model($movie, ['method' => 'DELETE','route' => ['upload.destroy', $movie->id]]) }}
-                            <a href="{{ route('upload.edit',$movie->id)}}" class="btn btn-default btn-sm pull-right">Edit</a>
-                            {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm pull-right'))}}
-                            {!! Form::close() !!}
-                        @endif
                 </div>
         </div>
         <div class="row">
