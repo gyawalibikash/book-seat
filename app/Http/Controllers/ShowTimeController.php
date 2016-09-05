@@ -33,10 +33,8 @@ class ShowTimeController extends Controller
             ->where('hall_id', $_GET['hall']);
         }])->where('id', $movie_id)->first();
 
-        $days = [];
         for($i = 0; $i < count($movie->group); $i++) {
-            $day[$movie->group[$i]->day_id] = $movie->group[$i]->day;
-            array_push($days, $day);
+            $days[$movie->group[$i]->day_id] = $movie->group[$i]->day;
         }
 
         $cinehall = Cinehall::findOrfail($cinehall_id);
