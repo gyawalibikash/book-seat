@@ -10,18 +10,30 @@
                 <h2>{{ $hall->name }}</h2>
 
                 <table class="table" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
-                    <tr><th style="font-size:20px;">Show Time</th>
-                        <td>
-                             {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day', 'class' => 'form-control'])}} <p iyd="error"></p>
-                        </td>
                     <tr>
+
+                    <th style="font-size:20px;">Show Time</th>
+                        <td>
+                             {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day', 'class' => 'form-control']) }} 
+                             <p id="error"></p>
+                            
+                        </td>
+                    </tr>
+
+                    <tbody id="showTimes">
                     @foreach($showtimes as $showtime)
                         @foreach ($groups as $group)
+
                             @if ($group->showtime_id == $showtime->id && $group->hall_id == $hall->id)
-                                <tr><td style="font-size:30px;">{{ $showtime->time }}</td><td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'day'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a></td>
+                                <tr style="display:none;" data-id={{$group->day_id}}>
+                                    <td style="font-size:30px;">{{ $showtime->time }}</td>
+                                    <td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'day'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a>
+                                    </td>
+                                </tr>
                             @endif
                         @endforeach
                     @endforeach
+                    </tbody>
                 </table>
             </div>
             
@@ -58,7 +70,19 @@
 
                 var followURL = currentUrl+dayValue;
                 location.href = followURL;
-            })
+            });
+
+            $('#day').change(function() {
+                var dayNum = $(this).val();
+
+                $('#showTimes').find('tr').each(function() {
+                    if (dayNum == $(this).data('id')) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
 
         });
     </script>
