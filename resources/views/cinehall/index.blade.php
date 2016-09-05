@@ -15,6 +15,9 @@
                
                     @if( Auth::check() && Auth::user()->isAdmin() )
                         <button class="cinehall">Released Cinehall</button>
+                        <a href="{{ route('upload.edit',$movie->id)}}" class="btn btn-default btn-sm pull-right">Edit</a>
+                        {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm pull-right'))}}
+                        {!! Form::close() !!}
                     @endif
             </div>
              <div class="col-lg-4">

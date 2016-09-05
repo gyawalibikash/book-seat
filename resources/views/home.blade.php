@@ -17,7 +17,10 @@
 
         <div id="owl-demo-now" class="owl-carousel">
             @foreach($movies as $movie)
-                <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
+                <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                    <div class="text-danger text-center">{{ $movie->moviename }}</div>
+                </div>
+
     {{--<div class="item" ><a href="{{ url('/showtime',$movie->id) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>--}}
     {{--<div class="item" ><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>--}}
     @endforeach
@@ -29,7 +32,9 @@
 
         <div id="owl-demo-coming" class="owl-carousel">
            @foreach($nextMovies as $nextMovie)
-                <div class="item" ><a href="{{ url('/new',$nextMovie->id) }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>
+                <div class="item" ><a href="{{ url('/new',$nextMovie->id) }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                    <div class="text-danger text-center">{{ $nextMovie->moviename }}</div>
+                </div>
             @endforeach
         </div>
     </div>

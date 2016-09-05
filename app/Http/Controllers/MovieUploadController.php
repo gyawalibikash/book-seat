@@ -62,8 +62,23 @@ class MovieUploadController extends Controller
         return view('uploads.edit', ['movie' => $movie]);
     }
 
-    public function update($id)
+    public function update(ImageRequest $request,$id)
     {
-        return 'update';
+            // validation
+            $movie = Movies::findOrFail($id);
+
+            $movie->moviename       =   $request->input('moviename');
+            $movie->description     =   $request->input('description');
+            $movie->release_date    =   $request->input('release_date');
+            $movie->run_time        =   $request->input('run_time');
+            $movie->director        =   $request->input('director');
+            $movie->cast            =   $request->input('cast');
+
+            $movie->save();
+
+            Session::flash('success', 'The blog is successfully updated !');
+
+            return redirect()->route('home',[$request->id]);
+
     }
 }
