@@ -63,7 +63,6 @@
         </div>
         <hr>
             
-
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <table align="centre" class="table" id="check">
@@ -108,7 +107,7 @@
 
             for(var i=0;i< a.length;i++) {
                 document.getElementById($(a[i]).attr('id')+"-label").style.background = "red";
-                document.getElementById($(a[i]).attr('id')).setAttribute("disabled","disabled");
+                document.getElementById($(a[i]).attr('id')).setAttribute("disabled", "disabled");
             }
         @endif
 

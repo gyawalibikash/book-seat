@@ -13,9 +13,9 @@ class Movies extends Model
         return $this->belongsTo('App\BookSeat');
     }
 
-    public function Group()
+    public function group()
     {
-        return $this->belongsTo('App\Group');
+        return $this->hasMany('App\Group', 'movie_id');
     }
 
 }

@@ -9,6 +9,9 @@ $(document).ready(function(){
     $(".seat").click(function(){
         var seat = [];
         $('#check input:checked').each(function() {
+            if ($(this).prop('disabled')) {
+                return false;
+            }
             seat.push($(this).attr('name'));
         });
 

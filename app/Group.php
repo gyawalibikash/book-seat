@@ -10,7 +10,7 @@ class Group extends Model
 
     public function Movies()
     {
-        return $this->hasOne('App\Movies');
+        return $this->hasMany('App\Movies');
     }
 
     public function ShowTime()

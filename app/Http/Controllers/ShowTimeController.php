@@ -26,17 +26,27 @@ class ShowTimeController extends Controller
         $cinehall_id = $_GET['cinehall'];
         $hall_id = $_GET['hall'];
 
-        $movie = Movies::findOrFail($movie_id);
+        $movie = Movies::with(['group' => function($sql) {
+            $sql->join('days as d', 'groups.day_id', '=', 'd.id')
+            ->select('groups.*', 'd.*')
+            ->groupBy('day_id')
+            ->where('hall_id', $_GET['hall']);
+        }])->where('id', $movie_id)->first();
+
+        $days = [];
+        for($i = 0; $i < count($movie->group); $i++) {
+            $day[$movie->group[$i]->day_id] = $movie->group[$i]->day;
+            array_push($days, $day);
+        }
+
         $cinehall = Cinehall::findOrfail($cinehall_id);
         $hall = Hall::findOrfail($hall_id);
 
-        $days = Day::lists('day', 'id');
-
         $showtimes = ShowTime::all();
 
-        $groups = Group::groupBy('showtime_id')->where('movie_id', $movie_id)->get();
+        $groups = Group::groupBy('showtime_id', 'hall_id')->where('movie_id', $movie_id)->get();
 
-        return view('showtime.index', compact('movie', 'cinehall', 'showtimes', 'days', 'hall', 'groups'));
+        return view('showtime.index', compact('movie', 'cinehall', 'showtimes', 'hall', 'groups', 'days'));
 
     }
 
