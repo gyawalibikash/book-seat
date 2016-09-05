@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -37,7 +38,7 @@
                         <div class="form-group {{ $errors->has('release_date') ? ' has-error' : '' }} ">
                             <label for="release_date" class="col-md-4 control-label">Release date :</label>
                             <div class="col-md-6">
-                                <input id="release_date" type="date" class="form-control" name="release_date" value="{{ old('release_date') }}">
+                                <input id="release_date" type="text" class="form-control" name="release_date" value="{{ old('release_date') }}">
 
                                 @if ($errors->has('release_date'))
                                     <span class="help-block">
@@ -154,4 +155,12 @@
     </div>
 
     <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#release_date" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
 @endsection

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     {!! Form::model($movie, ['method' => 'PUT', 'route' => ['upload.update', $movie->id]]) !!}
 <div class="row">
     <div class="form-group" {{ $errors->has('moviename') ? ' has-error' : '' }}>
@@ -37,7 +38,7 @@
             {{ Form::label('release_date', 'Release date :',["class"=>"input-lg"]) }}
         </div>
         <div class="col-lg-6">
-            {{ Form::date('release_date', null,['class'=> 'form-control']) }}
+            {{ Form::text('release_date', null,['class'=> 'form-control',"id"=>"release_date"]) }}
             @if ($errors->has('release_date'))
                 <span class="help-block">
                     <strong>{{ $errors->first('release_date') }}</strong>
@@ -110,5 +111,14 @@
     {!! Form::submit('Update', array('class'=>'btn btn-primary pull-right btn-h1-margin'))!!}
     <a href="{{ route('home') }}" class="btn btn-default pull-right btn-h1-margin">Cancel</a>
     {!! Form::close()  !!}
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#release_date" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
 
 @endsection
