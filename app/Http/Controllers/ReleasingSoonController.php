@@ -43,38 +43,39 @@ class ReleasingSoonController extends Controller
 
     public function destroy($id)
     {
-//        $movie = Movies::findOrFail($id);
-//        $movie->delete();
-//
-//        Session::flash('success', 'The Movie is successfully Deleted !');
-//
-//        return redirect()->route('home');
+        $nextMovies = NextMovies::findOrFail($id);
+        $nextMovies->delete();
+
+        Session::flash('success', 'The Movie is successfully Deleted !');
+
+        return redirect()->route('home');
 
     }
 
     public function edit($id)
     {
-//        $movie = Movies::find($id);
-//        return view('uploads.edit', ['movie' => $movie]);
+        $nextMovie = NextMovies::find($id);
+        return view('releasing_soon.edit', ['nextMovie' => $nextMovie]);
     }
 
     public function update(ImageRequest $request,$id)
     {
-//        // validation
-//        $movie = Movies::findOrFail($id);
-//
-//        $movie->moviename       =   $request->input('moviename');
-//        $movie->description     =   $request->input('description');
-//        $movie->release_date    =   $request->input('release_date');
-//        $movie->run_time        =   $request->input('run_time');
-//        $movie->director        =   $request->input('director');
-//        $movie->cast            =   $request->input('cast');
-//
-//        $movie->save();
-//
-//        Session::flash('success', 'The Movie successfully updated !');
-//
-//        return redirect()->route('home',[$request->id]);
+//        return 'update';
+        // validation
+        $nextMovie = NextMovies::findOrFail($id);
+
+        $nextMovie->moviename       =   $request->input('moviename');
+        $nextMovie->description     =   $request->input('description');
+        $nextMovie->release_date    =   $request->input('release_date');
+        $nextMovie->run_time        =   $request->input('run_time');
+        $nextMovie->director        =   $request->input('director');
+        $nextMovie->cast            =   $request->input('cast');
+
+        $nextMovie->save();
+
+        Session::flash('success', 'The Movie successfully updated !');
+
+        return redirect()->route('home',[$request->id]);
 
     }
 }

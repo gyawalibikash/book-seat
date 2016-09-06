@@ -17,6 +17,13 @@
                     <p> Release Date : {{ $nextMovies->release_date }}</p>
                     <p> Run Time : {{ $nextMovies->run_time }}</p>
                 </div>
+                @if( Auth::check() && Auth::user()->isAdmin() )
+                    <button class="cinehall">Released Cinehall</button>
+                    {{ Form::model($nextMovies, ['method' => 'DELETE','route' => ['releasingsoon.destroy', $nextMovies->id]]) }}
+                    <a href="{{ route('releasingsoon.edit',$nextMovies->id)}}" class="btn btn-default btn-sm pull-right">Edit</a>
+                    {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm pull-right'))}}
+                    {!! Form::close() !!}
+                @endif
             </div>
         </div>
     </div>
