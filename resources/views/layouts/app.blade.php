@@ -48,6 +48,7 @@
 
                 @if( Auth::check() && Auth::user()->isAdmin() )
                     <a href="{{ url('/upload') }}" class="navbar-brand"> <i class="glyphicon glyphicon-picture" title="Upload New Movie"></i></a>
+                    <a href="{{ url('/releasingsoon') }}" class="navbar-brand"> <i class="fa fa-file-video-o" title="Coming Soon"></i></a>
                 @endif
             </div>
 
