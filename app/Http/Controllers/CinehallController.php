@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Cinehall;
-use App\Day;
 use App\Group;
 use App\Hall;
 use App\Movies;
@@ -20,12 +19,11 @@ class CinehallController extends Controller
 
         $cinehalls = Cinehall::with('hall')->get();
 
-        $days = Day::lists('day','id');
         $showtimes = ShowTime::lists('time','id');
 
         $groups = Group::groupBy('hall_id')->where('movie_id', $movie_id)->get();
 
-        return view('cinehall.index',compact('cinehalls', 'movie', 'days', 'showtimes', 'groups'));
+        return view('cinehall.index',compact('cinehalls', 'movie', 'showtimes', 'groups'));
     }
 
     public function postStore(Request $request)
@@ -38,10 +36,10 @@ class CinehallController extends Controller
 
         parse_str($_POST['name'], $params);
 
-        $day_id = $params['day'];
+        $date = $params['date'];
         $showtime_id = $params['showtime'];
 
-        unset($params['day']);
+        unset($params['date']);
         unset($params['showtime']);
 
         foreach ($params as $cinehall => $hall_group) {
@@ -51,7 +49,7 @@ class CinehallController extends Controller
                 $group->hall_id = $hall;
                 $group->movie_id = $movie_id;
                 $group->showtime_id = $showtime_id;
-                $group->day_id = $day_id;
+                $group->date = $date;
 
                 $group->save();
 
@@ -60,7 +58,7 @@ class CinehallController extends Controller
                     'hall_id' => ,
                     'movie_id' => ,
                     'showtime_id' => ,
-                    'day_id' => ,
+                    'date' => ,
                 ]); */
             }
         }

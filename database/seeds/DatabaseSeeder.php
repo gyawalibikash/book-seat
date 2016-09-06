@@ -3,13 +3,13 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Profile;
-use App\User;
-use App\Role;
-use App\ShowTime;
-use App\Day;
 use App\Cinehall;
 use App\Hall;
+use App\Profile;
+use App\Role;
+use App\ShowTime;
+use App\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -30,7 +30,6 @@ class UserAppSeed extends Seeder{
     public function run() {
         DB::table('users')->delete();
         DB::table('roles')->delete();
-        DB::table('days')->delete();
         DB::table('profiles')->delete();
         DB::table('showtime')->delete();
         DB::table('cinehall')->delete();
@@ -40,15 +39,6 @@ class UserAppSeed extends Seeder{
         $admin = Role::create(array('name'=>'ROLE_ADMIN'));
         $user = Role::create(array('name'=>'ROLE_USER'));
         $this->command->info('Role Seeded Successfully');
-
-        Day::create(array('day'=>'Sunday'));
-        Day::create(array('day'=>'Monday'));
-        Day::create(array('day'=>'Tuesday'));
-        Day::create(array('day'=>'Wednesday'));
-        Day::create(array('day'=>'Thursday'));
-        Day::create(array('day'=>'Friday'));
-        Day::create(array('day'=>'Saturday'));
-        $this->command->info('Day Created Successfully');
 
         $ram = User::create(array('name'=>'ram','email'=>'ram@gmail.com','password'=>bcrypt('password'),'role_id'=>$admin->id));
         $shyam = User::create(array('name'=>'shyam','email'=>'shyam@gmail.com','password'=>bcrypt('password'),'role_id'=>$user->id));

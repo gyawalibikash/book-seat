@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
     <div class="container">
         <div class="row">
@@ -76,7 +77,7 @@
                         
                         <div class="row">
                             <div class="col-lg-3">
-                                {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day', 'class' => 'form-control'])}}
+                                <input id="date" type="text" class="form-control" placeholder="Select Date" name="date">
                             </div>
                             <div class="col-lg-3">
                                 {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime', 'class' => 'form-control'])}}
@@ -93,6 +94,14 @@
 @endsection
 
 <script src="/js/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#date" ).datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    });
+</script>
 
 <script type="text/javascript">
     // $(document).ready(function() {

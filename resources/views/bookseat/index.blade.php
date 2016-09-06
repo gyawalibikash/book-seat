@@ -22,7 +22,7 @@
                                     <i>Congratulation you have booked this seat.</i> <hr />
                                     <h1>{{ $cinehall->name }}</h1>
                                     <h2><strong>Hall Name :</strong> {{ $hall->name }}</h2>
-                                    <h3><b>{{ $day->day }}</b></h3>
+                                    <h3>{{ $_GET['date'] }}</h3>
                                     <table class="table table-striped">
                                         <tr><td><strong>Name</strong></td><td>{{ Auth::user()->name }}</td></tr>
                                         <tr><td><strong>Seat</strong></td><td><span id="name"></span></td></tr>
@@ -82,7 +82,7 @@
         {{--{{ Carbon::now() }}--}}
 
     @foreach($bookseats as $bookseat)
-        @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->day_id == $day->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+        @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
             <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
         @endif
     @endforeach

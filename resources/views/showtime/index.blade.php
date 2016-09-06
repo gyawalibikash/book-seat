@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
     <div class="container">
         <div class="row">
@@ -14,20 +15,18 @@
 
                     <th style="font-size:20px;">Show Time</th>
                         <td>
-                             {{ Form::select('day', $days, null, ['placeholder' => 'Select Day', 'id' => 'day', 'class' => 'form-control']) }} 
-                             <p id="error"></p>
-                            
+                             <input id="date" type="text" class="form-control" placeholder="Select Date" name="date">                        
                         </td>
                     </tr>
 
-                    <tbody id="showTimes">
-                    @foreach($showtimes as $showtime)
-                        @foreach ($groups as $group)
-
-                            @if ($group->showtime_id == $showtime->id && $group->hall_id == $hall->id)
-                                <tr style="display:none;" data-id={{$group->day_id}}>
+                    <tbody id="showTimes">                     
+                    @foreach($showtimes as $showtime)  
+                        @foreach($groups as $group)
+                            @if ($showtime->id == $group->showtime_id)                                     
+                                <tr style="display:none;" data-id={{ $group->date }}>
                                     <td style="font-size:30px;">{{ $showtime->time }}</td>
-                                    <td><a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'day'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a>
+                                    <td>
+                                        <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'date'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i></a>
                                     </td>
                                 </tr>
                             @endif
@@ -37,46 +36,54 @@
                 </table>
             </div>
             
-                <div class="col-md-4 col-md-offset-1">
-                  <img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
+            <div class="col-md-4 col-md-offset-1">
+              <img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
 
-                    <div class="alert alert-success">
-                        <p> Cast : {{ $movie->cast }}</p>
-                        <p> Director : {{ $movie->director }}</p>
-                        <p> Release Date : {{ $movie->release_date }}</p>
-                        <p> Run Time : {{ $movie->run_time }}</p>
-                    </div>
+                <div class="alert alert-success">
+                    <p> Cast : {{ $movie->cast }}</p>
+                    <p> Director : {{ $movie->director }}</p>
+                    <p> Release Date : {{ $movie->release_date }}</p>
+                    <p> Run Time : {{ $movie->run_time }}</p> 
                 </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-md-offset-1">
-               <p class="alert alert-info"> Description : {{ $movie->description }} </p>
+                <div class="alert alert-info">
+                    <p> Description : {{ $movie->description }} </p>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#date" ).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
 
             $('.book-seat-url').click(function(e) {
                   e.preventDefault();
                   var currentUrl = $(this).attr('href');
-                  var dayValue = $('#day').val();
-                  if (dayValue == "") {
-                    $('#error').html("Please choose").css("color", "red");
+                  var date = $('#date').val();
+                  if (date == "") {
                     return false;
                   }  
 
-                var followURL = currentUrl+dayValue;
+                var followURL = currentUrl + date;
                 location.href = followURL;
             });
 
-            $('#day').change(function() {
-                var dayNum = $(this).val();
+            $('#date').change(function() {
+                var date = $(this).val();
+
+                console.log(date);
 
                 $('#showTimes').find('tr').each(function() {
-                    if (dayNum == $(this).data('id')) {
+                    if (date == $(this).data('id')) {
                         $(this).show();
                     } else {
                         $(this).hide();
