@@ -57,7 +57,9 @@
     <script>
         $( function() {
             $( "#date" ).datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                minDate: 0,
+                maxDate: 3,
             });
         });
     </script>

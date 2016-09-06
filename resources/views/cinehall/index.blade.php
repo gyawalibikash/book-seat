@@ -98,7 +98,8 @@
 <script>
     $( function() {
         $( "#date" ).datepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: "yy-mm-dd",
+            minDate: 0,
         });
     });
 </script>
