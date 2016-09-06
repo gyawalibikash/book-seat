@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
@@ -43,7 +44,7 @@
     </div>
     <!-- Modal -->
     <div id="successfullModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg" style="width:677px;">
 
             <!-- Modal content-->
             <div class="modal-content" >
@@ -52,10 +53,8 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Select Cinehall To Release Movies</h4>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="width:677px;">
                         
-                        <div class="row">
-                            <div class="col-lg-6">
                             @foreach($cinehalls as $cinehall)
                                 <table class="table">
                                 <tr>
@@ -65,21 +64,13 @@
                                         @endforeach
                                 </tr>
                                 </table>
-                                @endforeach
-                            </div>
-                            <div class="col-lg-2">
-                                <p id="dayName"></p>
-                            </div>
-                            <div class="col-lg-4">
-                                <p id="showTime"></p>
-                            </div>
-                          </div>
+                            @endforeach
                         
                         <div class="row">
-                            <div class="col-lg-3">
-                                <input id="date" type="text" class="form-control" placeholder="Select Date" name="date">
+                            <div class="col-lg-4">
+                                <input id="release_date" type="text" class="form-control" placeholder="Select Date" name="date">
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime', 'class' => 'form-control'])}}
                             </div>
                         </div>
@@ -91,35 +82,8 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 @endsection
 
-<script src="/js/jquery-1.9.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script>
-    $( function() {
-        $( "#date" ).datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-    });
-</script>
 
-<script type="text/javascript">
-    // $(document).ready(function() {
-    //     var dayName = [];
-    //     var showTime = [];
-
-    //     $('#day').change(function(e) {
-    //         e.preventDefault();           
-    //         dayName.push($('#day option:selected').text());
-    //         var day = dayName.join(', ');
-    //         $("#dayName").html(day);
-    //     });
-
-    //     $('#showtime').change(function(e) {
-    //         e.preventDefault();            
-    //         showTime.push($('#showtime option:selected').text());
-    //         var show = showTime.join(', ');
-    //         $("#showTime").html(show);
-    //     });
-    // });
-</script>

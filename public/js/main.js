@@ -73,4 +73,44 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('#dateType').change(function() {
+        var date = $(this).val();
+
+        $('#showTimes').find('tr').each(function() {
+            if (date == $(this).data('id')) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('.book-seat-url').click(function(e) {
+          e.preventDefault();
+          var currentUrl = $(this).attr('href');
+          var date = $('#dateType').val();
+          if (date == "") {
+            return false;
+          }  
+
+        var followURL = currentUrl + date;
+        location.href = followURL;
+    });
+
+    $( "#release_date" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 0,
+    });
+
+    $( "#dateType" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 0,
+        maxDate: 3,
+    });
+
+    $( "#dateModal" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 0,
+    });
 });

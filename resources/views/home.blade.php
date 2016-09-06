@@ -40,7 +40,6 @@
     </div>
 </div>
 
-<script src="/js/jquery-1.9.1.min.js"></script>
 <script src="/js/owl.carousel.js"></script>
 <script>
     $(document).ready(function() {
@@ -56,7 +55,6 @@
             itemsDesktop : [1199,3],
             itemsDesktopSmall : [979,3]
         });
-
     });
 </script>
 

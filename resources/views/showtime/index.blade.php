@@ -15,7 +15,7 @@
 
                     <th style="font-size:20px;">Show Time</th>
                         <td>
-                             <input id="date" type="text" class="form-control" placeholder="Select Date" name="date">                        
+                             <input id="dateType" type="text" class="form-control" placeholder="Select Date" name="date">                        
                         </td>
                     </tr>
 
@@ -52,45 +52,6 @@
         </div>
     </div>
 
-    <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#date" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        });
-    </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('.book-seat-url').click(function(e) {
-                  e.preventDefault();
-                  var currentUrl = $(this).attr('href');
-                  var date = $('#date').val();
-                  if (date == "") {
-                    return false;
-                  }  
-
-                var followURL = currentUrl + date;
-                location.href = followURL;
-            });
-
-            $('#date').change(function() {
-                var date = $(this).val();
-
-                console.log(date);
-
-                $('#showTimes').find('tr').each(function() {
-                    if (date == $(this).data('id')) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
-
-        });
-    </script>
 @endsection
