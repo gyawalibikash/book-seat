@@ -13,7 +13,10 @@ class RemoveForiegnKeyDayId extends Migration
     public function up()
     {
         Schema::table('groups', function (Blueprint $table) {
-            //
+            $table->dropForeign(['day_id']);
+        });
+        Schema::table('bookseat1', function (Blueprint $table) {
+            $table->dropForeign(['day_id']);
         });
     }
 
@@ -24,8 +27,6 @@ class RemoveForiegnKeyDayId extends Migration
      */
     public function down()
     {
-        Schema::table('groups', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
