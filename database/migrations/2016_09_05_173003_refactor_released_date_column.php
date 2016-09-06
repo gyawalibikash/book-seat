@@ -13,8 +13,7 @@ class RefactorReleasedDateColumn extends Migration
     public function up()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->date('release_date');
-
+            $table->date('release_date')->change();
         });
     }
 
@@ -26,7 +25,7 @@ class RefactorReleasedDateColumn extends Migration
     public function down()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->dropColumn('release_date');
+            $table->string('release_date')->change();
         });
     }
 }
