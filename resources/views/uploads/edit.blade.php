@@ -111,14 +111,7 @@
     {!! Form::submit('Update', array('class'=>'btn btn-primary pull-right btn-h1-margin'))!!}
     <a href="{{ route('home') }}" class="btn btn-default pull-right btn-h1-margin">Cancel</a>
     {!! Form::close()  !!}
-    <script src="/js/jquery-1.9.1.min.js"></script>
+
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#release_date" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        });
-    </script>
 
 @endsection
