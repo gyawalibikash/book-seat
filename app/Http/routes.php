@@ -29,7 +29,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::controller('/', 'ShowTimeController');
 
-Route::get('/coming_soon/{id}',function(){
-	return view('coming_soon.index');
-})->name('coming_soon');
+//Route::get('/coming_soon/{id}',function(){
+//	return view('coming_soon.index');
+//})->name('coming_soon');
 

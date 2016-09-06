@@ -20,10 +20,7 @@
                 <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
                     <div class="text-danger text-center">{{ $movie->moviename }}</div>
                 </div>
-
-    {{--<div class="item" ><a href="{{ url('/showtime',$movie->id) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>--}}
-    {{--<div class="item" ><a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a></div>--}}
-    @endforeach
+            @endforeach
 </div>
         </div>
         <br><br>
