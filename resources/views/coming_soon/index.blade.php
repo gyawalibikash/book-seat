@@ -10,7 +10,7 @@
                 
             </div>
             <div class="col-md-4 col-md-offset-1">
-                <img src="{!! '/images/coming_soon/'.$nextMovies->poster !!}">
+                <img src="{!! '/images/coming_soon/'.$nextMovies->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
                 <div class="alert alert-success">
                     <p> Cast : {{ $nextMovies->cast }}</p>
                     <p> Director : {{ $nextMovies->director }}</p>
