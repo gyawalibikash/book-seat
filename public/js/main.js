@@ -66,7 +66,7 @@ $(document).ready(function(){
                 path: path
             },
             success: function () {
-               location.reload();
+                location.reload();
             },
             error: function () {
                 bootbox.alert("Error");

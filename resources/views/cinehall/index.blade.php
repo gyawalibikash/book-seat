@@ -70,7 +70,9 @@
                                 <input id="release_date" type="text" class="form-control" placeholder="Select Date" name="date">
                             </div>
                             <div class="col-lg-4">
-                                {{ Form::select('showtime', $showtimes, null, ['placeholder' => 'Select Showtime', 'id' => 'showtime', 'class' => 'form-control'])}}
+                            @foreach($showtimes as $id=>$time)
+                                {{ Form::checkbox('showtime[]', $id)}} {{ $time }}
+                            @endforeach
                             </div>
                         </div>
                     </div>

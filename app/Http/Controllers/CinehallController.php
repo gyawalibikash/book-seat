@@ -37,29 +37,31 @@ class CinehallController extends Controller
         parse_str($_POST['name'], $params);
 
         $date = $params['date'];
-        $showtime_id = $params['showtime'];
+        $showtimes = $params['showtime'];
 
         unset($params['date']);
         unset($params['showtime']);
 
         foreach ($params as $cinehall => $hall_group) {
             foreach ($hall_group as $hall) {
-                $group = new Group();
-                $group->cinehall_id = $cinehall;
-                $group->hall_id = $hall;
-                $group->movie_id = $movie_id;
-                $group->showtime_id = $showtime_id;
-                $group->date = $date;
+                foreach ($showtimes as $show => $time) {      
+                    $group = new Group();
+                    $group->cinehall_id = $cinehall;
+                    $group->hall_id = $hall;
+                    $group->movie_id = $movie_id;
+                    $group->showtime_id = $time;
+                    $group->date = $date;
 
-                $group->save();
+                    $group->save();
 
-                /* Group::create([
-                    'cinehall_id' => ,
-                    'hall_id' => ,
-                    'movie_id' => ,
-                    'showtime_id' => ,
-                    'date' => ,
-                ]); */
+                    /* Group::create([
+                        'cinehall_id' => ,
+                        'hall_id' => ,
+                        'movie_id' => ,
+                        'showtime_id' => ,
+                        'date' => ,
+                    ]); */
+                }
             }
         }
 
