@@ -21,10 +21,10 @@
                     <div class="text-danger text-center">{{ $movie->moviename }}</div>
                 </div>
             @endforeach
-</div>
         </div>
-        <br><br>
-        <div class="row">
+    </div>
+    <br><br>
+    <div class="row">
         <div style="font-size: 30px;">COMING SOON</div>
 
         <div id="owl-demo-coming" class="owl-carousel">
@@ -38,8 +38,8 @@
 </div>
 
 <script src="/js/owl.carousel.js"></script>
-<script>
-    $(document).ready(function() {
+<script type="text/javascript">
+    $(document).ready(function(){
         $("#owl-demo-now").owlCarousel({
             autoPlay: 3000,
             items : 4,

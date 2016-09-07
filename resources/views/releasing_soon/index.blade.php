@@ -1,6 +1,6 @@
 @extends('layouts.app')
+
 @section('content')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <div class="container">
         <h1> Uplaod Movie To Releasing Soon</h1>
         <div class="row">
@@ -108,12 +108,4 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#release_date" ).datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-        });
-    </script>
 @endsection

@@ -109,8 +109,4 @@ $(document).ready(function(){
         maxDate: 3,
     });
 
-    $( "#dateModal" ).datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: 0,
-    });
 });

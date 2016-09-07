@@ -1,6 +1,6 @@
 @extends('layouts.app')
+
 @section('content')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     {!! Form::model($nextMovie, ['method' => 'PUT', 'route' => ['releasingsoon.update', $nextMovie->id]]) !!}
 <div class="row">
     <div class="form-group" {{ $errors->has('moviename') ? ' has-error' : '' }}>
@@ -111,7 +111,5 @@
     {!! Form::submit('Update', array('class'=>'btn btn-primary pull-right btn-h1-margin'))!!}
     <a href="{{ route('home') }}" class="btn btn-default pull-right btn-h1-margin">Cancel</a>
     {!! Form::close()  !!}
-
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 @endsection
