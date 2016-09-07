@@ -62,22 +62,83 @@
             <input type="button" class="seat btn btn-success pull-right" id="book" disabled value="Book" />
         </div>
         <hr>
-            
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
             <table align="centre" class="table" id="check">
                 <tr>
-                    @for($i='A';$i<='G';$i++)
-                        @for($j=1;$j<=10;$j++)
-                            <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+
+                    @if($hall->id ==1)
+                        <?php $k='A';$l='G'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
                         @endfor
-                    @endfor
+
+                        @elseif($hall->id == 2)
+                            <?php $k='A';$l='H'; $m =1; $n=12 ?>
+                            @for($i= $k;$i<=$l;$i++)
+                                @for($j=$m;$j<=$n;$j++)
+                                    <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                                @endfor
+                            @endfor
+
+                    @elseif($hall->id == 3)
+                        <?php $k='A';$l='J'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+
+                    @elseif($hall->id == 4)
+                        <?php $k='A';$l='K'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+
+                    @elseif($hall->id == 5)
+                        <?php $k='A';$l='L'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+
+                    @elseif($hall->id == 6)
+                        <?php $k='A';$l='M'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+
+                    @elseif($hall->id == 7)
+                        <?php $k='A';$l='N'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+
+                    @elseif($hall->id == 8)
+                        <?php $k='A';$l='O'; $m =1; $n=12 ?>
+                        @for($i= $k;$i<=$l;$i++)
+                            @for($j=$m;$j<=$n;$j++)
+                                <td class="checkbox-inline" style="width:60px"><label id="{{ $i }}{{ $j }}-label"><input type="checkbox" name="{{ $i }}{{ $j }}" id="{{ $i }}{{ $j }}" />{{ $i }}{{ $j }}</label></td>
+                            @endfor
+                        @endfor
+                    @else
+                     <p>No hall Selected</p>
+                    @endif
                 </tr>
 
             </table>
         </div>
-        <div class="col-lg-2">
-        </div>
+        <div class="col-lg-1"></div>
     </div>
         {{--{{ Carbon::now() }}--}}
 
