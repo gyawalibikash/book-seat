@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BookSeat;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Cinehall;
@@ -13,9 +14,9 @@ use Validator;
 
 class CinehallController extends Controller
 {
-    public function getShow()
+    public function getShow(Request $request)
     {
-        $movie_id = $_GET['movie'];
+        $movie_id = $request->input('movie');
         $movie = Movies::findOrFail($movie_id);
 
         $cinehalls = Cinehall::with('hall')->get();
@@ -23,6 +24,10 @@ class CinehallController extends Controller
         $showtimes = ShowTime::lists('time','id');
 
         $groups = Group::groupBy('hall_id')->where('movie_id', $movie_id)->get();
+        $bookseat = BookSeat::where([
+            ['movie_id' , $movie_id]
+//            ['cinehall_id',$cinhall_id]
+        ]);
 
         return view('cinehall.index',compact('cinehalls', 'movie', 'showtimes', 'groups'));
     }
@@ -38,7 +43,7 @@ class CinehallController extends Controller
 
         $movie_id = $result['movie'];
 
-        parse_str($_POST['name'], $params);
+        parse_str($request['name'], $params);
 
         $date = $params['date'];
         $showtimes = $params['showtime'];

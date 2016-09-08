@@ -67,8 +67,7 @@
         <div class="col-lg-10">
             <table align="centre" class="table" id="check">
                 <tr>
-
-                    @if($hall->id ==1)
+                    @if($hall->id ==1){{--gopi--}}
                         <?php $k='A';$l='G'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -76,7 +75,7 @@
                             @endfor
                         @endfor
 
-                        @elseif($hall->id == 2)
+                        @elseif($hall->id == 2){{--kishan--}}
                             <?php $k='A';$l='H'; $m =1; $n=12 ?>
                             @for($i= $k;$i<=$l;$i++)
                                 @for($j=$m;$j<=$n;$j++)
@@ -84,7 +83,7 @@
                                 @endfor
                             @endfor
 
-                    @elseif($hall->id == 3)
+                    @elseif($hall->id == 3){{--radha--}}
                         <?php $k='A';$l='J'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -92,7 +91,7 @@
                             @endfor
                         @endfor
 
-                    @elseif($hall->id == 4)
+                    @elseif($hall->id == 4){{--qfx1--}}
                         <?php $k='A';$l='K'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -100,7 +99,7 @@
                             @endfor
                         @endfor
 
-                    @elseif($hall->id == 5)
+                    @elseif($hall->id == 5){{--qfx2--}}
                         <?php $k='A';$l='L'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -108,7 +107,7 @@
                             @endfor
                         @endfor
 
-                    @elseif($hall->id == 6)
+                    @elseif($hall->id == 6){{--qfx3--}}
                         <?php $k='A';$l='M'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -116,7 +115,7 @@
                             @endfor
                         @endfor
 
-                    @elseif($hall->id == 7)
+                    @elseif($hall->id == 7){{--jay--}}
                         <?php $k='A';$l='N'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -124,7 +123,7 @@
                             @endfor
                         @endfor
 
-                    @elseif($hall->id == 8)
+                    @elseif($hall->id == 8){{--nepal--}}
                         <?php $k='A';$l='O'; $m =1; $n=12 ?>
                         @for($i= $k;$i<=$l;$i++)
                             @for($j=$m;$j<=$n;$j++)
@@ -147,6 +146,25 @@
             <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
         @endif
     @endforeach
+    {{--{{ (unserialize($bookseat->seat))}}--}}
+    {{--@if($x)--}}
+        {{--<?php $b = unserialize($bookseat->seat)?>--}}
+        {{--{{ dd($b) }}--}}
+
+        {{--@foreach($b as  $c)--}}
+            {{--{{ $c}}--}}
+        {{--@endforeach--}}
+    {{--@endif--}}
+
+    {{--@endforeach--}}
+
+
+    {{--@if(count($b) <= 20)--}}
+    {{--<h1>Seat available</h1>--}}
+    {{--@elseif(count($b > 20))--}}
+    {{--<h1>House full</h1>--}}
+    {{--@endif--}}
+    {{--@endif--}}
 
     @if (!empty($bookedSeat))
         <?php foreach($bookedSeat as $key => $value) {

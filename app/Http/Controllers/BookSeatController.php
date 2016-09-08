@@ -12,28 +12,48 @@ use App\Cinehall;
 use App\Hall;
 use App\Movies;
 use App\ShowTime;
+use Exception;
 
 class BookSeatController extends Controller
 {
 
-    public function getMovieshow()
+    /**
+     *
+     * @param Request
+     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getMovieshow(Request $request)
     {
+        try{
+            $showtime_id = $request->get('showtime');
+            $hall_id= $request->input('hall');
+            $cinehall_id = $request->cinehall;
+            $movie_id  = $request->movie;
+//        $request->input('showtime');
+//        $request->showtime;
+
+//        $movie_id = $_GET['movie'];
+//        $cinehall_id = $_GET['cinehall'];
+//        $hall_id = $_GET['hall'];
+
+            $cinehall = Cinehall::findOrfail($cinehall_id);
+            $hall = Hall::findOrfail($hall_id);
+            $showtime = ShowTime::findOrFail($showtime_id);
+            $movie = Movies::find($movie_id);
+
+            $bookseats = BookSeat::all();
+
+            return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall'));
+
+
+        }catch (Exception $e){
+            return view('errors.503');
+
+        }
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
 
-        $showtime_id = $_GET['showtime'];
-        $movie_id = $_GET['movie'];
-        $cinehall_id = $_GET['cinehall'];
-        $hall_id = $_GET['hall'];
-
-        $cinehall = Cinehall::findOrfail($cinehall_id);
-        $hall = Hall::findOrfail($hall_id);
-        $showtime = ShowTime::findOrFail($showtime_id);
-        $movie = Movies::find($movie_id);
-
-        $bookseats = BookSeat::all();
-
-        return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall'));
-    }
+           }
 
     /**
      * Store a newly created resource in storage.

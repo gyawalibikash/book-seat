@@ -19,11 +19,11 @@ class ShowTimeController extends Controller
      *
      * @return Response
      */
-    public function getShowtime()
+    public function getShowtime(Request $request)
     {
-        $movie_id = $_GET['movie'];
-        $cinehall_id = $_GET['cinehall'];
-        $hall_id = $_GET['hall'];
+        $movie_id = $request->get('movie');
+        $cinehall_id = $request->input('cinehall');
+        $hall_id = $request->hall;
 
         // $movie = Movies::with(['group' => function($sql) {
         //     $sql->join('days as d', 'groups.day_id', '=', 'd.id')
