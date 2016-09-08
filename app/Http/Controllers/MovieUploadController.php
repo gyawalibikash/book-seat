@@ -28,7 +28,7 @@ class MovieUploadController extends Controller
 
         $name = $logo->getClientOriginalName();
 
-        $success = $logo->move(base_path('public/images/now_showing'), $name);
+        $success = $logo->move(base_path('public/images'), $name);
 
         if($success)
         $movies = new Movies();

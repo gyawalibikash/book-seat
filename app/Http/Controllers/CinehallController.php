@@ -23,13 +23,16 @@ class CinehallController extends Controller
 
         $showtimes = ShowTime::lists('time','id');
 
-        $groups = Group::groupBy('hall_id')->where('movie_id', $movie_id)->get();
-        $bookseat = BookSeat::where([
-            ['movie_id' , $movie_id]
-//            ['cinehall_id',$cinhall_id]
-        ]);
 
-        return view('cinehall.index',compact('cinehalls', 'movie', 'showtimes', 'groups'));
+
+        $current_date = date("Y-m-d");
+
+        $groups = Group::where([
+                        ['movie_id', $movie_id],
+                        ['date', '>=', $current_date],
+                    ])->get();                        
+
+        return view('cinehall.index', compact('cinehalls', 'movie', 'showtimes', 'groups'));
     }
 
     public function postStore(Request $request)

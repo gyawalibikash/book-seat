@@ -49,7 +49,7 @@ class ShowTimeController extends Controller
 
     public function getNew($id)
     {
-        $nextMovies = NextMovies::findOrFail($id);
-        return view('coming_soon.index', compact('nextMovies'));
+        $movie = Movies::findOrFail($id);
+        return view('coming_soon.index', compact('movie'));
     }
 }
