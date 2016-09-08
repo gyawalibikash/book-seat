@@ -14,6 +14,10 @@ use Validator;
 
 class CinehallController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getShow(Request $request)
     {
         $movie_id = $request->input('movie');

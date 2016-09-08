@@ -26,17 +26,11 @@ class BookSeatController extends Controller
     public function getMovieshow(Request $request)
     {
         try{
+            //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
             $showtime_id = $request->get('showtime');
             $hall_id= $request->input('hall');
             $cinehall_id = $request->cinehall;
             $movie_id  = $request->movie;
-//        $request->input('showtime');
-//        $request->showtime;
-
-//        $movie_id = $_GET['movie'];
-//        $cinehall_id = $_GET['cinehall'];
-//        $hall_id = $_GET['hall'];
-
             $cinehall = Cinehall::findOrfail($cinehall_id);
             $hall = Hall::findOrfail($hall_id);
             $showtime = ShowTime::findOrFail($showtime_id);
@@ -51,9 +45,7 @@ class BookSeatController extends Controller
             return view('errors.503');
 
         }
-        //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
-
-           }
+    }
 
     /**
      * Store a newly created resource in storage.
