@@ -11,15 +11,19 @@
 <link href="/css/owl.carousel.css" rel="stylesheet">
 <link href="/css/owl.theme.css" rel="stylesheet">
 
+<?php $currentDate = date("Y-m-d"); ?>
+
 <div class="container">
     <div class="row">
         <div style="font-size: 30px;">NOW SHOWING</div>
 
         <div id="owl-demo-now" class="owl-carousel">
             @foreach($movies as $movie)
-                <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
-                    <div class="text-danger text-center">{{ $movie->moviename }}</div>
-                </div>
+                @if($movie->release_date <= $currentDate)
+                    <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                        <div class="text-danger text-center">{{ $movie->moviename }}</div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>
@@ -28,10 +32,12 @@
         <div style="font-size: 30px;">COMING SOON</div>
 
         <div id="owl-demo-coming" class="owl-carousel">
-           @foreach($nextMovies as $nextMovie)
-                <div class="item" ><a href="{{ url('/new',$nextMovie->id) }}"><img src="{!! '/images/coming_soon/'.$nextMovie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
-                    <div class="text-danger text-center">{{ $nextMovie->moviename }}</div>
-                </div>
+           @foreach($movies as $movie)
+                @if($movie->release_date > $currentDate)
+                    <div class="item" ><a href="{{ url('/new',$movie->id) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                        <div class="text-danger text-center">{{ $movie->moviename }}</div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>

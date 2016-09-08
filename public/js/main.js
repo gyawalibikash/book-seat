@@ -106,7 +106,7 @@ $(document).ready(function(){
     $( "#dateType" ).datepicker({
         dateFormat: "yy-mm-dd",
         minDate: 0,
-        maxDate: 3,
+        maxDate: 2,
     });
 
 });

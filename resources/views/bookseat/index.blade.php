@@ -44,7 +44,7 @@
                 <h2>{{ $hall->name }}</h2>
             </div>
                 <div class="col-lg-4">
-                    <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
+                    <div class="text-center"><img src="/images/{{$movie->poster }}" ></div>
                 </div>
                 <div class="col-md-4 alert alert-success">
                     <strong>Show Time :</strong> {{ $showtime->time }}<hr>
@@ -54,7 +54,7 @@
                     <strong> Run Time :</strong> {{ $movie->run_time }}
                 </div>
                 <div class="col-lg-4">
-                    <div class="text-center"><img src="/images/now_showing/{{$movie->poster }}" ></div>
+                    <div class="text-center"><img src="/images/{{$movie->poster }}" ></div>
                 </div>
             </div>
         <hr>

@@ -35,7 +35,7 @@
             </div>
             
             <div class="col-md-4 col-md-offset-1">
-              <img src="{!! '/images/now_showing/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
+              <img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
 
                 <div class="alert alert-success">
                     <p> Cast : {{ $movie->cast }}</p>
