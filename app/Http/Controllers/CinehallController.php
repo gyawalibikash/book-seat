@@ -9,6 +9,7 @@ use App\Group;
 use App\Hall;
 use App\Movies;
 use App\ShowTime;
+use Validator;
 
 class CinehallController extends Controller
 {
@@ -28,6 +29,9 @@ class CinehallController extends Controller
 
     public function postStore(Request $request)
     {
+//        $this->validate($request, [
+//            'date' => 'required',
+//        ]);
         $query_string = $request['path'];
         $string = ltrim($query_string, '?');
         parse_str($string, $result);

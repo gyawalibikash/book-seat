@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            <strong> Success:</strong> {!! Session::get('success') !!}
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-default">
@@ -16,6 +22,7 @@
                     <a href="{{ url('/') }}" class="btn btn-info">Back</a>
                 </div>
             </div>
+            <a href="{{ action('SettingController@getIndex') }}" class="btn btn-primary">Change Password</a>
         </div>
     </div>
 @endsection
