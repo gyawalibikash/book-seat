@@ -11,16 +11,16 @@
 |
 */
 
-
 Route::auth();
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('profile','ProfileController');
+    Route::controller('bookseat','BookSeatController');
+    Route::controller('setting', 'SettingController');
+});
 Route::get('/', 'HomeController@index')->name('home');
-
-Route::resource('profile','ProfileController');
-
 Route::controller('showing','CinehallController');
 
-Route::controller('bookseat','BookSeatController');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('upload', 'MovieUploadController');

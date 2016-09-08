@@ -15,21 +15,7 @@ use App\ShowTime;
 
 class BookSeatController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function getMovieshow()
     {
         //Event::fire(new TruncateBookSeatEvent(new BookSeat()));
