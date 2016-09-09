@@ -22,22 +22,22 @@ class SettingController extends Controller
     {
             $this->validate($request, [
                 'old_password' => 'required',
-                'password' => 'required|alphaNum|between:6,16|confirmed'
+                'password' => 'required|between:6,30|confirmed'
             ]);
 
         $user = Auth::user();
         $current_password = $request['old_password'];
         $password = bcrypt($request['password']);
-        $user_count = User::where('id','=',$user->id)->count();
 
-//        $user_count = DB::table('users')->where('id','=',$this->user_id)->count();
-
-        if (Hash::check($current_password, $user->password) && $user_count == 1) {
+        if(Hash::check($current_password,$user->password))
+        {
             $user->password = $password;
             $user->save();
-
+            return redirect('/profile/'.$user->id)->with('success', 'password changed successful');
+        }else{
+            return redirect()->back()->with('failure', 'The password doesnot match  !!!');
         }
 
-        return redirect('/profile/'.$user->id)->with('success', 'password changed successful');
+
     }
 }

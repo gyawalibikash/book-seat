@@ -5,15 +5,14 @@
       <div class="row">
           <div class="col-lg-6">
               {!! Form::open(['url' => 'setting/passwordchange', 'class' => 'form-horizontal' ,'method'=>'post']) !!}
-                  <div class="form-group {{ $errors->has('old_password') ? ' has-error' : '' }} ">
+                  <div class="form-group ">
                       <label for="old_password" class="col-md-4 control-label">Enter Your Old Password :</label>
                       <div class="col-md-6">
                           {!! Form::password('old_password',['class'=>'form-control']) !!}
-
-                          @if ($errors->has('old_password'))
-                              <span class="help-block">
-                                <strong>{{ $errors->first('old_password') }}</strong>
-                              </span>
+                          @if(Session::has('failure'))
+                              <div class="alert alert-danger" role="alert">
+                                  <li>{!! Session::get('failure') !!}</li>
+                              </div>
                           @endif
                       </div>
                   </div>
