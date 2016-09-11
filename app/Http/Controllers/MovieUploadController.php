@@ -14,6 +14,9 @@ use App\NextMovies;
 
 use Illuminate\Support\Facades\Session;
 
+use Input;
+use Image;
+
 class MovieUploadController extends Controller
 {
 
@@ -22,22 +25,31 @@ class MovieUploadController extends Controller
         return view('uploads.upload');
     }
 
-    public function store(ImageRequest $request)
+    public function store(Request $request)
     {
-        $logo = $request->file('poster');
+        $base64_image = $request->imageData;
+        $image_string = explode(',', $base64_image);
+        $image = base64_decode($image_string[1]);
 
-        $name = $logo->getClientOriginalName();
+        parse_str($request->formData, $params);
+        $movieName = $params['moviename'];
+        $name = strtolower(str_replace(" ", "_", $movieName)).'.jpeg';
 
-        $success = $logo->move(base_path('public/images'), $name);
+        // $logo = $request->file('poster');      
+        // $name = $logo->getClientOriginalName();
+
+        $img = Image::make($image);  
+        $path = public_path().'/images/';
+        $success = $img->save($path.$name);        
 
         if($success)
         $movies = new Movies();
-        $movies->moviename = $request->Input('moviename');
-        $movies->description = $request->Input('description');
-        $movies->release_date = $request->Input('release_date');
-        $movies->run_time = $request->Input('run_time');
-        $movies->cast = $request->Input('cast');
-        $movies->director = $request->Input('director');
+        $movies->moviename = $params['moviename'];
+        $movies->description = $params['description'];
+        $movies->release_date = $params['release_date'];
+        $movies->run_time = $params['run_time'];
+        $movies->cast = $params['cast'];
+        $movies->director = $params['director'];
 
         $movies->poster = $name;
 
@@ -45,7 +57,7 @@ class MovieUploadController extends Controller
 
         $movies->save();
 
-        return redirect('/');
+        return;
     }
     
     public function destroy($id)

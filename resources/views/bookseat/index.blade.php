@@ -5,7 +5,6 @@
             <strong> Success:</strong> {!! Session::get('success') !!}
         </div>
     @endif
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
         <div class="row table-bordered glyphicon-modal-window">
             <!-- Modal -->

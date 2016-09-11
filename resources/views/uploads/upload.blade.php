@@ -9,7 +9,7 @@
                     <div class="panel-heading">Upload Movies</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'upload.store', 'class' => 'form-horizontal' ,'method'=>'post', 'enctype'=>'multipart/form-data','files'=>'true']) !!}
+                        {!! Form::open(['id'=>'uploadForm', 'class' => 'form-horizontal', 'method'=>'post', 'enctype'=>'multipart/form-data', 'files'=>'true']) !!}
 
                         <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">
                             <label for="moviename" class="col-md-4 control-label">Movie To Release :</label>
@@ -26,7 +26,7 @@
                         <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }} ">
                             <label for="description" class="col-md-4 control-label">Description :</label>
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">
+                                <textarea id="description" class="form-control" name="description" value="{{ old('description') }}"></textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -86,19 +86,21 @@
 
                         <div class="form-group" {{ $errors->has('image') ? ' has-error' : '' }}>
                             <label for="poster" class="col-md-4 control-label">Movie Poster :</label>
-                            <div class="col-md-6">
-                                <input id="poster" type="file" name="poster" value="{{ old('poster') }}">
+                            <div class="col-md-6 image-editor">
+                                <input id="poster" type="file" name="poster" value="{{ old('poster') }}" class="cropit-image-input">
 
                                 @if ($errors->has('image'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('poster') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                <div class="cropit-preview"></div>
+                                <div class="image-size-label">
+                                    Resize image
+                                </div>
+                                <input type="range" class="cropit-image-zoom-input">
+                                <br />
+                                {!! Form::submit('Save', ['class' => 'btn btn-primary export']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}
@@ -109,5 +111,37 @@
             </div>
         </div>
     </div>
+
+    <script src="/js/jquery.cropit.js"></script>
+    <script>
+        $(function() {
+            $('.image-editor').cropit({
+                imageState: {
+                    src: 'http://lorempixel.com/500/400/',
+                },
+            });
+
+            $('#uploadForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+
+                var imageData = $('.image-editor').cropit('export', {
+                    type: 'image/jpeg',
+                });
+
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: { formData, imageData },
+                    success: function () {
+                        location.href = "/";     
+                    },
+                    error: function () {
+                        bootbox.alert("Error");
+                    }
+                });       
+            });
+        });
+    </script>
 
 @endsection

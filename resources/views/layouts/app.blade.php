@@ -8,7 +8,6 @@
 
     <title>Book Seat</title>
 
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
@@ -16,6 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <script src="/js/jquery-1.9.1.min.js"></script>
@@ -55,9 +55,6 @@
                     <!-- <a href="{{ url('/releasingsoon') }}" class="navbar-brand"> <i class="fa fa-file-video-o" title="Coming Soon"></i></a> -->
                 @endif
             </div>
-
-
-
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
