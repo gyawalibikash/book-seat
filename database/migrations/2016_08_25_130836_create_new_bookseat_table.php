@@ -16,11 +16,13 @@ class CreateNewBookseatTable extends Migration
             $table->integer('showtime_id')->unsigned();
             $table->foreign('showtime_id')
                 ->references('id')
-                ->on('showtime');
+                ->on('showtime')
+                ->onDelete('cascade');
             $table->integer('movie_id')->unsigned();
             $table->foreign('movie_id')
                 ->references('id')
-                ->on('movies');
+                ->on('movies')
+                ->onDelete('cascade');
         });
     }
 
