@@ -5,6 +5,7 @@
             <strong> Success:</strong> {!! Session::get('success') !!}
         </div>
     @endif
+
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <div class="container">
         <div class="row table-bordered glyphicon-modal-window">
@@ -57,6 +58,27 @@
                     <div class="text-center"><img src="/images/{{$movie->poster }}" ></div>
                 </div>
             </div>
+
+                @foreach($bookseats as $bookseat)
+                    @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+                        <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
+                    @endif
+                @endforeach
+                @if (!empty($bookedSeat))
+                    <?php foreach($bookedSeat as $key => $value) {
+                        foreach($value as $y) {
+                            $bookedSeatId[] = $y;
+                        }
+                    }
+                    if(count($bookedSeatId)<= 20){
+                       ?> <h5 class="text-success"> Seat Available</h5><?php
+                    }
+                        elseif(count($bookedSeatId)<=40){
+                        ?> <h5 class="text-danger"> Filling fast</h5><?php
+                        }
+                    ?>
+                @endif
+
         <hr>
         <div class="col-lg-12">
             <input type="button" class="seat btn btn-success pull-right" id="book" disabled value="Book" />
@@ -141,40 +163,6 @@
     </div>
         {{--{{ Carbon::now() }}--}}
 
-    @foreach($bookseats as $bookseat)
-        @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
-            <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
-        @endif
-    @endforeach
-    {{--{{ (unserialize($bookseat->seat))}}--}}
-    {{--@if($x)--}}
-        {{--<?php $b = unserialize($bookseat->seat)?>--}}
-        {{--{{ dd($b) }}--}}
-
-        {{--@foreach($b as  $c)--}}
-            {{--{{ $c}}--}}
-        {{--@endforeach--}}
-    {{--@endif--}}
-
-    {{--@endforeach--}}
-
-
-    {{--@if(count($b) <= 20)--}}
-    {{--<h1>Seat available</h1>--}}
-    {{--@elseif(count($b > 20))--}}
-    {{--<h1>House full</h1>--}}
-    {{--@endif--}}
-    {{--@endif--}}
-
-    @if (!empty($bookedSeat))
-        <?php foreach($bookedSeat as $key => $value) {
-            foreach($value as $y) {
-                $bookedSeatId[] = $y;
-            }
-        }
-        ?>
-    @endif
-
     <script type="text/javascript">
 
         @if (!empty($bookedSeatId))
@@ -194,6 +182,7 @@
             printElement(document.getElementById("printThis"));
             window.print();
             $("#successModal").modal('hide');
+            location.reload();
         }
 
         function printElement(elem, append, delimiter) {

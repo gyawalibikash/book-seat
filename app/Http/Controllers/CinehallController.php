@@ -20,23 +20,34 @@ class CinehallController extends Controller
      */
     public function getShow(Request $request)
     {
+        $bookseats = BookSeat::all();
+
         $movie_id = $request->input('movie');
         $movie = Movies::findOrFail($movie_id);
 
+//        //Determining the total seat that is already reserved
+//        $bookedSeat=[];
+//        foreach($bookseats as $booked){
+//            if($booked->movie_id==$movie_id){
+//                $bookedSeat[]=$booked;
+//            }
+//        }
+//        $newSeat=[];
+//        foreach($bookedSeat as $seat){
+//            $newSeat=array_merge($newSeat,unserialize($seat->seat));
+//        }
+
         $cinehalls = Cinehall::with('hall')->get();
 
-        $showtimes = ShowTime::lists('time','id');
-
-
-
+        $showtimes = ShowTime::all();
         $current_date = date("Y-m-d");
 
         $groups = Group::where([
                         ['movie_id', $movie_id],
                         ['date', '>=', $current_date],
-                    ])->get();                        
+                    ])->get();
 
-        return view('cinehall.index', compact('cinehalls', 'movie', 'showtimes', 'groups'));
+        return view('cinehall.index', compact('cinehalls', 'movie', 'showtimes', 'groups','bookseats','totalBookedSeat'));
     }
 
     public function postStore(Request $request)

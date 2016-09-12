@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -17,6 +16,7 @@
                 <div class="alert alert-info"> 
                     <p>Description : {{ $movie->description }}</p>
                 </div>
+
            
                 @if( Auth::check() && Auth::user()->isAdmin() )
                     <button class="cinehall">Released Cinehall</button>
@@ -35,9 +35,9 @@
                                     <ul class="list">
                                         <li>
                                         <?php $hallName[] = $hall->name; ?>
-                                            <!-- <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}"> -->
+                                            <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">
                                                 {{ $hall->name }}
-                                            <!-- </a> -->
+                                            </a>
                                         </li>
                                     </ul>
                                 @endif
@@ -55,16 +55,43 @@
                         </td>
                     </tr>
 
-                    <tbody id="showTimes">   
-                    @foreach($cinehalls as $cinehall)  
-                        @foreach($cinehall->hall as $hall)                  
-                            @foreach($showtimes as $show=>$time)  
+                    <tbody id="showTimes">
+
+                    @foreach($cinehalls as $cinehall)
+                        @foreach($cinehall->hall as $hall)
+                            @foreach($showtimes as $showtime)
                                 @foreach($groups as $group)
-                                    @if ($group->hall_id == $hall->id && $show == $group->showtime_id)
+                                    @if ($group->hall_id == $hall->id && $showtime->id == $group->showtime_id)
                                         <tr style="display:none;" data-id={{ $group->date }}>
                                             <td style="font-size:30px;">{{ $hall->name }}</td>
                                             <td>
-                                                <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$show, 'date'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i>{{ $time }}</a>
+                                                <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'date'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i>{{ $showtime->time }}</a>
+
+                                                <?php $count = 0 ?>
+                                                @foreach($bookseats as $bookseat)
+                                                    @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+                                                        <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
+                                                        @if (!empty($bookedSeat))
+                                                        <?php
+                                                            foreach($bookedSeat as $key => $value) {
+                                                                $bookedSeatId= [];
+                                                                foreach($value as $y) {
+                                                                    $bookedSeatId[] = $y;
+                                                                }
+                                                            }
+                                                                $count+=count($bookedSeatId);
+                                                        ?>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                                <?php
+                                                    if($count <= 20){
+                                                        ?><h5 class="text-success">Seat Available</h5><?php
+                                                    }
+                                                    else{
+                                                            ?><h5 class="text-danger">Filling Fast</h5><?php
+                                                    }
+                                                ?>
                                             </td>
                                         </tr>
                                     @endif
@@ -74,7 +101,7 @@
                     @endforeach
                     </tbody>
                 </table>
-         
+
             </div>
         </div>
     </div>
@@ -107,8 +134,8 @@
                                 <input id="release_date" type="text" class="form-control" placeholder="Select Date" name="date">
                             </div>
                             <div class="col-lg-4">
-                            @foreach($showtimes as $id=>$time)
-                                {{ Form::checkbox('showtime[]', $id)}} {{ $time }}
+                            @foreach($showtimes as $showtime)
+                                {{ Form::checkbox('showtime[]', $showtime->id)}} {{ $showtime->time }}
                             @endforeach
                             </div>
                         </div>
