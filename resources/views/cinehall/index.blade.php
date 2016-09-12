@@ -28,7 +28,7 @@
             </div>
              <div class="col-lg-2">
                 @foreach($cinehalls as $cinehall)
-                    {{ $cinehall->name }}
+                    {{ $cinehall->name }}<br>
                         @foreach($cinehall->hall as $hall)
                             @foreach ($groups as $group)
                                 @if ($group->hall_id == $hall->id)
@@ -133,11 +133,11 @@
                             <div class="col-lg-4">
                                 <input id="release_date" type="text" class="form-control" placeholder="Select Date" name="date">
                             </div>
+
                             <div class="col-lg-4">
                             @foreach($showtimes as $showtime)
                                 {{ Form::checkbox('showtime[]', $showtime->id)}} {{ $showtime->time }}
                             @endforeach
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

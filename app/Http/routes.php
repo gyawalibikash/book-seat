@@ -24,7 +24,6 @@ Route::controller('showing','CinehallController');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('upload', 'MovieUploadController');
-    Route::resource('releasingsoon', 'ReleasingSoonController');
 });
 
 Route::controller('/', 'ShowTimeController');

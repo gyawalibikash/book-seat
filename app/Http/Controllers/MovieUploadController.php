@@ -14,6 +14,9 @@ use App\NextMovies;
 
 use Illuminate\Support\Facades\Session;
 
+use Input;
+use Image;
+
 class MovieUploadController extends Controller
 {
 
@@ -24,28 +27,42 @@ class MovieUploadController extends Controller
 
     public function store(ImageRequest $request)
     {
-        $logo = $request->file('poster');
+        try {
+            $base64_image = $request->image;
+            $image_string = explode(',', $base64_image);
+            $image = base64_decode($image_string[1]);
 
-        $name = $logo->getClientOriginalName();
+            $movieName = $request->moviename;
+            $name = strtolower(str_replace(" ", "_", $movieName)).'.jpeg';
 
-        $success = $logo->move(base_path('public/images'), $name);
+            // $logo = $request->file('poster');      
+            // $name = $logo->getClientOriginalName();
 
-        if($success)
-        $movies = new Movies();
-        $movies->moviename = $request->Input('moviename');
-        $movies->description = $request->Input('description');
-        $movies->release_date = $request->Input('release_date');
-        $movies->run_time = $request->Input('run_time');
-        $movies->cast = $request->Input('cast');
-        $movies->director = $request->Input('director');
+            $img = Image::make($image);  
+            $path = public_path().'/images/';
+            $success = $img->save($path.$name);        
 
-        $movies->poster = $name;
+            if($success)
+            $movies = new Movies();
+            $movies->moviename = $movieName;
+            $movies->description = $request->description;
+            $movies->release_date = $request->release_date;
+            $movies->run_time = $request->run_time;
+            $movies->cast = $request->cast;
+            $movies->director = $request->director;
 
-        Session::flash('success','Data entry successfull');
+            $movies->poster = $name;
 
-        $movies->save();
+            Session::flash('success','Data entry successfull');
 
-        return redirect('/');
+            $movies->save();
+
+            return;
+
+        } catch (Exception $e) {
+            return view('errors.503');
+        } 
+        
     }
     
     public function destroy($id)
