@@ -25,39 +25,44 @@ class MovieUploadController extends Controller
         return view('uploads.upload');
     }
 
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        $base64_image = $request->imageData;
-        $image_string = explode(',', $base64_image);
-        $image = base64_decode($image_string[1]);
+        try {
+            $base64_image = $request->image;
+            $image_string = explode(',', $base64_image);
+            $image = base64_decode($image_string[1]);
 
-        parse_str($request->formData, $params);
-        $movieName = $params['moviename'];
-        $name = strtolower(str_replace(" ", "_", $movieName)).'.jpeg';
+            $movieName = $request->moviename;
+            $name = strtolower(str_replace(" ", "_", $movieName)).'.jpeg';
 
-        // $logo = $request->file('poster');      
-        // $name = $logo->getClientOriginalName();
+            // $logo = $request->file('poster');      
+            // $name = $logo->getClientOriginalName();
 
-        $img = Image::make($image);  
-        $path = public_path().'/images/';
-        $success = $img->save($path.$name);        
+            $img = Image::make($image);  
+            $path = public_path().'/images/';
+            $success = $img->save($path.$name);        
 
-        if($success)
-        $movies = new Movies();
-        $movies->moviename = $params['moviename'];
-        $movies->description = $params['description'];
-        $movies->release_date = $params['release_date'];
-        $movies->run_time = $params['run_time'];
-        $movies->cast = $params['cast'];
-        $movies->director = $params['director'];
+            if($success)
+            $movies = new Movies();
+            $movies->moviename = $movieName;
+            $movies->description = $request->description;
+            $movies->release_date = $request->release_date;
+            $movies->run_time = $request->run_time;
+            $movies->cast = $request->cast;
+            $movies->director = $request->director;
 
-        $movies->poster = $name;
+            $movies->poster = $name;
 
-        Session::flash('success','Data entry successfull');
+            Session::flash('success','Data entry successfull');
 
-        $movies->save();
+            $movies->save();
 
-        return;
+            return;
+
+        } catch (Exception $e) {
+            return view('errors.503');
+        } 
+        
     }
     
     public function destroy($id)

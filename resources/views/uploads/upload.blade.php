@@ -11,7 +11,17 @@
                     <div class="panel-body">
                         {!! Form::open(['id'=>'uploadForm', 'class' => 'form-horizontal', 'method'=>'post', 'enctype'=>'multipart/form-data', 'files'=>'true']) !!}
 
-                        <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                            <div class="alert alert-danger show-div" style="display:none">
+                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&chi;</button>
+                                <ul class="list list-group">
+                                    <p id="errors"></p>
+                                </ul>
+                            </div>
+                        </div>        
+
+                        <div class="form-group {{ $errors->has('moviename') ? ' has-error' : '' }} ">                        
                             <label for="moviename" class="col-md-4 control-label">Movie To Release :</label>
                             <div class="col-md-6">
                                 <input id="moviename" type="text" class="form-control" name="moviename" value="{{ old('moviename') }}">
@@ -94,12 +104,16 @@
                                         <strong>{{ $errors->first('poster') }}</strong>
                                     </span>
                                 @endif
-                                <div class="cropit-preview"></div>
-                                <div class="image-size-label">
-                                    Resize image
+                                <div id="show-image" style="display:none";>
+                                    <div class="cropit-preview"></div>
+                                    <div class="image-size-label">
+                                        Resize image
+                                    </div>
+                                    <input type="range" class="cropit-image-zoom-input">
                                 </div>
-                                <input type="range" class="cropit-image-zoom-input">
                                 <br />
+                                <p id="error"></p>
+                                <input type="hidden" id="image" name="image" value="" />
                                 {!! Form::submit('Save', ['class' => 'btn btn-primary export']) !!}
                             </div>
                         </div>
@@ -121,24 +135,37 @@
                 },
             });
 
+            $('input[type="file"]').change(function () {
+                $("#show-image").show();
+            });
+
             $('#uploadForm').submit(function(event) {
                 event.preventDefault();
-                var formData = $(this).serialize();
-
                 var imageData = $('.image-editor').cropit('export', {
                     type: 'image/jpeg',
                 });
+                $("#image").val(imageData);
 
+                var formData = $(this).serialize();
                 $.ajax({
                     url: '/upload',
                     type: 'POST',
-                    data: { formData, imageData },
+                    data: formData,
                     success: function () {
-                        location.href = "/";     
+                        location.href = '/';
                     },
-                    error: function () {
-                        bootbox.alert("Error");
-                    }
+                    error: function(xhr, status, error) {
+                        var data = xhr.responseText;
+                        var jsonResponse = JSON.parse(data);
+
+                        var msg = [];
+                        $.each(jsonResponse, function(index, value) {
+                            msg.push('<li>' + value + '</li>');
+                        });
+
+                        $(".show-div").show();       
+                        $("#errors").html(msg);              
+                    },
                 });       
             });
         });
