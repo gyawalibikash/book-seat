@@ -138,6 +138,7 @@
                             @foreach($showtimes as $showtime)
                                 {{ Form::checkbox('showtime[]', $showtime->id)}} {{ $showtime->time }}
                             @endforeach
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
