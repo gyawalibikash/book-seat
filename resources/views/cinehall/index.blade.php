@@ -26,46 +26,27 @@
                     {!! Form::close() !!}
                 @endif
             </div>
-             <div class="col-lg-2">
-                @foreach($cinehalls as $cinehall)
-                    {{ $cinehall->name }}<br>
-                        @foreach($cinehall->hall as $hall)
-                            @foreach ($groups as $group)
-                                @if ($group->hall_id == $hall->id)
-                                    <ul class="list">
-                                        <li>
-                                        <?php $hallName[] = $hall->name; ?>
-                                            <a href="{{ action('ShowTimeController@getShowtime', '?'.http_build_query(['movie' => $movie->id, 'cinehall' => $cinehall->id, 'hall' => $hall->id])) }}">
-                                                {{ $hall->name }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                @endif
-                            @endforeach
-                        @endforeach
-                    @endforeach
-            </div>
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <table class="table" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)">
                     <tr>
 
                     <th style="font-size:20px;">Show Time</th>
                         <td>
-                             <input id="dateType" type="text" class="form-control" placeholder="Select Date" name="date">                        
+                             <input id="dateType" type="text" class="form-control" placeholder="Select Date" name="date">
                         </td>
                     </tr>
 
                     <tbody id="showTimes">
-
                     @foreach($cinehalls as $cinehall)
                         @foreach($cinehall->hall as $hall)
-                            @foreach($showtimes as $showtime)
                                 @foreach($groups as $group)
-                                    @if ($group->hall_id == $hall->id && $showtime->id == $group->showtime_id)
+                            @foreach($showtimes as $showtime)
+                                    @if ($group->hall_id == $hall->id)
                                         <tr style="display:none;" data-id={{ $group->date }}>
-                                            <td style="font-size:30px;">{{ $hall->name }}</td>
+                                            <td>{{ $cinehall->name }}<h3>{{ $hall->name }}</h3></td>
                                             <td>
-                                                <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'date'=>''])) }}" class="book-seat-url btn btn-success btn-lg"><i class="glyphicon glyphicon-facetime-video" ></i>{{ $showtime->time }}</a>
+                                                <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'date'=>''])) }}" class="book-seat-url btn btn-success">
+                                                    <i class="glyphicon glyphicon-facetime-video" ></i>{{ $showtime->time }}</a>
 
                                                 <?php $count = 0 ?>
                                                 @foreach($bookseats as $bookseat)
@@ -89,7 +70,7 @@
                                                         ?><h5 class="text-success">Seat Available</h5><?php
                                                     }
                                                     else{
-                                                            ?><h5 class="text-danger">Filling Fast</h5><?php
+                                                        ?><h5 class="text-danger">Filling Fast</h5><?php
                                                     }
                                                 ?>
                                             </td>

@@ -47,7 +47,7 @@ class CinehallController extends Controller
                         ['date', '>=', $current_date],
                     ])->get();
 
-        return view('cinehall.index', compact('cinehalls', 'movie', 'showtimes', 'groups','bookseats','totalBookedSeat'));
+        return view('cinehall.index', compact('cinehalls', 'movie', 'showtimes', 'groups','bookseats'));
     }
 
     public function postStore(Request $request)
