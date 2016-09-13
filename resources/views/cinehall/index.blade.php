@@ -32,16 +32,16 @@
 
                     <th style="font-size:20px;">Show Time</th>
                         <td>
-                             <input id="dateType" type="text" class="form-control" placeholder="Select Date" name="date">
+                             <input id="dateType" type="text" class="form-control" value="{{ date('Y-m-d') }}" name="date">
                         </td>
                     </tr>
 
                     <tbody id="showTimes">
                     @foreach($cinehalls as $cinehall)
                         @foreach($cinehall->hall as $hall)
-                                @foreach($groups as $group)
                             @foreach($showtimes as $showtime)
-                                    @if ($group->hall_id == $hall->id)
+                                @foreach($groups as $group)
+                                    @if ($group->hall_id == $hall->id && $group->showtime_id == $showtime->id)
                                         <tr style="display:none;" data-id={{ $group->date }}>
                                             <td>{{ $cinehall->name }}<h3>{{ $hall->name }}</h3></td>
                                             <td>
@@ -49,22 +49,22 @@
                                                     <i class="glyphicon glyphicon-facetime-video" ></i>{{ $showtime->time }}</a>
 
                                                 <?php $count = 0 ?>
-                                                @foreach($bookseats as $bookseat)
-                                                    @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
-                                                        <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
-                                                        @if (!empty($bookedSeat))
-                                                        <?php
-                                                            foreach($bookedSeat as $key => $value) {
-                                                                $bookedSeatId= [];
-                                                                foreach($value as $y) {
-                                                                    $bookedSeatId[] = $y;
+                                                    @foreach($bookseats as $bookseat)
+                                                        @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+                                                            <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
+                                                            @if (!empty($bookedSeat))
+                                                            <?php
+                                                                foreach($bookedSeat as $key => $value) {
+                                                                    $bookedSeatId= [];
+                                                                    foreach($value as $y) {
+                                                                        $bookedSeatId[] = $y;
+                                                                    }
                                                                 }
-                                                            }
-                                                                $count+=count($bookedSeatId);
-                                                        ?>
+                                                                    $count+=count($bookedSeatId);
+                                                            ?>
+                                                            @endif
                                                         @endif
-                                                    @endif
-                                                @endforeach
+                                                    @endforeach
                                                 <?php
                                                     if($count <= 20){
                                                         ?><h5 class="text-success">Seat Available</h5><?php
