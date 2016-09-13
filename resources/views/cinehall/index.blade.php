@@ -43,7 +43,7 @@
                                 @foreach($groups as $group)
                                     @if ($group->hall_id == $hall->id && $group->showtime_id == $showtime->id)
                                         <tr style="display:none;" data-id={{ $group->date }}>
-                                            <td>{{ $cinehall->name }}<h3>{{ $hall->name }}</h3></td>
+                                            <td><h4>{{ $cinehall->name }}</h4><h5>{{ $hall->name }}</h5></td>
                                             <td>
                                                 <a href="{{ action('BookSeatController@getMovieshow','?'.http_build_query(['movie'=>$movie->id, 'cinehall'=>$cinehall->id, 'hall'=>$hall->id, 'showtime'=>$showtime->id, 'date'=>''])) }}" class="book-seat-url btn btn-success">
                                                     <i class="glyphicon glyphicon-facetime-video" ></i>{{ $showtime->time }}</a>
