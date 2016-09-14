@@ -35,10 +35,13 @@ class BookSeatController extends Controller
             $hall = Hall::findOrfail($hall_id);
             $showtime = ShowTime::findOrFail($showtime_id);
             $movie = Movies::find($movie_id);
+            $date = $request->get('date');
+
+            //return $date;
 
             $bookseats = BookSeat::all();
 
-            return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall'));
+            return view('bookseat.index', compact('bookseats', 'showtime', 'movie', 'cinehall', 'hall', 'date'));
 
 
         }catch (Exception $e){

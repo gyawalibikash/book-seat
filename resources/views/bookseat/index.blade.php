@@ -53,12 +53,12 @@
                     <strong> Run Time :</strong> {{ $movie->run_time }}
                 </div>
                 <div class="col-lg-4">
-                    <div class="text-center"><img src="/images/{{$movie->poster }}" ></div>
+                    <div class="text-center"><img src="/images/{{ $movie->poster }}" ></div>
                 </div>
             </div>
 
                 @foreach($bookseats as $bookseat)
-                    @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id)
+                    @if ($bookseat->showtime_id == $showtime->id && $bookseat->movie_id == $movie->id && $bookseat->hall_id == $hall->id && $bookseat->cinehall_id == $cinehall->id && $bookseat->date == $date)
                         <?php $bookedSeat[] = unserialize($bookseat->seat) ?>
                     @endif
                 @endforeach
