@@ -20,7 +20,7 @@
         <div id="owl-demo-now" class="owl-carousel">
             @foreach($movies as $movie)
                 @if($movie->release_date <= $currentDate)
-                    <div class="item" ><a href="{{ action('CinehallController@getShow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                    <div class="item" ><a href="{{ action('ShowTimeController@getNow','?'.http_build_query(['movie'=>$movie->id])) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
                         <div class="text-danger text-center">{{ $movie->moviename }}</div>
                     </div>
                 @endif
@@ -34,7 +34,7 @@
         <div id="owl-demo-coming" class="owl-carousel">
            @foreach($movies as $movie)
                 @if($movie->release_date > $currentDate)
-                    <div class="item" ><a href="{{ url('/new',$movie->id) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
+                    <div class="item" ><a href="{{ url('/showing/next',$movie->id) }}"><img src="{!! '/images/'.$movie->poster !!}" style="border:2px solid white;box-shadow:4px 4px 2px rgba(0,0,0,0.2)" /></a>
                         <div class="text-danger text-center">{{ $movie->moviename }}</div>
                     </div>
                 @endif

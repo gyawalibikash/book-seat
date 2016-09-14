@@ -1,36 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Auth;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
-    public function Profile()
-    {
-        return $this->hasOne('App\Profile');
-    }
-
-    public function BookSeat()
-    {
-        return $this->hasOne('App\BookSeat');
-    }
-
-    public function Role()
-    {
-        return $this->hasOne('App\Role');
-    }
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id',
+        'name', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -42,6 +25,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile');
+    }
+
+    public function bookSeat()
+    {
+        return $this->hasMany('App\Models\BookSeat');
+    }
+
+    public function role()
+    {
+        return $this->hasOne('App\Models\Role');
+    }
+
     public function isAdmin() 
     {
         $role_id = Auth::user()->role_id;
@@ -52,5 +50,4 @@ class User extends Authenticatable
             return true;
         }
     }
-
 }

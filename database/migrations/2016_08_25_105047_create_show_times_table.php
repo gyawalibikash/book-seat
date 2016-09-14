@@ -15,7 +15,6 @@ class CreateShowTimesTable extends Migration
         Schema::create('showtime', function (Blueprint $table) {
             $table->increments('id');
             $table->string('time');
-
             $table->timestamps();
         });
     }

@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
-
 use Auth;
 use Session;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
-
+    /**
+    * Display a listing of the resource.
+    *
+    * @return Response
+    */
     public function index()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-
         return view('profile.profile', compact('profile'));
     }
 
@@ -43,13 +45,11 @@ class ProfileController extends Controller
         $profile->contact_no = $request->Input('contact_no');
         $profile->gender = $request->Input('gender');
         $profile->user_id = $request->Input('user_id');
-
         $profile->save();
 
         Session::flash('success', 'Your Profile is successfully created !');
 
         return redirect('profile');
-
     }
 
     /**
@@ -89,7 +89,6 @@ class ProfileController extends Controller
      */
     public function update(UserRequest $request, $user_id)
     {
-
         $profileUpdate = $request->all();
         $profile = Profile::where('user_id',$user_id)->first();
         $profile->update($profileUpdate);
@@ -97,6 +96,5 @@ class ProfileController extends Controller
         Session::flash('success', 'Your Profile is successfully updated !');
 
         return redirect('profile');
-
     }
 }

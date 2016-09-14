@@ -2,13 +2,12 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
-use App\Cinehall;
-use App\Hall;
-use App\Profile;
-use App\Role;
-use App\ShowTime;
-use App\User;
+use App\Models\Cinehall;
+use App\Models\Hall;
+use App\Models\Profile;
+use App\Models\Role;
+use App\Models\ShowTime;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,8 +24,8 @@ class DatabaseSeeder extends Seeder
     }
 }
 
-class UserAppSeed extends Seeder{
-
+class UserAppSeed extends Seeder
+{
     public function run() {
         DB::table('users')->delete();
         DB::table('roles')->delete();
@@ -34,7 +33,6 @@ class UserAppSeed extends Seeder{
         DB::table('showtime')->delete();
         DB::table('cinehall')->delete();
         DB::table('halls')->delete();
-
 
         $admin = Role::create(array('name'=>'ROLE_ADMIN'));
         $user = Role::create(array('name'=>'ROLE_USER'));
@@ -58,7 +56,7 @@ class UserAppSeed extends Seeder{
         $gopi = Cinehall::create(array('name'=>'GopiKishan', 'address'=>'Chabahil', 'contact'=> '014455267'));
         $qfx = Cinehall::create(array('name'=>'QfxKumari', 'address'=>'Putalisadak', 'contact'=> '015455267'));
         $jaynepal = Cinehall::create(array('name'=>'Jaynepal', 'address'=>'Hattisar', 'contact'=> '015455567'));
-        $this->command->info(' Cinehall created Successfully');
+        $this->command->info(' Cinehall Created Successfully');
 
         Hall::create(array('name'=>'Gopi','cinehall_id'=> $gopi->id));
         Hall::create(array('name'=>'Krishna','cinehall_id'=> $gopi->id));
@@ -69,9 +67,5 @@ class UserAppSeed extends Seeder{
         Hall::create(array('name'=>'Jay','cinehall_id'=> $jaynepal->id));
         Hall::create(array('name'=>'Nepal','cinehall_id'=> $jaynepal->id));
         $this->command->info('Hall Created Successfully');
-
     }
-
 }
-
-

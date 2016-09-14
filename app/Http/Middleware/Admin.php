@@ -3,10 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
 use Illuminate\Support\Facades\Auth;
-
-use App\Role;
+use App\Models\Role;
 
 class Admin
 {

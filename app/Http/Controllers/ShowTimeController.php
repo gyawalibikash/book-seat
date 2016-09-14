@@ -2,54 +2,91 @@
 
 namespace App\Http\Controllers;
 
-use App\Cinehall;
-use App\Group;
-use App\Hall;
-use App\Movies;
-use App\NextMovies;
-use App\ShowTime;
-use App\Http\Requests;
+use Validator;
 use Illuminate\Http\Request;
-use Session;
+use App\Http\Requests;
+use App\Models\BookSeat;
+use App\Models\Cinehall;
+use App\Models\Group;
+use App\Models\Hall;
+use App\Models\Movies;
+use App\Models\ShowTime;
 
 class ShowTimeController extends Controller
 {
     /**
-     * Display a listing of the resource
-     *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getShowtime(Request $request)
+    public function getNow(Request $request)
     {
-        $movie_id = $request->get('movie');
-        $cinehall_id = $request->input('cinehall');
-        $hall_id = $request->hall;
+        try {
+            $movie_id = $request->input('movie');
+            $movie = Movies::findOrFail($movie_id);
 
-        // $movie = Movies::with(['group' => function($sql) {
-        //     $sql->join('days as d', 'groups.day_id', '=', 'd.id')
-        //     ->select('groups.*', 'd.*')
-        //     ->groupBy('day_id')
-        //     ->where('hall_id', $_GET['hall']);
-        // }])->where('id', $movie_id)->first();
+            $cinehalls = Cinehall::with('hall')->get();
+  
+            $current_date = date("Y-m-d");
 
-        // for($i = 0; $i < count($movie->group); $i++) {
-        //     $days[$movie->group[$i]->day_id] = $movie->group[$i]->day;
-        // }
+            $groups = Group::where([
+                            ['movie_id', $movie_id],
+                            ['date', '>=', $current_date],
+                        ])->get();
 
-        $movie = Movies::findOrfail($movie_id);
-        $cinehall = Cinehall::findOrfail($cinehall_id);
-        $hall = Hall::findOrfail($hall_id);
+            $showtimes = ShowTime::all();
+            $bookseats = BookSeat::all();
 
-        $showtimes = ShowTime::all();
+            return view('showtime.now', compact('cinehalls', 'movie', 'showtimes', 'groups', 'bookseats'));
 
-        $groups = Group::where(['movie_id'=>$movie_id, 'hall_id'=>$hall_id])->get();
-
-        return view('showtime.index', compact('movie', 'cinehall', 'showtimes', 'hall', 'groups'));
+        } catch (Exception $e) {
+            return view('errors.503');
+        }
     }
 
-    public function getNew($id)
+    public function postStore(Request $request)
     {
-        $movie = Movies::findOrFail($id);
-        return view('coming_soon.index', compact('movie'));
+        // validation
+        // $this->validate($request, [
+        //     'date' => 'required',
+        // ]);
+
+        $query_string = $request['path'];
+        $string = ltrim($query_string, '?');
+        parse_str($string, $result);
+
+        $movie_id = $result['movie'];
+
+        parse_str($request['name'], $params);
+
+        $date = $params['date'];
+        $showtimes = $params['showtime'];
+
+        unset($params['date']);
+        unset($params['showtime']);
+
+        foreach ($params as $cinehall => $hall_group) {
+            foreach ($hall_group as $hall) {
+                foreach ($showtimes as $show => $time) {
+                    Group::create([
+                        'movie_id' => $movie_id,
+                        'showtime_id' => $time,
+                        'cinehall_id' => $cinehall,
+                        'hall_id' => $hall,                        
+                        'date' => $date,
+                    ]);
+                }
+            }
+        }
+        return;
+    }
+
+    public function getNext($id)
+    {
+        try {
+            $movie = Movies::findOrFail($id);
+            return view('showtime.next', compact('movie'));
+        } catch (Exception $e) {
+            return view('errors.503');
+        }
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration
+class CreateBookSeatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,14 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::table('bookseat', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('seat');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->integer('movie_id')->unsigned();
             $table->foreign('movie_id')
                 ->references('id')
@@ -46,8 +52,8 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('groups', function(Blueprint $table){
-            $table->dropForeign(['movie_id', 'showtime_id', 'cinehall_id', 'hall_id']);   
+        Schema::drop('bookseat', function(Blueprint $table){
+            $table->dropForeign(['user_id', 'movie_id', 'showtime_id', 'cinehall_id', 'hall_id']);   
         });
     }
 }

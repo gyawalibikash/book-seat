@@ -31,6 +31,8 @@ class CreateHallsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('halls');
+        Schema::drop('halls', function(Blueprint $table){
+            $table->dropForeign(['cinehall_id']);
+        });
     }
 }

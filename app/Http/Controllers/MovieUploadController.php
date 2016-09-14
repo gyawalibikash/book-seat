@@ -2,29 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-use App\Http\Requests\ImageRequest;
-
-use App\Movies;
-
-use App\NextMovies;
-
-use Illuminate\Support\Facades\Session;
-
-use Input;
 use Image;
+use Input;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests;
+use App\Http\Requests\ImageRequest;
+use App\Models\Movies;
 
 class MovieUploadController extends Controller
 {
-
+    /**
+    * Display a listing of the resource.
+    *
+    * @return Response
+    */
     public function index()
     {
         return view('uploads.upload');
     }
 
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @return Response
+    */
     public function store(ImageRequest $request)
     {
         try {
@@ -50,21 +52,59 @@ class MovieUploadController extends Controller
             $movies->run_time = $request->run_time;
             $movies->cast = $request->cast;
             $movies->director = $request->director;
-
             $movies->poster = $name;
-
-            Session::flash('success','Data entry successfull');
-
             $movies->save();
+
+            Session::flash('success','Data entry successfull');   
 
             return;
 
         } catch (Exception $e) {
             return view('errors.503');
-        } 
-        
+        }     
+    }
+
+    /**
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return Response
+    */
+    public function edit($id)
+    {
+        $movie = Movies::find($id);
+        return view('uploads.edit', ['movie' => $movie]);
+    }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param  int  $id
+    * @return Response
+    */
+    public function update(ImageRequest $request,$id)
+    {
+        // validation
+        $movie = Movies::findOrFail($id);
+        $movie->moviename = $request->input('moviename');
+        $movie->description = $request->input('description');
+        $movie->release_date = $request->input('release_date');
+        $movie->run_time = $request->input('run_time');
+        $movie->director = $request->input('director');
+        $movie->cast = $request->input('cast');
+        $movie->save();
+
+        Session::flash('success', 'The Movie successfully updated !');
+
+        return redirect()->route('home', [$request->id]);
     }
     
+    /**
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return Response
+    */
     public function destroy($id)
     {
         $movie = Movies::findOrFail($id);
@@ -73,32 +113,5 @@ class MovieUploadController extends Controller
         Session::flash('success', 'The Movie is successfully Deleted !');
 
         return redirect()->route('home');
-
-    }
-
-    public function edit($id)
-    {
-        $movie = Movies::find($id);
-        return view('uploads.edit', ['movie' => $movie]);
-    }
-
-    public function update(ImageRequest $request,$id)
-    {
-            // validation
-            $movie = Movies::findOrFail($id);
-
-            $movie->moviename       =   $request->input('moviename');
-            $movie->description     =   $request->input('description');
-            $movie->release_date    =   $request->input('release_date');
-            $movie->run_time        =   $request->input('run_time');
-            $movie->director        =   $request->input('director');
-            $movie->cast            =   $request->input('cast');
-
-            $movie->save();
-
-            Session::flash('success', 'The Movie successfully updated !');
-
-            return redirect()->route('home',[$request->id]);
-
     }
 }

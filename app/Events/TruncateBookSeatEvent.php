@@ -2,10 +2,10 @@
 
 namespace App\Events;
 
-use App\BookSeat;
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Events\Event;
+use App\Models\BookSeat;
 
 class TruncateBookSeatEvent extends Event
 {

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Movies;
-use App\NextMovies;
 use Illuminate\Http\Request;
+use App\Models\Movies;
 
 class HomeController extends Controller
 {
-
     /**
      * Show the application dashboard.
      *
@@ -18,7 +16,6 @@ class HomeController extends Controller
     public function index()
     {
         $movies = Movies::all();
-
         return view('home', compact('movies'));
     }
 }
