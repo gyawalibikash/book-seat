@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
 class UserAppSeed extends Seeder
 {
     public function run() {
-        DB::table('roles')->delete();
         DB::table('users')->delete();
+        DB::table('roles')->delete();
         DB::table('profiles')->delete();
         DB::table('showtime')->delete();
         DB::table('cinehall')->delete();
@@ -38,8 +38,8 @@ class UserAppSeed extends Seeder
         $roleUser = Role::create(array('name'=>'ROLE_USER'));
         $this->command->info('Role Seeded Successfully');
 
-        $admin = User::create(array('name'=>'admin','email'=>'admin@gmail.com','password'=>bcrypt('admin'),'role_id'=>$roleAdmin->id));
-        $user = User::create(array('name'=>'user','email'=>'user@gmail.com','password'=>bcrypt('user'),'role_id'=>$roleUser->id));
+        $admin = User::create(array('name'=>'admin','email'=>'admin@gmail.com','username'=>'admin','password'=>bcrypt('admin'),'role_id'=>$roleAdmin->id));
+        $user = User::create(array('name'=>'user','email'=>'user@gmail.com','username'=>'user','password'=>bcrypt('user'),'role_id'=>$roleUser->id));
         $this->command->info('User Created Successfully');
 
         Profile::create(array('address'=>'thamel','contact_no'=>'014457853','gender'=>'male','user_id'=>$admin->id));
@@ -51,10 +51,10 @@ class UserAppSeed extends Seeder
         ShowTime::create(array('time'=>'18:30'));
         $this->command->info('Showtime Created Successfully');
 
-        $gopi = Cinehall::create(array('name'=>'GopiKishan', 'address'=>'Chabahil', 'contact'=>'014455317'));
-        $qfx = Cinehall::create(array('name'=>'QfxKumari', 'address'=>'Putalisadak', 'contact'=>'015455267'));
-        $jay = Cinehall::create(array('name'=>'JayNepal', 'address'=>'Hattisar', 'contact'=>'015458667'));
-        $this->command->info(' Cinehall Created Successfully');
+        $gopi = Cinehall::create(array('name'=>'GopiKishan','address'=>'Chabahil','contact'=>'014455317'));
+        $qfx = Cinehall::create(array('name'=>'QfxKumari','address'=>'Putalisadak','contact'=>'015455262'));
+        $jay = Cinehall::create(array('name'=>'JayNepal','address'=>'Hattisar','contact'=>'015458172'));
+        $this->command->info('Cinehall Created Successfully');
 
         Hall::create(array('name'=>'Gopi','cinehall_id'=> $gopi->id));
         Hall::create(array('name'=>'Krishna','cinehall_id'=> $gopi->id));
