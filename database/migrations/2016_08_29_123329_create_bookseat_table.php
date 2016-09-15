@@ -12,7 +12,7 @@ class CreateBookSeatTable extends Migration
      */
     public function up()
     {
-        Schema::table('bookseat', function (Blueprint $table) {
+        Schema::create('bookseat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('seat');
             $table->integer('user_id')->unsigned();
