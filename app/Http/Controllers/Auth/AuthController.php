@@ -25,22 +25,6 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        if (property_exists($this, 'registerView')) {
-            return view($this->registerView);
-        }
-
-        $role = Role::whereName('ROLE_USER')->pluck('id')->first();
-
-        return view('auth.register', compact('role'));
-    }
-
-    /**
      * Where to redirect users after login / registration.
      *
      * @var string
@@ -68,6 +52,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -83,8 +68,34 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
             'role_id' => $data['role_id'],
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
+        $role = Role::whereName('ROLE_USER')->pluck('id')->first();
+        return view('auth.register', compact('role'));
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function loginUsername()
+    {
+        return property_exists($this, 'username') ? $this->username : 'username';
     }
 }
